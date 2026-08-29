@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prestations — Lunaya</title>
-<meta name="description" content="Découvrez toutes les prestations de l'institut Lunaya : head spa, épilation, soins du visage, massage, beauté des mains et pieds.">
+<title>Regard — Lunaya</title>
+<meta name="description" content="Le Regard à l'institut Lunaya : teinture cils et sourcils, rehaussement de cils. Tarifs et durées.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23F6EEDD'/%3E%3Cpath d='M62 24c-14 4-22 16-22 29s8 25 22 29c-24 3-42-12-42-29S38 21 62 24z' fill='%236B4530'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
 
     <nav class="nav-links" aria-label="Navigation principale">
       <a href="institut.html">L'Institut</a>
-      <a href="prestations.html" aria-current="page">Prestations</a>
+      <a href="prestations.html">Prestations</a>
       <a href="galerie.html">Galerie</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -47,7 +47,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">Accueil</a>
   <a href="institut.html">L'Institut</a>
-  <a href="prestations.html" aria-current="page">Prestations</a>
+  <a href="prestations.html">Prestations</a>
   <a href="galerie.html">Galerie</a>
   <a href="contact.html">Contact</a>
   <a href="reservation.html" class="btn btn-primary" style="margin-top:20px;">Réserver un soin</a>
@@ -57,84 +57,75 @@
 
 <main id="main">
 
-  <section class="page-hero" style="padding-bottom:60px;">
+  <section class="page-hero">
     <div class="page-hero-orb" aria-hidden="true"></div>
     <div class="container">
-      <div class="breadcrumb"><a href="index.html">Accueil</a><span class="sep">/</span><span class="here">Prestations</span></div>
-      <h1>Votre soin, <em>en un clin d'œil</em></h1>
-      <p class="lede">Six rituels essentiels. Choisissez celui qui vous ressemble aujourd'hui et réservez en quelques secondes.</p>
+      <div class="breadcrumb"><a href="index.html">Accueil</a><span class="sep">/</span><a href="prestations.html">Prestations</a><span class="sep">/</span><span class="here">Regard</span></div>
+      <h1>Le <em>regard</em></h1>
+      <p class="lede">Teinture et rehaussement de cils et sourcils, pour un regard sublimé sans maquillage.</p>
     </div>
   </section>
 
   <section style="padding-top:0;">
     <div class="container">
-      <div class="menu-grid reveal-stagger" data-reveal>
+      <div class="service-list reveal" data-reveal>
 
-        <a href="head-spa.html" class="menu-tile" style="--i:0; background-image:url('assets/gallery-head-spa.jpg');">
-          <span class="menu-tile-tag">Signature</span>
-          <div class="menu-tile-content">
-            <h3>Head Spa</h3>
-            <p>Massage crânien japonais, cuir chevelu apaisé.</p>
-            <span class="menu-tile-cta">Découvrir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <div class="service-item glass">
+          <div class="service-q service-q-static">
+            <div class="service-q-left">
+              <span class="service-name">Teinture Sourcils</span>
+            </div>
+            <div class="service-q-right">
+              <span class="service-duration">20 min</span>
+              <span class="service-price">15€</span>
+              <a href="reservation.html" class="service-book-link" aria-label="Réserver ce soin">Réserver</a>
+              <span class="plus" style="visibility:hidden;" aria-hidden="true"></span>
+            </div>
           </div>
-        </a>
-
-        <a href="epilation.html" class="menu-tile" style="--i:1; background-image:url('assets/gallery-epilation.jpg');">
-          <div class="menu-tile-content">
-            <h3>Épilation</h3>
-            <p>Visage &amp; corps, cire tiède, fini net.</p>
-            <span class="menu-tile-cta">Réserver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </div>
-        </a>
-
-        <a href="soin-visage.html" class="menu-tile" style="--i:2; background-image:url('assets/gallery-facial.jpg');">
-          <div class="menu-tile-content">
-            <h3>Soin du Visage</h3>
-            <p>Nettoyage, exfoliation douce, éclat.</p>
-            <span class="menu-tile-cta">Réserver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </div>
-        </a>
-
-        <a href="soins-corps.html" class="menu-tile" style="--i:3; background-image:url('assets/gallery-massage.jpg');">
-          <div class="menu-tile-content">
-            <h3>Soin du Corps</h3>
-            <p>Gommages, modelages, rituels bien-être.</p>
-            <span class="menu-tile-cta">Réserver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </div>
-        </a>
-
-        <a href="reservation.html" class="menu-tile" style="--i:4; background-image:url('assets/gallery-manicure.jpg');">
-          <div class="menu-tile-content">
-            <h3>Mains &amp; Pieds</h3>
-            <p>Manucure et pédicure soignées.</p>
-            <span class="menu-tile-cta">Réserver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </div>
-        </a>
-
-        <a href="regard.html" class="menu-tile" style="--i:5; background-image:url('assets/gallery-regard.jpg');">
-          <div class="menu-tile-content">
-            <h3>Regard</h3>
-            <p>Cils rehaussés, sourcils sublimés.</p>
-            <span class="menu-tile-cta">Réserver <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <section style="padding-top:0;">
-    <div class="container">
-      <div class="booking-panel glass reveal" data-reveal>
-        <div>
-          <span class="eyebrow">Une prestation vous tente ?</span>
-          <h2 class="title">Réservez votre <em>rituel</em> en quelques clics</h2>
-          <p class="lede">Choisissez votre soin et votre créneau directement en ligne, disponible 24h/24.</p>
         </div>
-        <div class="booking-cta">
-          <a href="reservation.html" class="btn btn-primary">Prendre rendez-vous</a>
-          <span class="powered-by">Propulsé par <b>Planity</b></span>
+
+        <div class="service-item glass">
+          <div class="service-q service-q-static">
+            <div class="service-q-left">
+              <span class="service-name">Teinture Cils</span>
+            </div>
+            <div class="service-q-right">
+              <span class="service-duration">25 min</span>
+              <span class="service-price">23€</span>
+              <a href="reservation.html" class="service-book-link" aria-label="Réserver ce soin">Réserver</a>
+              <span class="plus" style="visibility:hidden;" aria-hidden="true"></span>
+            </div>
+          </div>
         </div>
+
+        <div class="service-item glass">
+          <div class="service-q service-q-static">
+            <div class="service-q-left">
+              <span class="service-name">Rehaussement de Cils</span>
+            </div>
+            <div class="service-q-right">
+              <span class="service-duration">50 min</span>
+              <span class="service-price">55€</span>
+              <a href="reservation.html" class="service-book-link" aria-label="Réserver ce soin">Réserver</a>
+              <span class="plus" style="visibility:hidden;" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-item glass">
+          <div class="service-q service-q-static">
+            <div class="service-q-left">
+              <span class="service-name">Rehaussement de Cils + Teinture</span>
+            </div>
+            <div class="service-q-right">
+              <span class="service-duration">65 min</span>
+              <span class="service-price">65€</span>
+              <a href="reservation.html" class="service-book-link" aria-label="Réserver ce soin">Réserver</a>
+              <span class="plus" style="visibility:hidden;" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
