@@ -1127,18 +1127,22 @@ h2.title em {
 .contact-row h4 { font-family: var(--ff-serif); font-size: 1rem; color: var(--brown-deep); margin-bottom: 4px; }
 .contact-row p { font-size: .87rem; color: var(--brown-soft); line-height: 1.6; font-weight: 300; }
 
+.team-card { display: flex; align-items: flex-start; gap: 20px; padding: 30px; }
 .team-photo {
-  width: 110px; height: 110px;
+  width: 84px; height: 84px;
+  flex-shrink: 0;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--gold-light), var(--cream));
   background-size: cover;
   background-position: center;
-  margin-bottom: 22px;
   box-shadow: 0 8px 20px rgba(107,69,48,.15);
 }
-.team-card h3 { font-family: var(--ff-serif); font-size: 1.5rem; color: var(--brown-deep); margin-bottom: 6px; font-weight: 600; }
-.team-card .role { display: block; font-family: var(--ff-sans); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-.team-card p { font-size: .92rem; color: var(--brown-soft); line-height: 1.7; font-weight: 300; }
+.team-card h3 { font-family: var(--ff-serif); font-size: 1.3rem; color: var(--brown-deep); margin-bottom: 4px; font-weight: 600; }
+.team-card .role { display: block; font-family: var(--ff-sans); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.team-card p { font-size: .87rem; color: var(--brown-soft); line-height: 1.6; font-weight: 300; }
+@media (max-width: 560px) {
+  .team-card { flex-direction: column; align-items: flex-start; }
+}
 
 .hours-table { width: 100%; border-collapse: collapse; margin-top: 6px; }
 .hours-table td { padding: 10px 0; font-size: .87rem; color: var(--brown-soft); border-bottom: 1px dashed rgba(107,69,48,.15); font-weight: 300; }
