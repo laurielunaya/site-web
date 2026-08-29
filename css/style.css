@@ -760,7 +760,7 @@ h2.title em {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  margin-bottom: 70px;
+  margin-bottom: 24px;
 }
 .stats-banner.cols-3 { grid-template-columns: repeat(3, 1fr); }
 .stats-banner .stat-card {
