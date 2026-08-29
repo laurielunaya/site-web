@@ -858,6 +858,12 @@ h2.title em {
   color: var(--brown-deep);
   font-weight: 600;
 }
+.price-table td.duration {
+  font-family: var(--ff-sans);
+  color: var(--brown-mist);
+  font-weight: 400;
+  font-size: .82rem;
+}
 .price-table th.highlight { color: var(--brown); }
 .price-table td.highlight { background: rgba(184,151,113,.1); border-radius: 8px; }
 .price-table tbody tr:last-child td { border-bottom: none; }
