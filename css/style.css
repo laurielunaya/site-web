@@ -1127,7 +1127,8 @@ h2.title em {
 .contact-row h4 { font-family: var(--ff-serif); font-size: 1rem; color: var(--brown-deep); margin-bottom: 4px; }
 .contact-row p { font-size: .87rem; color: var(--brown-soft); line-height: 1.6; font-weight: 300; }
 
-.team-card { display: flex; align-items: flex-start; gap: 20px; padding: 30px; }
+.team-card { display: flex; align-items: center; gap: 20px; padding: 30px; }
+.team-info { flex: 1; min-width: 0; }
 .team-photo {
   width: 84px; height: 84px;
   flex-shrink: 0;
@@ -1142,6 +1143,7 @@ h2.title em {
 .team-card p { font-size: .87rem; color: var(--brown-soft); line-height: 1.6; font-weight: 300; }
 @media (max-width: 560px) {
   .team-card { flex-direction: column; align-items: flex-start; }
+  .team-info { width: 100%; }
 }
 
 .hours-table { width: 100%; border-collapse: collapse; margin-top: 6px; }
