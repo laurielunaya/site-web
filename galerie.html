@@ -70,15 +70,23 @@
 
   <section style="padding-top:0;">
     <div class="container">
-      <div class="gallery-grid reveal-stagger" data-reveal>
-        <div class="gallery-item big photo" style="background-image:url('assets/interieur-salon.jpg');"><span>L'espace d'accueil</span></div>
-        <div class="gallery-item photo" style="background-image:url('assets/gallery-head-spa.jpg');"><span>Head Spa</span></div>
-        <div class="gallery-item photo" style="background-image:url('assets/gallery-facial.jpg');"><span>Soin du Visage</span></div>
-        <div class="gallery-item photo" style="background-image:url('assets/gallery-manicure.jpg');"><span>Beauté des Mains</span></div>
-        <div class="gallery-item photo" style="background-image:url('assets/gallery-ambiance.jpg');"><span>Instant Cocon</span></div>
-        <div class="gallery-item photo" style="background-image:url('assets/gallery-massage.jpg');"><span>Massage Bien-être</span></div>
-        <div class="gallery-item photo" style="background-image:url('assets/gallery-epilation.jpg');"><span>Épilation Douceur</span></div>
-        <div class="gallery-item big photo" style="background-image:url('assets/gallery-signature.jpg');"><span>Rituel Signature</span></div>
+      <div class="gallery-carousel-wrap">
+        <button class="carousel-arrow prev" type="button" aria-label="Photo précédente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+        <div class="gallery-carousel reveal-stagger" data-reveal id="galleryCarousel">
+          <div class="gallery-item photo" style="background-image:url('assets/interieur-salon.jpg');"><span>L'espace d'accueil</span></div>
+          <div class="gallery-item photo" style="background-image:url('assets/gallery-head-spa.jpg');"><span>Head Spa</span></div>
+          <div class="gallery-item photo" style="background-image:url('assets/gallery-facial.jpg');"><span>Soin du Visage</span></div>
+          <div class="gallery-item photo" style="background-image:url('assets/gallery-manicure.jpg');"><span>Beauté des Mains</span></div>
+          <div class="gallery-item photo" style="background-image:url('assets/gallery-ambiance.jpg');"><span>Instant Cocon</span></div>
+          <div class="gallery-item photo" style="background-image:url('assets/gallery-massage.jpg');"><span>Massage Bien-être</span></div>
+          <div class="gallery-item photo" style="background-image:url('assets/gallery-epilation.jpg');"><span>Épilation Douceur</span></div>
+          <div class="gallery-item photo" style="background-image:url('assets/gallery-signature.jpg');"><span>Rituel Signature</span></div>
+        </div>
+        <button class="carousel-arrow next" type="button" aria-label="Photo suivante">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
       </div>
       <p style="text-align:center; margin-top:32px; font-size:.8rem; color:var(--brown-mist);">Photos libres de droit — pourront être remplacées par vos propres visuels de l'institut.</p>
     </div>
@@ -159,5 +167,21 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+(function() {
+  const track = document.getElementById('galleryCarousel');
+  const prevBtn = document.querySelector('.carousel-arrow.prev');
+  const nextBtn = document.querySelector('.carousel-arrow.next');
+  if (!track || !prevBtn || !nextBtn) return;
+  function scrollByOne(dir) {
+    const item = track.querySelector('.gallery-item');
+    if (!item) return;
+    const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || 18);
+    track.scrollBy({ left: dir * (item.getBoundingClientRect().width + gap), behavior: 'smooth' });
+  }
+  prevBtn.addEventListener('click', () => scrollByOne(-1));
+  nextBtn.addEventListener('click', () => scrollByOne(1));
+})();
+</script>
 </body>
 </html>

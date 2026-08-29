@@ -740,6 +740,46 @@ h2.title em {
   position: absolute; inset: 0;
   background: linear-gradient(0deg, rgba(63,42,29,.55), transparent 55%);
 }
+.gallery-carousel-wrap { position: relative; }
+.gallery-carousel {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 4px 4px 12px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.gallery-carousel::-webkit-scrollbar { display: none; }
+.gallery-carousel .gallery-item {
+  flex: 0 0 auto;
+  width: 320px;
+  height: 400px;
+  scroll-snap-align: start;
+}
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--cream-light);
+  border: 1px solid rgba(107,69,48,.2);
+  box-shadow: var(--glass-shadow-sm);
+  cursor: pointer;
+  z-index: 2;
+  transition: transform .3s ease, background .3s ease;
+}
+.carousel-arrow:hover { background: rgba(255,255,255,.95); transform: translateY(-50%) scale(1.06); }
+.carousel-arrow svg { width: 20px; height: 20px; color: var(--brown-deep); }
+.carousel-arrow.prev { left: -22px; }
+.carousel-arrow.next { right: -22px; }
+@media (max-width: 900px) {
+  .carousel-arrow { display: none; }
+  .gallery-carousel .gallery-item { width: 78vw; height: 340px; }
+}
 .gallery-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
