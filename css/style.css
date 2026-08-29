@@ -410,7 +410,7 @@ h2.title em {
    ========================================================================== */
 .hero {
   position: relative;
-  min-height: 74vh;
+  min-height: 58vh;
   display: flex;
   align-items: center;
   padding-top: 140px;
@@ -1127,7 +1127,7 @@ h2.title em {
 .contact-row h4 { font-family: var(--ff-serif); font-size: 1rem; color: var(--brown-deep); margin-bottom: 4px; }
 .contact-row p { font-size: .87rem; color: var(--brown-soft); line-height: 1.6; font-weight: 300; }
 
-.team-card { display: flex; align-items: center; gap: 20px; padding: 30px; }
+.team-card { display: flex; align-items: center; gap: 18px; padding: 24px; }
 .team-info { flex: 1; min-width: 0; }
 .team-photo {
   width: 84px; height: 84px;
