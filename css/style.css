@@ -1127,6 +1127,15 @@ h2.title em {
 .contact-row h4 { font-family: var(--ff-serif); font-size: 1rem; color: var(--brown-deep); margin-bottom: 4px; }
 .contact-row p { font-size: .87rem; color: var(--brown-soft); line-height: 1.6; font-weight: 300; }
 
+.team-photo {
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-light), var(--cream));
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 22px;
+  box-shadow: 0 8px 20px rgba(107,69,48,.15);
+}
 .team-card h3 { font-family: var(--ff-serif); font-size: 1.5rem; color: var(--brown-deep); margin-bottom: 6px; font-weight: 600; }
 .team-card .role { display: block; font-family: var(--ff-sans); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
 .team-card p { font-size: .92rem; color: var(--brown-soft); line-height: 1.7; font-weight: 300; }
