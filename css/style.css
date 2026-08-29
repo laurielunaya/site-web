@@ -410,7 +410,7 @@ h2.title em {
    ========================================================================== */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 74vh;
   display: flex;
   align-items: center;
   padding-top: 140px;
