@@ -441,7 +441,7 @@ h2.title em {
     linear-gradient(0deg, rgba(58,42,32,.45) 0%, transparent 24%, transparent 78%, rgba(58,42,32,.3) 100%);
 }
 .hero .container { position: relative; z-index: 1; }
-.hero-text { max-width: 620px; }
+.hero-text { max-width: 700px; }
 .hero-eyebrow {
   font-size: .74rem;
   letter-spacing: .32em;
@@ -462,7 +462,10 @@ h2.title em {
   font-style: italic;
   color: var(--gold-light);
 }
-.hero p.lede { max-width: 480px; color: rgba(253,249,242,.82); }
+.hero p.lede { max-width: 640px; white-space: nowrap; color: rgba(253,249,242,.82); }
+@media (max-width: 900px) {
+  .hero p.lede { white-space: normal; max-width: 480px; }
+}
 .hero-cta { display: flex; gap: 16px; margin-top: 40px; flex-wrap: wrap; }
 
 .hero-stats {
