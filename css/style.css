@@ -1195,6 +1195,7 @@ footer { padding: 80px 0 30px; }
 .footer-about p { font-size: .85rem; color: var(--brown-soft); line-height: 1.7; margin-top: 18px; max-width: 300px; font-weight: 300; }
 .footer-col h5 { font-family: var(--ff-sans); font-size: .74rem; letter-spacing: .16em; text-transform: uppercase; color: var(--brown-deep); margin-bottom: 20px; }
 .footer-col ul { display: flex; flex-direction: column; gap: 12px; }
+.footer-col-prestations ul { display: grid; grid-template-columns: 1fr 1fr; column-gap: 20px; row-gap: 12px; }
 .footer-col a { font-size: .87rem; color: var(--brown-soft); transition: color .3s ease, padding-left .3s ease; }
 .footer-col a:hover { color: var(--brown-deep); padding-left: 4px; }
 .footer-bottom {
