@@ -751,6 +751,68 @@ h2.title em {
 .g5 { background: radial-gradient(circle at 50% 50%, #e6c3b3, #7b5c4b 70%); }
 
 /* ==========================================================================
+   TESTIMONIALS / AVIS
+   ========================================================================== */
+.stats-banner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 70px;
+}
+.stats-banner.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.stats-banner .stat-card {
+  padding: 34px 24px;
+  border-radius: var(--r-md);
+  text-align: center;
+}
+.stats-banner .stat-card b {
+  display: block;
+  font-family: var(--ff-serif);
+  font-size: 2.2rem;
+  color: var(--brown-deep);
+  font-weight: 600;
+}
+.stats-banner .stat-card span {
+  font-size: .72rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--brown-soft);
+}
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.testi-card {
+  padding: 36px 30px;
+  border-radius: var(--r-md);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.testi-stars { color: var(--gold); letter-spacing: .12em; font-size: .95rem; }
+.testi-card p { font-family: var(--ff-serif); font-style: italic; font-size: 1.05rem; line-height: 1.6; color: var(--brown-deep); flex-grow: 1; }
+.testi-who { display: flex; align-items: center; gap: 12px; }
+.testi-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-light), var(--rose));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-serif); color: var(--brown-deep); font-weight: 600;
+  flex-shrink: 0;
+}
+.testi-who strong { display: block; font-size: .88rem; color: var(--brown-deep); }
+.testi-who span { font-size: .72rem; color: var(--brown-mist); }
+
+@media (max-width: 900px) {
+  .stats-banner, .stats-banner.cols-3 { grid-template-columns: 1fr 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .stats-banner, .stats-banner.cols-3 { grid-template-columns: 1fr 1fr; gap: 14px; }
+}
+
+/* ==========================================================================
    BOOKING / PLANITY
    ========================================================================== */
 .booking-panel {
