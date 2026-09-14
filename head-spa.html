@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Head Spa — Lunaya</title>
 <meta name="description" content="Le Head Spa Lunaya : rituel japonais de massage crânien et de soin du cuir chevelu. Diagnostic, massage, gommage, soin vapeur et brushing.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23F6EEDD'/%3E%3Cpath d='M62 24c-14 4-22 16-22 29s8 25 22 29c-24 3-42-12-42-29S38 21 62 24z' fill='%236B4530'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="css/style.css">
@@ -31,14 +30,13 @@
     <nav class="nav-links" aria-label="Navigation principale">
       <a href="institut.html">L'Institut</a>
       <a href="prestations.html">Prestations</a>
-      <a href="https://www.planity.com/" target="_blank" rel="noopener">Bons Cadeaux</a>
       <a href="galerie.html">Galerie</a>
       <a href="avis.html">Avis</a>
       <a href="contact.html">Contact</a>
     </nav>
 
     <div class="nav-actions">
-      <a href="reservation.html" class="btn btn-primary btn-sm">Réserver</a>
+      <a href="reservation.html" class="btn btn-primary btn-sm">Réserver sur Planity</a>
       <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
         <span></span>
       </button>
@@ -50,7 +48,6 @@
   <a href="index.html">Accueil</a>
   <a href="institut.html">L'Institut</a>
   <a href="prestations.html">Prestations</a>
-  <a href="https://www.planity.com/" target="_blank" rel="noopener">Bons Cadeaux</a>
   <a href="galerie.html">Galerie</a>
   <a href="avis.html">Avis</a>
   <a href="contact.html">Contact</a>
@@ -87,23 +84,31 @@
     <div class="container about-grid reverse compact">
       <div>
         <div class="philosophy-text compact reveal" data-reveal>
-          <p>Ici, le Head Spa prend soin de vos cheveux autant que de vous. Notre approche réunit <strong>expertise du cuir chevelu</strong>, soins profonds de la chevelure et relaxation, à travers des rituels inspirés des <strong>techniques japonaises, coréennes et holistiques</strong>.</p>
+          <p>Ici, le Head Spa prend soin de vos cheveux autant que de vous. Notre approche réunit <strong>expertise du cuir chevelu</strong>, soins profonds et relaxation, à travers des rituels inspirés des <strong>techniques japonaises, coréennes et holistiques</strong>.</p>
           <p>Analyse trichologique, protocoles personnalisés, massages et expériences sensorielles s'associent aux produits professionnels <strong>Organethic PureCare</strong>, riches en actifs naturels et sélectionnés selon les besoins de votre cuir chevelu et de vos cheveux.</p>
           <p>Chaque rituel est ainsi pensé pour vous offrir une prise en charge personnalisée, tout en vous plongeant dans <strong>une véritable parenthèse de déconnexion</strong>.</p>
         </div>
       </div>
-      <!-- EMPLACEMENT MÉDIA — photo ou vidéo : plantes aromatiques / actifs naturels -->
-      <div class="about-visual reveal" data-reveal>
-        <div class="media-slot">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 22V12M12 12C12 7 9 4 4 4c0 5 3 8 8 8zM12 12c0-5 3-8 8-8 0 5-3 8-8 8z"/></svg>
-          <span class="label">Emplacement média</span>
-          <span class="hint">Plantes aromatiques / actifs naturels</span>
+      <div class="about-visual video-carousel-wrap reveal" data-reveal>
+        <button class="carousel-arrow prev" type="button" aria-label="Vidéo précédente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+        <div class="video-carousel" id="headSpaVideoCarousel">
+          <div class="video-carousel-item">
+            <video class="lazy-video" muted loop playsinline preload="none" poster="assets/gallery-head-spa-video-poster.jpg">
+              <source src="assets/gallery-head-spa-video.mp4" type="video/mp4">
+            </video>
+          </div>
+          <!-- Ajouter d'autres <div class="video-carousel-item"><video>...</video></div> ici pour d'autres vidéos -->
         </div>
+        <button class="carousel-arrow next" type="button" aria-label="Vidéo suivante">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
       </div>
     </div>
   </section>
 
-  <section style="padding-top:0;">
+  <section style="padding-top:0; padding-bottom:40px;">
     <div class="container">
       <div class="service-group reveal" data-reveal>
         <div class="service-group-label">Diagnostic</div>
@@ -149,11 +154,13 @@
             </div>
             <div class="service-a">
               <div class="service-a-inner">
-                <p><strong>Bien plus qu'un moment de détente</strong> : <strong>un rituel dédié à l'équilibre du cuir chevelu et au lâcher-prise</strong>. Il débute par une analyse trichologique personnalisée afin d'adapter le soin à vos besoins.</p>
-                <p>Masque chauffant pour les yeux, <strong>massages du buste, de la nuque et du cuir chevelu</strong>, arche de pluie, fontaine et accessoires sensoriels vous plongent dans une relaxation profonde. <strong>Le massage crânien stimule la microcirculation, favorise l'équilibre du cuir chevelu et contribue à créer un environnement propice à une croissance saine</strong>, tout en libérant profondément les tensions du corps et de l'esprit.</p>
-                <p>Le soin est réalisé avec les <strong>produits professionnels Organethic PureCare</strong>, riches en actifs naturels et sélectionnés selon votre problématique : <strong>shampoings adaptés et masque capillaire sous diffusion de vapeur</strong>, afin de favoriser son action et sublimer vos cheveux.</p>
-                <p>Le rituel se termine par un <strong>séchage naturel au sèche-cheveux, sans brushing</strong>.</p>
-                <p class="service-note">Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br><strong>En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions (plaies, saignements, croûtes importantes…)</strong>, merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé.</p>
+                <p><strong>L'expérience :</strong> bien plus qu'un moment de détente, un rituel dédié à l'équilibre du cuir chevelu et au lâcher-prise.</p>
+                <p><strong>Diagnostic :</strong> analyse trichologique personnalisée afin d'adapter le soin à vos besoins.</p>
+                <p><strong>Détente :</strong> masque chauffant pour les yeux, massages du buste, de la nuque et du cuir chevelu, arche de pluie et accessoires sensoriels.</p>
+                <p>Le massage crânien stimule la microcirculation, favorise l'équilibre du cuir chevelu et contribue à créer un environnement propice à une croissance saine.</p>
+                <p><strong>Soins pro :</strong> produits professionnels Organethic PureCare riches en actifs naturels et sélectionnés selon votre problématique, shampoings adaptés et masque sous vapeur.</p>
+                <p>Le rituel se termine par un séchage naturel au sèche-cheveux, sans brushing.</p>
+                <p class="service-note">⚠️ Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>🚫 En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé.</p>
               </div>
             </div>
           </div>
@@ -172,11 +179,13 @@
             </div>
             <div class="service-a">
               <div class="service-a-inner">
-                <p>Bien plus qu'un moment de détente : un rituel profond dédié à l'équilibre du cuir chevelu et au lâcher-prise. Il débute par une analyse trichologique personnalisée afin d'adapter chaque étape à vos besoins.</p>
-                <p>Masque chauffant pour les yeux, massages du buste, de la nuque, des bras et du cuir chevelu, arche de pluie, fontaine et accessoires sensoriels vous plongent dans une relaxation profonde. Le massage crânien stimule la microcirculation, favorise l'équilibre du cuir chevelu et contribue à créer un environnement propice à une croissance saine, tout en libérant profondément les tensions du corps et de l'esprit.</p>
-                <p>Le soin est réalisé avec les produits professionnels Organethic PureCare, riches en actifs naturels et sélectionnés selon votre problématique : gommage du cuir chevelu, shampoings adaptés puis masque capillaire sous diffusion de vapeur, afin de favoriser son action et sublimer vos cheveux.</p>
+                <p><strong>L'expérience :</strong> un rituel profond dédié à l'équilibre du cuir chevelu et au lâcher-prise.</p>
+                <p><strong>Diagnostic :</strong> analyse trichologique personnalisée afin d'adapter chaque étape à vos besoins.</p>
+                <p><strong>Détente :</strong> masque chauffant pour les yeux, massages du buste, de la nuque, des bras et du cuir chevelu, arche de pluie, fontaine et accessoires sensoriels.</p>
+                <p>Le massage crânien stimule la microcirculation, favorise l'équilibre du cuir chevelu et contribue à créer un environnement propice à une croissance saine, tout en libérant profondément les tensions du corps et de l'esprit.</p>
+                <p><strong>Soins pro :</strong> produits professionnels Organethic PureCare riches en actifs naturels et sélectionnés selon votre problématique, gommage du cuir chevelu, shampoings adaptés et masque sous vapeur.</p>
                 <p>Le rituel se termine par un séchage naturel au sèche-cheveux, sans brushing.</p>
-                <p class="service-note">Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé.</p>
+                <p class="service-note">⚠️ Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>🚫 En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé.</p>
               </div>
             </div>
           </div>
@@ -195,13 +204,14 @@
             </div>
             <div class="service-a">
               <div class="service-a-inner">
-                <p>Votre voyage commence ici. Inspiré des rituels japonais et du rituel coréen de Hewun Seolhye, ce Head Spa signature vous invite à vivre deux heures de déconnexion profonde, où chaque geste, parfum, sensation, et rituel autour de l'eau éveille les sens et invite au lâcher-prise.</p>
-                <p>Après une analyse trichologique personnalisée, le voyage débute par un long massage du buste, des épaules, de la nuque et du cuir chevelu, suivi d'un massage des oreilles, pour dénouer progressivement les tensions et apaiser le corps et l'esprit.</p>
-                <p>Place ensuite au soin du cuir chevelu avec les produits professionnels Organethic PureCare : gommage associé à des infusions de plantes sélectionnées selon votre problématique, shampoings adaptés et soin des longueurs sous diffusion de vapeur. De nouvelles infusions de plantes viennent compléter le rituel pour prendre soin du cuir chevelu et embellir la chevelure.</p>
-                <p>L'expérience se poursuit avec un massage du haut du corps aux pochons de plantes, puis un véritable rituel du visage associant soin et massage, réalisé avec les cosmétiques professionnels Phyt's, marque française experte de la beauté en institut depuis plus de 50 ans, reconnue pour ses formules naturelles et bio. Un moment pour détendre les traits, libérer les tensions et prendre soin de votre peau autant que de votre esprit.</p>
-                <p>Le massage crânien favorise la microcirculation et l'équilibre du cuir chevelu, contribuant ainsi à créer un environnement propice à une croissance saine. Deux heures hors du temps, pensées comme un voyage des sens pour vous faire décrocher du quotidien et vous transporter ailleurs.</p>
+                <p><strong>L'expérience :</strong> un Head Spa signature de deux heures inspiré des rituels japonais et du rituel coréen de Hewun Seolhye, pensé comme un voyage des sens pour décrocher du quotidien.</p>
+                <p><strong>Diagnostic :</strong> analyse trichologique personnalisée afin d'adapter chaque étape à vos besoins.</p>
+                <p><strong>Détente :</strong> long massage du buste, des épaules, de la nuque, du cuir chevelu et des oreilles. Massage du haut du corps aux pochons d'herbes chauds.</p>
+                <p><strong>Soins pro :</strong> produits professionnels Organethic PureCare riches en actifs naturels et sélectionnés selon votre problématique : gommage aux infusions de plantes, shampoings adaptés, soin des longueurs sous vapeur et infusions de plantes personnalisées complémentaires.</p>
+                <p>Le massage crânien stimule la microcirculation, favorise l'équilibre du cuir chevelu et contribue à créer un environnement propice à une croissance saine, tout en libérant profondément les tensions du corps et de l'esprit.</p>
+                <p><strong>Visage :</strong> rituel du visage (soin et massage) réalisé avec les cosmétiques bio Phyt's.</p>
                 <p>Le rituel se termine par un séchage naturel au sèche-cheveux, sans brushing.</p>
-                <p class="service-note">Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé dans ces conditions.</p>
+                <p class="service-note">⚠️ Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>🚫 En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé dans ces conditions.</p>
               </div>
             </div>
           </div>
@@ -220,11 +230,13 @@
             </div>
             <div class="service-a">
               <div class="service-a-inner">
-                <p>Un rituel pensé pour prendre soin du cuir chevelu tout en offrant un véritable moment de déconnexion. Le soin débute par une analyse trichologique personnalisée afin d'identifier les besoins du cuir chevelu et d'adapter le protocole.</p>
-                <p>Massage de la nuque, du cuir chevelu et des bras, associés aux accessoires de relaxation sensorielle, permettent de relâcher les tensions et de favoriser une détente profonde.</p>
-                <p>Le soin est réalisé avec les produits professionnels Organethic PureCare, riches en actifs naturels et sélectionnés selon votre problématique : gommage du cuir chevelu et shampoings adaptés, pour prendre soin du cuir chevelu et favoriser son équilibre.</p>
+                <p><strong>L'expérience :</strong> un rituel pensé pour prendre soin du cuir chevelu tout en offrant un véritable moment de déconnexion.</p>
+                <p><strong>Diagnostic :</strong> analyse trichologique personnalisée afin d'identifier les besoins du cuir chevelu et d'adapter le protocole.</p>
+                <p><strong>Détente :</strong> massage de la nuque, du cuir chevelu et des bras, associés aux accessoires de relaxation sensorielle, pour relâcher les tensions et favoriser une détente profonde.</p>
+                <p>Le massage crânien stimule la microcirculation, favorise l'équilibre du cuir chevelu et contribue à créer un environnement propice à une croissance saine, tout en libérant profondément les tensions du corps et de l'esprit.</p>
+                <p><strong>Soins pro :</strong> produits professionnels Organethic PureCare riches en actifs naturels et sélectionnés selon votre problématique : gommage du cuir chevelu et shampoings adaptés, pour prendre soin du cuir chevelu et favoriser son équilibre.</p>
                 <p>Le rituel se termine par un séchage naturel au sèche-cheveux, sans brushing.</p>
-                <p class="service-note">Pour les cheveux de plus de 5 cm de longueur, merci d'ajouter le supplément cheveux longs lors de votre réservation.<br>En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé dans ces conditions.</p>
+                <p class="service-note">⚠️ Pour les cheveux de plus de 5 cm de longueur, merci d'ajouter le supplément cheveux longs lors de votre réservation.<br>🚫 En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé dans ces conditions.</p>
               </div>
             </div>
           </div>
@@ -232,7 +244,7 @@
           <div class="service-item glass">
             <div class="service-q" tabindex="0" role="button" aria-expanded="false">
               <div class="service-q-left">
-                <span class="service-name">Head Spa Enfant — De 4 à 15 ans</span>
+                <span class="service-name">Head Spa Enfant — De 4 à 13 ans</span>
                               </div>
               <div class="service-q-right">
                 <span class="service-duration">30 min</span>
@@ -243,11 +255,12 @@
             </div>
             <div class="service-a">
               <div class="service-a-inner">
-                <p>Une douce parenthèse de détente spécialement pensée pour les enfants. Un moment pour découvrir les bienfaits du Head Spa à leur rythme, dans une ambiance rassurante et apaisante.</p>
-                <p>Massage de la nuque et du cuir chevelu, arche de pluie, fontaine, accessoires de relaxation sensorielle et shampoings adaptés composent ce rituel tout en douceur.</p>
-                <p>Chaque soin est adapté à l'âge, aux besoins et aux envies de l'enfant : les gestes et les différentes étapes pourront être ajustés afin qu'il profite pleinement de son moment de bien-être.</p>
+                <p><strong>L'expérience :</strong> une douce parenthèse de détente spécialement pensée pour les enfants, pour découvrir les bienfaits du Head Spa à leur rythme, dans une ambiance rassurante et apaisante.</p>
+                <p><strong>Diagnostic & Sur-mesure :</strong> soin adapté à l'âge, aux besoins et aux envies de l'enfant ; les gestes et les différentes étapes sont ajustés afin qu'il profite pleinement de son moment de bien-être.</p>
+                <p><strong>Détente :</strong> massage de la nuque et du cuir chevelu, arche de pluie, fontaine et accessoires de relaxation sensorielle.</p>
+                <p><strong>Soins pro :</strong> shampoings adaptés formulés tout en douceur.</p>
                 <p>Le rituel se termine par un séchage naturel au sèche-cheveux, sans brushing.</p>
-                <p class="service-note">Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé dans ces conditions.</p>
+                <p class="service-note">⚠️ Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>🚫 En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé dans ces conditions.</p>
               </div>
             </div>
           </div>
@@ -273,12 +286,11 @@
             </div>
             <div class="service-a">
               <div class="service-a-inner">
-                <p>Un soin expert entièrement dédié au cuir chevelu, particulièrement adapté en présence de squames, pellicules, excès de sébum et accumulations, ainsi qu'aux cuirs chevelus sujets au psoriasis ou à la dermatite séborrhéique, lorsqu'ils sont stabilisés et hors période de poussée inflammatoire.</p>
-                <p>Au cœur du protocole, l'AquaPeel et son système d'hydro-aspiration permettent de décoller et d'aspirer en douceur squames, cellules mortes, impuretés, résidus et excès de sébum accumulés à la surface du cuir chevelu. Le protocole AquaPeel est réalisé avec les soins professionnels coréens Histemo, spécialisés dans le soin du cuir chevelu.</p>
-                <p>Le soin se poursuit par un double shampoing avec les produits professionnels Organethic PureCare, riches en actifs naturels, afin de parfaire le nettoyage du cuir chevelu.</p>
-                <p>L'objectif : libérer le cuir chevelu de ses accumulations, le purifier en profondeur et repartir sur une base plus saine et équilibrée.</p>
+                <p><strong>L'expérience :</strong> un soin expert entièrement dédié au cuir chevelu, particulièrement adapté en présence de squames, pellicules, excès de sébum et accumulations, ainsi qu'aux cuirs chevelus sujets au psoriasis ou à la dermatite séborrhéique (stabilisés et hors période de poussée inflammatoire), pour libérer le cuir chevelu de ses accumulations, le purifier en profondeur et repartir sur une base plus saine et équilibrée.</p>
+                <p><strong>Bienfaits :</strong> AquaPeel et son système d'hydro-aspiration pour décoller et aspirer en douceur squames, cellules mortes, impuretés, résidus et excès de sébum.</p>
+                <p><strong>Soins pro :</strong> soins professionnels coréens Histemo pour l'AquaPeel, suivis d'un double shampoing avec les produits professionnels Organethic PureCare riches en actifs naturels afin de parfaire le nettoyage.</p>
                 <p>Le soin se termine par un séchage naturel des cheveux au sèche-cheveux, sans brushing.</p>
-                <p class="service-note">Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé dans ces conditions.</p>
+                <p class="service-note">⚠️ Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>🚫 En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé dans ces conditions.</p>
               </div>
             </div>
           </div>
@@ -297,13 +309,13 @@
             </div>
             <div class="service-a">
               <div class="service-a-inner">
-                <p>Bien plus qu'un Head Spa, le nouveau protocole Hair spa expert coréen, pensé pour agir en profondeur sur les besoins du cuir chevelu tout en vous offrant une relaxation intense.</p>
-                <p>Le soin débute par une analyse trichologique au microscope, suivie de l'AquaPeel : grâce à son système d'hydro-aspiration, il aide à décoller et aspirer squames, cellules mortes, impuretés et excès de sébum. Cette étape est associée aux soins professionnels coréens Histemo, sélectionnés selon votre problématique.</p>
-                <p>Le protocole se poursuit par un double nettoyage avec le Bubble Shampoo, puis par la LED thérapie, la vapeur et des soins ciblés, pour purifier, prendre soin de l'équilibre du cuir chevelu et favoriser un environnement propice à la vitalité et à une croissance saine du cheveu.</p>
-                <p>Particulièrement recommandé en accompagnement des problématiques de chute, manque de densité, excès de sébum, squames, pellicules ou inconforts du cuir chevelu. Il peut également accompagner les cuirs chevelus sujets au psoriasis, ou aux dermatites lorsqu'ils sont stabilisés et hors période de poussée.</p>
-                <p>Et parce que prendre soin du cuir chevelu passe aussi par le lâcher-prise : masque chauffant pour les yeux, massages du buste, de la nuque et du cuir chevelu, arche de pluie, fontaine et accessoires sensoriels vous plongent dans une relaxation profonde.</p>
-                <p>Le rituel se termine par un séchage naturel au sèche-cheveux, sans brushing. L'expertise du soin coréen alliée à toute l'expérience sensorielle du Head Spa.</p>
-                <p class="service-note">Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>En cas de poussée importante de psoriasis, eczéma, dermatite ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le soin ne pourra pas être réalisé dans ces conditions.</p>
+                <p><strong>L'expérience :</strong> un protocole Hair Spa expert coréen pensé pour agir en profondeur sur les besoins de votre cuir chevelu tout en vous offrant une relaxation intense et sur-mesure.</p>
+                <p><strong>Le diagnostic personnalisé :</strong> le soin débute par une analyse trichologique au microscope afin d'adapter chaque étape et de cibler précisément vos besoins.</p>
+                <p><strong>Purification & Soins experts :</strong> utilisation de l'AquaPeel (hydro-aspiration pour décoller impuretés et excès de sébum) combinée aux soins professionnels coréens Histemo, suivis d'un double nettoyage au Bubble Shampoo, de la LED thérapie, de la vapeur et de soins ciblés pour favoriser la vitalité et la croissance du cheveu.</p>
+                <p><strong>Bienfaits & Adaptations :</strong> recommandé pour la chute, le manque de densité, l'excès de sébum, les pellicules, les inconforts ou les cuirs chevelus sujets au psoriasis et aux dermatites stabilisées (hors poussée).</p>
+                <p><strong>Détente & Lâcher-prise :</strong> un voyage sensoriel enveloppant grâce au masque chauffant pour les yeux, aux massages du buste, de la nuque et du cuir chevelu, à l'arche de pluie, à la fontaine et aux accessoires de relaxation.</p>
+                <p>Le rituel se termine par un séchage naturel au sèche-cheveux, sans brushing.<br>L'expertise du soin coréen alliée à toute l'expérience sensorielle du Head Spa.</p>
+                <p class="service-note">⚠️ Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>🚫 En cas de poussée importante de psoriasis, eczéma, dermatite ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le soin ne pourra pas être réalisé dans ces conditions.</p>
               </div>
             </div>
           </div>
@@ -322,13 +334,13 @@
             </div>
             <div class="service-a">
               <div class="service-a-inner">
-                <p>Une expérience d'exception dédiée à la beauté du cuir chevelu, à la reconstruction des longueurs et au lâcher-prise. Un rituel intensif dans l'esprit des soins reconstructeurs japonais de type Tokyo, associé à l'expertise Organethic PureCare.</p>
-                <p>Le soin débute par une analyse trichologique au microscope afin d'observer précisément le cuir chevelu et les cheveux et d'adapter le protocole à leurs besoins.</p>
-                <p>Place ensuite au protocole Wellness complet Organethic PureCare : purification, gommage, huiles végétales et essentielles, décoctions de plantes, shampoings et soins ciblés, complétés par un rituel de reconstruction intensive des longueurs pour redonner à la fibre force, souplesse, douceur et brillance.</p>
-                <p>Tout au long de l'expérience, massages du buste, des épaules, de la nuque et du cuir chevelu, masque chauffant pour les yeux, vapeur et accessoires sensoriels vous plongent dans une relaxation profonde.</p>
-                <p>Le rituel se prolonge par un soin complet du visage et son massage avec Phyt's, marque professionnelle française experte de la beauté en institut depuis plus de 50 ans, reconnue pour ses cosmétiques naturels et bio, alliant efficacité et sensorialité.</p>
-                <p>2h30 pour prendre soin de vous de la peau jusqu'aux pointes, réparer intensément la chevelure et vous offrir une véritable parenthèse de déconnexion. Le soin se termine par un séchage naturel des cheveux au sèche-cheveux, sans brushing.</p>
-                <p class="service-note">Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé dans ces conditions.</p>
+                <p><strong>L'expérience :</strong> un rituel intensif d'exception de 2h30, inspiré des soins reconstructeurs japonais et associé à l'expertise d'Organethic PureCare, pour prendre soin du cuir chevelu jusqu'aux pointes.</p>
+                <p><strong>Le diagnostic personnalisé :</strong> le soin débute par une analyse trichologique au microscope afin d'observer précisément l'état de votre cuir chevelu et de vos cheveux pour adapter chaque étape du protocole.</p>
+                <p><strong>Purification & Reconstruction :</strong> un protocole Wellness complet Organethic PureCare (purification, gommage, huiles végétales et essentielles, décoctions de plantes, shampoings et soins ciblés), complété par une reconstruction intensive des longueurs pour redonner à la fibre force, souplesse, douceur et brillance.</p>
+                <p><strong>Soin Visage & Éclat :</strong> le rituel se prolonge par un soin complet du visage et son massage signature avec Phyt's, marque française pionnière de la cosmétique naturelle et bio depuis plus de 50 ans.</p>
+                <p><strong>Détente & Lâcher-prise :</strong> un voyage sensoriel enveloppant grâce aux massages du buste, des épaules, de la nuque et du cuir chevelu, au masque chauffant pour les yeux, à la vapeur et aux accessoires de relaxation.</p>
+                <p>Le soin se termine par un séchage naturel des cheveux au sèche-cheveux, sans brushing.</p>
+                <p class="service-note">⚠️ Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>🚫 En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé dans ces conditions.</p>
               </div>
             </div>
           </div>
@@ -354,13 +366,12 @@
             </div>
             <div class="service-a">
               <div class="service-a-inner">
-                <p>Deux rituels d'inspiration japonaise réunis pour une expérience de lâcher-prise profond, du corps jusqu'à l'esprit.</p>
-                <p>Le voyage débute par 45 minutes de Reiki, un soin énergétique japonais réalisé sur l'ensemble du corps, invitant à ralentir, relâcher les tensions et retrouver une profonde sensation de calme et d'apaisement. La relaxation profonde apportée par le Reiki peut également accompagner les personnes dont les problématiques du cuir chevelu sont influencées ou accentuées par le stress.</p>
-                <p>Dans la continuité de cet état de relaxation, place au Head Spa d'1h : analyse trichologique personnalisée, masque chauffant pour les yeux, massages du buste, de la nuque et du cuir chevelu, arche de pluie, fontaine et accessoires sensoriels. Le massage crânien favorise la microcirculation et contribue à créer un environnement propice à une croissance saine.</p>
-                <p>Le soin est réalisé avec les produits professionnels Organethic PureCare, riches en actifs naturels et sélectionnés selon votre problématique : gommage, shampoings adaptés et masque capillaire sous diffusion de vapeur, afin de favoriser son action et sublimer vos cheveux.</p>
-                <p>1h45 pour déconnecter, relâcher profondément les tensions et retrouver un véritable sentiment de calme intérieur.</p>
+                <p><strong>L'expérience :</strong> deux rituels d'inspiration japonaise réunis pour une expérience de lâcher-prise profond, du corps jusqu'à l'esprit, sur une durée d'1h45 de déconnexion totale.</p>
+                <p><strong>Soin Énergétique Reiki :</strong> le voyage débute par 45 minutes de Reiki, un soin énergétique réalisé sur l'ensemble du corps pour ralentir, relâcher les tensions et retrouver le calme. Une approche idéale pour apaiser les cuirs chevelus dont les problématiques sont influencées ou accentuées par le stress.</p>
+                <p><strong>Head Spa & Soins Organethic PureCare :</strong> dans la continuité de cette relaxation, place à 1h de Head Spa avec une analyse trichologique personnalisée et l'utilisation de produits professionnels Organethic PureCare riches en actifs naturels (gommage, shampoings adaptés et masque capillaire sous diffusion de vapeur).</p>
+                <p><strong>Détente & Lâcher-prise :</strong> un bain de sensations enveloppantes grâce au masque chauffant pour les yeux, aux massages du buste, de la nuque et du cuir chevelu, à l'arche de pluie, à la fontaine et aux accessoires sensoriels (favorisant également la microcirculation et une croissance saine).</p>
                 <p>Le rituel se termine par un séchage naturel au sèche-cheveux, sans brushing.</p>
-                <p class="service-note">Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé dans ces conditions.</p>
+                <p class="service-note">⚠️ Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>🚫 En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé dans ces conditions.</p>
               </div>
             </div>
           </div>
@@ -379,12 +390,12 @@
             </div>
             <div class="service-a">
               <div class="service-a-inner">
-                <p>Vous rêviez d'un Head Spa, mais aussi d'un massage du corps ? Pourquoi choisir ? Offrez-vous deux expériences en un seul rituel, pour 2 heures de déconnexion et de lâcher-prise absolu.</p>
-                <p>L'expérience débute par 1h15 de Head Spa : analyse trichologique personnalisée, masque chauffant pour les yeux, massages du buste, de la nuque et du cuir chevelu, arche de pluie, fontaine et accessoires sensoriels. Le massage crânien favorise la microcirculation et contribue à créer un environnement propice à une croissance saine.</p>
-                <p>Le soin est réalisé avec les produits professionnels Organethic PureCare, riches en actifs naturels et sélectionnés selon votre problématique : gommage, shampoings adaptés et masque capillaire sous diffusion de vapeur, afin de favoriser son action et sublimer vos cheveux.</p>
-                <p>Puis, alors que votre corps est déjà profondément détendu, prolongez l'évasion avec 45 minutes de massage du corps pour dénouer les dernières tensions et vous abandonner pleinement à la relaxation.</p>
-                <p>Deux soins, une seule parenthèse. Deux heures rien que pour vous. Le rituel se termine par un séchage naturel au sèche-cheveux, sans brushing.</p>
-                <p class="service-note">Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé dans ces conditions.</p>
+                <p><strong>L'expérience :</strong> un rituel d'exception de 2 heures combinant un massage du corps et un Head Spa complet pour une déconnexion et un lâcher-prise absolus.</p>
+                <p><strong>Massage du Corps (45 minutes) :</strong> le voyage débute par un massage corporel enveloppant pour dénouer les tensions et vous abandonner pleinement à une première phase de relaxation.</p>
+                <p><strong>Head Spa sur-mesure (1h15) :</strong> le soin se poursuit avec une analyse trichologique personnalisée, un gommage, des shampoings adaptés et un masque capillaire sous diffusion de vapeur, réalisés avec les produits professionnels Organethic PureCare riches en actifs naturels.</p>
+                <p><strong>Détente & Sensorialité :</strong> un voyage sensoriel grâce au masque chauffant pour les yeux, aux massages du buste, de la nuque et du cuir chevelu, à l'arche de pluie, à la fontaine et aux accessoires sensoriels (favorisant la microcirculation et une croissance saine).</p>
+                <p>Le rituel se termine par un séchage naturel au sèche-cheveux, sans brushing.</p>
+                <p class="service-note">⚠️ Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>🚫 En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé dans ces conditions.</p>
               </div>
             </div>
           </div>
@@ -393,7 +404,7 @@
       </div>
 
       <div class="service-group reveal" data-reveal>
-        <div class="service-group-label">Head Spa Duo</div>
+        <div class="service-group-label" style="display:flex; align-items:center; gap:10px;">Head Spa Duo<span class="service-badge">Exclusivité autour d'Apprieu</span></div>
         <div class="service-list">
 
           <div class="service-item glass">
@@ -403,19 +414,20 @@
                               </div>
               <div class="service-q-right">
                 <span class="service-duration">1h</span>
-                <span class="service-price">190€</span>
+                <span class="service-price">180€</span>
                 <a href="reservation.html" class="service-book-link" aria-label="Réserver ce soin">Réserver</a>
                 <span class="plus"></span>
               </div>
             </div>
             <div class="service-a">
               <div class="service-a-inner">
-                <p>Parce que les plus beaux moments sont aussi ceux que l'on partage. Profitez à deux de notre rituel Head Spa d'1h et vivez simultanément une véritable parenthèse de déconnexion.</p>
-                <p>Le soin débute par une analyse trichologique personnalisée afin d'adapter le protocole aux besoins de chacun. Masque chauffant pour les yeux, massages du buste, de la nuque et du cuir chevelu, arche de pluie, fontaine et accessoires sensoriels vous plongent dans une relaxation profonde. Le massage crânien favorise la microcirculation et contribue à créer un environnement propice à une croissance saine.</p>
-                <p>Le soin est réalisé avec les produits professionnels Organethic PureCare, riches en actifs naturels et sélectionnés selon votre problématique : shampoings adaptés et masque capillaire sous diffusion de vapeur, afin de favoriser son action et sublimer vos cheveux.</p>
-                <p>En amoureux, entre ami(e)s, mère-fille, sœurs ou avec la personne de votre choix, partagez cette expérience et profitez pleinement de ce moment à deux. Anniversaire, fête des Mères, EVJF, Saint-Valentin ou simplement l'envie de se retrouver… une belle occasion de ralentir, déconnecter et créer un souvenir à deux.</p>
-                <p>Le soin se termine par un séchage naturel des cheveux au sèche-cheveux, sans brushing.</p>
-                <p class="service-note">Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé dans ces conditions.</p>
+                <p><strong>L'expérience :</strong> un rituel Head Spa d'1h à vivre à deux, en simultané, pour partager une parenthèse de déconnexion et de complicité absolue.</p>
+                <p><strong>Le diagnostic personnalisé :</strong> le soin débute par une analyse trichologique personnalisée afin d'adapter le protocole aux besoins spécifiques de chacun.</p>
+                <p><strong>Soins Organethic PureCare :</strong> réalisé avec des produits professionnels riches en actifs naturels, comprenant des shampoings adaptés et un masque capillaire sous diffusion de vapeur pour sublimer vos cheveux.</p>
+                <p><strong>Détente & Sensorialité :</strong> un voyage sensoriel partagé grâce au masque chauffant pour les yeux, aux massages du buste, de la nuque et du cuir chevelu, à l'arche de pluie, à la fontaine et aux accessoires (stimulant la microcirculation et une croissance saine).</p>
+                <p><strong>Idéal pour toutes les occasions :</strong> en amoureux, entre ami(e)s, en duo mère-fille, sœurs ou avec la personne de votre choix pour fêter un anniversaire, un EVJF, la Saint-Valentin, ou simplement pour le plaisir de se retrouver.</p>
+                <p>Le rituel se termine par un séchage naturel au sèche-cheveux, sans brushing.</p>
+                <p class="service-note">⚠️ Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>🚫 En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé dans ces conditions.</p>
               </div>
             </div>
           </div>
@@ -427,20 +439,21 @@
                               </div>
               <div class="service-q-right">
                 <span class="service-duration">1h30</span>
-                <span class="service-price">250€</span>
+                <span class="service-price">240€</span>
                 <a href="reservation.html" class="service-book-link" aria-label="Réserver ce soin">Réserver</a>
                 <span class="plus"></span>
               </div>
             </div>
             <div class="service-a">
               <div class="service-a-inner">
-                <p>Parce que les plus beaux moments de détente sont aussi ceux que l'on partage. Profitez à deux de notre rituel Head Spa 1h30 et vivez simultanément une véritable parenthèse de bien-être et de déconnexion.</p>
-                <p>Le soin débute par une analyse trichologique personnalisée afin d'adapter le protocole aux besoins de chacun. Masque chauffant pour les yeux, massages du buste, de la nuque, des bras et du cuir chevelu, arche de pluie, fontaine et accessoires sensoriels vous plongent dans une relaxation profonde. Le massage crânien favorise la microcirculation et contribue à créer un environnement propice à une croissance saine.</p>
-                <p>Le soin est réalisé avec les produits professionnels Organethic PureCare, riches en actifs naturels et sélectionnés selon votre problématique : gommage du cuir chevelu, shampoings adaptés et masque capillaire sous diffusion de vapeur, pour prendre soin du cuir chevelu et sublimer la chevelure.</p>
-                <p>L'expérience se prolonge avec un véritable rituel du visage associant soin et massage, réalisé avec les cosmétiques professionnels Phyt's, marque française experte de la beauté en institut depuis plus de 50 ans, reconnue pour ses formules naturelles et bio. Un moment pour détendre les traits, prendre soin de la peau et prolonger le lâcher-prise.</p>
-                <p>En amoureux, entre ami(e)s, mère-fille, sœurs ou avec la personne de votre choix, partagez cette expérience à l'occasion d'un anniversaire, de la fête des Mères, d'un EVJF, de la Saint-Valentin ou simplement pour le plaisir de vous retrouver. 1h30 pour prendre soin de vous, déconnecter et créer un véritable souvenir à deux.</p>
-                <p>Le soin se termine par un séchage naturel des cheveux au sèche-cheveux, sans brushing.</p>
-                <p class="service-note">Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé dans ces conditions.</p>
+                <p><strong>L'expérience :</strong> un rituel Head Spa d'1h30 à vivre à deux, en simultané, pour partager une parenthèse d'exception dédiée au bien-être et à la déconnexion.</p>
+                <p><strong>Le diagnostic personnalisé :</strong> le soin débute par une analyse trichologique personnalisée afin d'adapter chaque étape aux besoins spécifiques de chacun.</p>
+                <p><strong>Soins Organethic PureCare :</strong> un protocole complet avec gommage du cuir chevelu, shampoings adaptés et masque capillaire sous diffusion de vapeur, réalisés avec des produits professionnels riches en actifs naturels.</p>
+                <p><strong>Soin & Massage du Visage :</strong> l'expérience se prolonge avec un soin et un massage du visage réalisés avec les cosmétiques naturels et bio Phyt's (marque française experte en institut depuis plus de 50 ans) pour détendre les traits et sublimer la peau.</p>
+                <p><strong>Détente & Sensorialité :</strong> un voyage sensoriel partagé grâce au masque chauffant pour les yeux, aux massages du buste, de la nuque, des bras et du cuir chevelu, à l'arche de pluie, à la fontaine et aux accessoires (stimulant la microcirculation et une croissance saine).</p>
+                <p><strong>Idéal pour toutes les occasions :</strong> en amoureux, entre ami(e)s, en duo mère-fille, sœurs ou avec la personne de votre choix pour un anniversaire, la fête des Mères, un EVJF, la Saint-Valentin ou simplement pour le plaisir de se retrouver.</p>
+                <p>Le rituel se termine par un séchage naturel au sèche-cheveux, sans brushing.</p>
+                <p class="service-note">⚠️ Merci d'ajouter le supplément lors de votre réservation si vos cheveux sont très longs (sous le soutien-gorge), épais, frisés ou crépus.<br>🚫 En cas de poussée importante de dermatite, psoriasis, eczéma ou de lésions du cuir chevelu (plaies, saignements, croûtes importantes…), merci de nous prévenir afin de reporter votre rendez-vous. Afin de préserver votre cuir chevelu et de ne pas accentuer son état inflammatoire, le Head Spa ne pourra pas être réalisé dans ces conditions.</p>
               </div>
             </div>
           </div>
@@ -449,7 +462,7 @@
       </div>
 
       <div class="service-group reveal" data-reveal>
-        <div class="service-group-label">Suppléments</div>
+        <div class="service-group-label">Suppléments au Head Spa</div>
         <div class="service-list">
 
           <div class="service-item glass">
@@ -533,7 +546,7 @@
                 <span class="service-name">Cheveux Très Longs, Crépus, Frisés ou Épais</span>
               </div>
               <div class="service-q-right">
-                <span class="service-duration">+20 min</span>
+                <span class="service-duration">20 min</span>
                 <span class="service-price">20€</span>
                 <a href="reservation.html" class="service-book-link" aria-label="Réserver ce soin">Réserver</a>
                 <span class="plus" style="visibility:hidden;" aria-hidden="true"></span>
@@ -544,44 +557,37 @@
         </div>
       </div>
 
-    </div>
-  </section>
+      <div class="service-group reveal" data-reveal>
+        <div class="service-group-label">Bon Cadeau</div>
+        <div class="service-list">
 
-  <section style="padding-top:0;">
-    <div class="container">
-      <div class="gallery-strip reveal-stagger" data-reveal>
-        <div class="gallery-item photo" style="background-image:url('assets/gallery-signature.jpg'); --i:0;"><span>Rituel Signature</span></div>
-        <!-- EMPLACEMENT MÉDIA — photo : plantes aromatiques -->
-        <div class="media-slot" style="--i:1;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 22V12M12 12C12 7 9 4 4 4c0 5 3 8 8 8zM12 12c0-5 3-8 8-8 0 5-3 8-8 8z"/></svg>
-          <span class="label">Emplacement média</span>
-          <span class="hint">Plantes aromatiques</span>
+          <div class="service-item glass">
+            <div class="service-q" tabindex="0" role="button" aria-expanded="false">
+              <div class="service-q-left">
+                <span class="service-name">🎁 Offrez un bon cadeau</span>
+              </div>
+              <div class="service-q-right">
+                <a href="https://www.planity.com/" target="_blank" rel="noopener" class="service-book-link" aria-label="Offrir un bon cadeau Head Spa">Offrir</a>
+                <span class="plus"></span>
+              </div>
+            </div>
+            <div class="service-a">
+              <div class="service-a-inner">
+                <p>Offrez un moment de détente absolue. Valable 6 mois à compter de sa date d'achat, le bon cadeau peut être retiré directement à l'institut ou envoyé par mail en version numérique.</p>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <div class="gallery-item photo" style="background-image:url('assets/gallery-massage.jpg'); --i:2;"><span>Massage bien-être</span></div>
-        <div class="gallery-item photo" style="background-image:url('assets/gallery-regard.jpg'); --i:3;"><span>Instant suspendu</span></div>
       </div>
+
     </div>
   </section>
 
-  <!-- EMPLACEMENT MÉDIA — vidéo pleine largeur : préparation d'un soin / potion -->
-  <section style="padding-top:0;">
+  <section style="padding-top:0; padding-bottom:40px;">
     <div class="container">
-      <div class="media-slot media-slot-banner reveal" data-reveal>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-        <span class="label">Emplacement vidéo</span>
-        <span class="hint">Préparation d'un soin / potion</span>
-      </div>
-    </div>
-  </section>
-
-  <section style="padding-top:0;">
-    <div class="container about-grid">
-      <div class="about-visual reveal" data-reveal>
-        <div class="about-panel" style="background:linear-gradient(165deg, rgba(255,255,255,.4), rgba(230,211,172,.2) 55%, rgba(184,151,113,.3)), url('assets/gallery-head-spa.jpg'); background-size:cover; background-position:center;"></div>
-      </div>
-
       <div>
-        <div class="section-head left reveal" data-reveal>
+        <div class="section-head left reveal" data-reveal style="margin-bottom:24px;">
           <span class="eyebrow">Derrière chaque rituel…</span>
           <h2 class="title">Rencontrez <em>Laurie</em></h2>
         </div>
@@ -595,11 +601,10 @@
     </div>
   </section>
 
-  <section style="padding-top:0;">
+  <section style="padding-top:0; padding-bottom:30px;">
     <div class="container">
-      <div class="section-head reveal" data-reveal>
+      <div class="section-head reveal" data-reveal style="margin-bottom:20px;">
         <span class="eyebrow">Questions fréquentes</span>
-        <h2 class="title">Tout savoir sur le <em>Head Spa</em></h2>
       </div>
       <div class="faq-list reveal" data-reveal>
         <div class="faq-item glass">
@@ -612,7 +617,18 @@
         </div>
         <div class="faq-item glass">
           <button class="faq-q" aria-expanded="false">Dois-je venir cheveux propres ?<span class="plus"></span></button>
-          <div class="faq-a"><p>Non, venez avec vos cheveux tels quels : le soin inclut un nettoyage complet adapté à votre cuir chevelu.</p></div>
+          <div class="faq-a">
+            <p><strong>Idéalement, évitez les lavages trop récents :</strong> pour que notre diagnostic trichologique (l'analyse de votre cuir chevelu) soit le plus précis possible, l'idéal est de venir avec des cheveux lavés de la veille ou de l'avant-veille (maximum 48h).</p>
+            <p><strong>Ce n'est pas bloquant :</strong> ne vous inquiétez pas si ce n'est pas le cas, nous ferons de toute façon le point ensemble avant de commencer le rituel et adapterons le soin !</p>
+          </div>
+        </div>
+        <div class="faq-item glass">
+          <button class="faq-q" aria-expanded="false">Puis-je faire un Head Spa si je suis enceinte ?<span class="plus"></span></button>
+          <div class="faq-a"><p>Oui, tout à fait. Nos soins sont entièrement personnalisés : nous adaptons les produits et les protocoles lors du diagnostic pour veiller à votre sécurité et à votre confort absolu pendant cette période.</p></div>
+        </div>
+        <div class="faq-item glass">
+          <button class="faq-q" aria-expanded="false">Comment venir préparée pour la séance ?<span class="plus"></span></button>
+          <div class="faq-a"><p>Merci de venir démaquillée et sans bijoux (boucles d'oreilles, colliers) pour que nous puissions pratiquer les modelages en toute liberté et vous offrir une détente absolue, sans risque pour votre maquillage.</p></div>
         </div>
       </div>
     </div>
@@ -620,7 +636,7 @@
 
 </main>
 
-<footer>
+<footer style="padding-top:36px;">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-about">
@@ -659,7 +675,7 @@
         <h5>Contact</h5>
         <ul>
           <li><a href="tel:0476373238">04.76.37.32.38</a></li>
-          <li><a href="mailto:contact@lunaya-institut.fr">contact@lunaya-institut.fr</a></li>
+          <li><a href="mailto:lunaya.institut@gmail.com">lunaya.institut@gmail.com</a></li>
           <li><a href="reservation.html">Prendre rendez-vous</a></li>
         </ul>
       </div>
@@ -668,14 +684,68 @@
     <div class="footer-bottom">
       <span>© <span id="year"></span> Lunaya Institut. Tous droits réservés.</span>
       <div class="footer-legal">
-        <a href="#">Mentions légales</a>
-        <a href="#">Politique de confidentialité</a>
-        <a href="#">CGV</a>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+        <a href="cgv.html">CGV</a>
       </div>
     </div>
   </div>
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+(function() {
+  const track = document.getElementById('headSpaVideoCarousel');
+  const wrap = track ? track.closest('.video-carousel-wrap') : null;
+  const prevBtn = wrap ? wrap.querySelector('.carousel-arrow.prev') : null;
+  const nextBtn = wrap ? wrap.querySelector('.carousel-arrow.next') : null;
+  if (!track || !prevBtn || !nextBtn) return;
+
+  function slideCount() { return track.querySelectorAll('.video-carousel-item').length; }
+
+  function goTo(dir) {
+    const width = track.clientWidth;
+    const atEnd = track.scrollLeft + width >= track.scrollWidth - width / 2;
+    const atStart = track.scrollLeft <= width / 2;
+    if (dir > 0 && atEnd) {
+      track.scrollTo({ left: 0, behavior: 'smooth' });
+    } else if (dir < 0 && atStart) {
+      track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+    } else {
+      track.scrollBy({ left: dir * width, behavior: 'smooth' });
+    }
+  }
+
+  prevBtn.addEventListener('click', () => { goTo(-1); restartAutoplay(); });
+  nextBtn.addEventListener('click', () => { goTo(1); restartAutoplay(); });
+  if (slideCount() < 2) { prevBtn.style.display = 'none'; nextBtn.style.display = 'none'; }
+
+  let autoplayTimer;
+  function startAutoplay() {
+    if (slideCount() < 2) return;
+    autoplayTimer = setInterval(() => goTo(1), 8000);
+  }
+  function restartAutoplay() {
+    clearInterval(autoplayTimer);
+    startAutoplay();
+  }
+  wrap.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
+  wrap.addEventListener('mouseleave', startAutoplay);
+  startAutoplay();
+
+  /* Ne charge et ne joue la vidéo que lorsqu'elle devient visible, pour ne pas alourdir la page */
+  if ('IntersectionObserver' in window) {
+    const videoIo = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.play().catch(() => {});
+        else entry.target.pause();
+      });
+    }, { threshold: 0.4 });
+    track.querySelectorAll('video.lazy-video').forEach(v => videoIo.observe(v));
+  } else {
+    track.querySelectorAll('video.lazy-video').forEach(v => v.play().catch(() => {}));
+  }
+})();
+</script>
 </body>
 </html>
