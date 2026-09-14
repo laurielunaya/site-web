@@ -410,7 +410,7 @@ h2.title em {
    ========================================================================== */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 58vh;
   display: flex;
   align-items: center;
   padding-top: 140px;
@@ -462,7 +462,10 @@ h2.title em {
   font-style: italic;
   color: var(--gold-light);
 }
-.hero p.lede { max-width: 480px; color: rgba(253,249,242,.82); }
+.hero p.lede { max-width: 720px; white-space: nowrap; color: rgba(253,249,242,.82); }
+@media (max-width: 900px) {
+  .hero p.lede { white-space: normal; max-width: 480px; }
+}
 .hero-cta { display: flex; gap: 16px; margin-top: 40px; flex-wrap: wrap; }
 
 .hero-stats {
