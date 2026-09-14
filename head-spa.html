@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23F6EEDD'/%3E%3Cpath d='M62 24c-14 4-22 16-22 29s8 25 22 29c-24 3-42-12-42-29S38 21 62 24z' fill='%236B4530'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
 
@@ -32,6 +32,7 @@
       <a href="institut.html">L'Institut</a>
       <a href="prestations.html">Prestations</a>
       <a href="galerie.html">Galerie</a>
+      <a href="avis.html">Avis</a>
       <a href="contact.html">Contact</a>
     </nav>
 
@@ -49,6 +50,7 @@
   <a href="institut.html">L'Institut</a>
   <a href="prestations.html">Prestations</a>
   <a href="galerie.html">Galerie</a>
+  <a href="avis.html">Avis</a>
   <a href="contact.html">Contact</a>
   <a href="reservation.html" class="btn btn-primary" style="margin-top:20px;">Réserver un soin</a>
 </div>
@@ -88,20 +90,26 @@
           <p>Chaque rituel est ainsi pensé pour vous offrir une prise en charge personnalisée, tout en vous plongeant dans <strong>une véritable parenthèse de déconnexion</strong>.</p>
         </div>
       </div>
-      <!-- EMPLACEMENT MÉDIA — photo ou vidéo : plantes aromatiques / actifs naturels -->
       <div class="about-visual reveal" data-reveal>
-        <div class="media-slot">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 22V12M12 12C12 7 9 4 4 4c0 5 3 8 8 8zM12 12c0-5 3-8 8-8 0 5-3 8-8 8z"/></svg>
-          <span class="label">Emplacement média</span>
-          <span class="hint">Plantes aromatiques / actifs naturels</span>
-        </div>
+        <div class="media-rotator" data-images="assets/gallery-head-spa.jpg,assets/interieur-salon.jpg,assets/gallery-ambiance.jpg"></div>
       </div>
     </div>
   </section>
 
+  <div class="quick-nav-wrap reveal" data-reveal>
+    <nav class="quick-nav" aria-label="Navigation rapide des catégories">
+      <a href="#diagnostic" class="btn btn-outline btn-sm">Diagnostic</a>
+      <a href="#head-spa-solo" class="btn btn-outline btn-sm">Head Spa Solo</a>
+      <a href="#soins-cibles" class="btn btn-outline btn-sm">Soins ciblés</a>
+      <a href="#rituels" class="btn btn-outline btn-sm">Rituels</a>
+      <a href="#duo" class="btn btn-outline btn-sm">Duo</a>
+      <a href="#supplements" class="btn btn-outline btn-sm">Suppléments</a>
+    </nav>
+  </div>
+
   <section style="padding-top:0;">
     <div class="container">
-      <div class="service-group reveal" data-reveal>
+      <div class="service-group reveal" data-reveal id="diagnostic">
         <div class="service-group-label">Diagnostic</div>
         <div class="service-list">
           <div class="service-item glass">
@@ -127,7 +135,7 @@
         </div>
       </div>
 
-      <div class="service-group reveal" data-reveal>
+      <div class="service-group reveal" data-reveal id="head-spa-solo">
         <div class="service-group-label">Head Spa Solo</div>
         <div class="service-list">
 
@@ -251,7 +259,7 @@
         </div>
       </div>
 
-      <div class="service-group reveal" data-reveal>
+      <div class="service-group reveal" data-reveal id="soins-cibles">
         <div class="service-group-label">Soins ciblés</div>
         <div class="service-list">
 
@@ -332,7 +340,7 @@
         </div>
       </div>
 
-      <div class="service-group reveal" data-reveal>
+      <div class="service-group reveal" data-reveal id="rituels">
         <div class="service-group-label">Head Spa et Rituels</div>
         <div class="service-list">
 
@@ -388,7 +396,7 @@
         </div>
       </div>
 
-      <div class="service-group reveal" data-reveal>
+      <div class="service-group reveal" data-reveal id="duo">
         <div class="service-group-label">Head Spa Duo</div>
         <div class="service-list">
 
@@ -444,7 +452,7 @@
         </div>
       </div>
 
-      <div class="service-group reveal" data-reveal>
+      <div class="service-group reveal" data-reveal id="supplements">
         <div class="service-group-label">Suppléments</div>
         <div class="service-list">
 
@@ -544,33 +552,6 @@
   </section>
 
   <section style="padding-top:0;">
-    <div class="container">
-      <div class="gallery-strip reveal-stagger" data-reveal>
-        <div class="gallery-item photo" style="background-image:url('assets/gallery-signature.jpg'); --i:0;"><span>Rituel Signature</span></div>
-        <!-- EMPLACEMENT MÉDIA — photo : plantes aromatiques -->
-        <div class="media-slot" style="--i:1;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 22V12M12 12C12 7 9 4 4 4c0 5 3 8 8 8zM12 12c0-5 3-8 8-8 0 5-3 8-8 8z"/></svg>
-          <span class="label">Emplacement média</span>
-          <span class="hint">Plantes aromatiques</span>
-        </div>
-        <div class="gallery-item photo" style="background-image:url('assets/gallery-massage.jpg'); --i:2;"><span>Massage bien-être</span></div>
-        <div class="gallery-item photo" style="background-image:url('assets/gallery-regard.jpg'); --i:3;"><span>Instant suspendu</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EMPLACEMENT MÉDIA — vidéo pleine largeur : préparation d'un soin / potion -->
-  <section style="padding-top:0;">
-    <div class="container">
-      <div class="media-slot media-slot-banner reveal" data-reveal>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-        <span class="label">Emplacement vidéo</span>
-        <span class="hint">Préparation d'un soin / potion</span>
-      </div>
-    </div>
-  </section>
-
-  <section style="padding-top:0;">
     <div class="container about-grid">
       <div class="about-visual reveal" data-reveal>
         <div class="about-panel" style="background:linear-gradient(165deg, rgba(255,255,255,.4), rgba(230,211,172,.2) 55%, rgba(184,151,113,.3)), url('assets/gallery-head-spa.jpg'); background-size:cover; background-position:center;"></div>
@@ -621,10 +602,11 @@
     <div class="footer-grid">
       <div class="footer-about">
         <img src="assets/logo-brown.png" alt="Lunaya — Institut de Beauté · Head Spa · Rituels" class="footer-logo-img">
-        <p>Institut de beauté et head spa dédié à la sérénité et à l'éclat naturel. Chaque rituel est pensé comme une parenthèse rien qu'à vous.</p>
+        <p>Une invitation à ralentir, pour un voyage sensoriel unique entre rituels de beauté et reconnexion à soi.</p>
+        <span class="social-label">Suis-nous pour ne rien manquer</span>
         <div class="social-row">
-          <a href="#" class="social-btn glass" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-          <a href="#" class="social-btn glass" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8h2V4h-2a4 4 0 00-4 4v3H8v4h3v7h4v-7h3l1-4h-4V9a1 1 0 011-1z"/></svg></a>
+          <a href="https://www.instagram.com/linstitutdebeauteapprieu/" target="_blank" rel="noopener" class="social-btn glass" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="https://www.facebook.com/LeslieFdsh/" target="_blank" rel="noopener" class="social-btn glass" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8h2V4h-2a4 4 0 00-4 4v3H8v4h3v7h4v-7h3l1-4h-4V9a1 1 0 011-1z"/></svg></a>
         </div>
       </div>
 
@@ -634,23 +616,26 @@
           <li><a href="institut.html">L'Institut</a></li>
           <li><a href="prestations.html">Prestations</a></li>
           <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="avis.html">Avis</a></li>
         </ul>
       </div>
 
-      <div class="footer-col">
+      <div class="footer-col footer-col-prestations">
         <h5>Prestations</h5>
         <ul>
           <li><a href="head-spa.html">Head Spa</a></li>
           <li><a href="epilation.html">Épilation</a></li>
-          <li><a href="prestations.html">Soin du visage</a></li>
-          <li><a href="prestations.html">Massage</a></li>
+          <li><a href="soin-visage.html">Soin du visage</a></li>
+          <li><a href="soins-corps.html">Soin du Corps</a></li>
+          <li><a href="mains-pieds.html">Mains & Pieds</a></li>
+          <li><a href="regard.html">Regard</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h5>Contact</h5>
         <ul>
-          <li><a href="tel:0123456789">01 23 45 67 89</a></li>
+          <li><a href="tel:0476373238">04.76.37.32.38</a></li>
           <li><a href="mailto:contact@lunaya-institut.fr">contact@lunaya-institut.fr</a></li>
           <li><a href="reservation.html">Prendre rendez-vous</a></li>
         </ul>
@@ -668,6 +653,6 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=2"></script>
 </body>
 </html>
