@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Épilation — Lunaya</title>
 <meta name="description" content="Épilation à la cire tiède à l'institut Lunaya : jambes, bras, maillot, lèvre. Tarifs à l'unité et forfaits multi-séances.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23F6EEDD'/%3E%3Cpath d='M62 24c-14 4-22 16-22 29s8 25 22 29c-24 3-42-12-42-29S38 21 62 24z' fill='%236B4530'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="css/style.css">
@@ -30,13 +31,14 @@
     <nav class="nav-links" aria-label="Navigation principale">
       <a href="institut.html">L'Institut</a>
       <a href="prestations.html">Prestations</a>
+      <a href="https://www.planity.com/" target="_blank" rel="noopener">Bons Cadeaux</a>
       <a href="galerie.html">Galerie</a>
       <a href="avis.html">Avis</a>
       <a href="contact.html">Contact</a>
     </nav>
 
     <div class="nav-actions">
-      <a href="reservation.html" class="btn btn-primary btn-sm">Réserver sur Planity</a>
+      <a href="reservation.html" class="btn btn-primary btn-sm">Réserver</a>
       <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
         <span></span>
       </button>
@@ -48,6 +50,7 @@
   <a href="index.html">Accueil</a>
   <a href="institut.html">L'Institut</a>
   <a href="prestations.html">Prestations</a>
+  <a href="https://www.planity.com/" target="_blank" rel="noopener">Bons Cadeaux</a>
   <a href="galerie.html">Galerie</a>
   <a href="avis.html">Avis</a>
   <a href="contact.html">Contact</a>
@@ -58,10 +61,12 @@
 
 <main id="main">
 
-  <section class="page-hero" style="padding-top:130px; padding-bottom:40px;">
+  <section class="page-hero">
     <div class="page-hero-orb" aria-hidden="true"></div>
     <div class="container">
       <div class="breadcrumb"><a href="index.html">Accueil</a><span class="sep">/</span><a href="prestations.html">Prestations</a><span class="sep">/</span><span class="here">Épilation</span></div>
+      <h1>Épilation, en toute <em>douceur</em></h1>
+      <p class="lede">Femme et homme, visage et corps — précision et douceur à la cire tiède, pour une peau lisse en toute sérénité. À l'unité ou en forfait, selon votre rythme.</p>
     </div>
   </section>
 
@@ -78,11 +83,12 @@
   </section>
 
   <!-- ================= ÉPILATION VISAGE — FEMME ================= -->
-  <section id="visage-femme" style="padding-top:0; padding-bottom:30px;">
+  <section id="visage-femme" style="padding-top:0;">
     <div class="container">
       <div class="section-head reveal" data-reveal>
         <span class="eyebrow">Femme · Visage</span>
         <h2 class="title">Épilation du <em>visage</em></h2>
+        <p class="lede">Des zones fines, traitées avec précision pour un résultat net et durable.</p>
       </div>
 
       <div class="price-table-wrap glass reveal" data-reveal>
@@ -108,11 +114,12 @@
   </section>
 
   <!-- ================= ÉPILATION CORPS — FEMME ================= -->
-  <section id="corps-femme" style="padding-top:0; padding-bottom:30px;">
+  <section id="corps-femme" style="padding-top:0;">
     <div class="container">
       <div class="section-head reveal" data-reveal>
         <span class="eyebrow">Femme · Corps</span>
         <h2 class="title">Épilation du <em>corps</em></h2>
+        <p class="lede">Toutes les zones du corps, à la cire tiède, pour une peau douce en toute sérénité.</p>
       </div>
 
       <div class="price-table-wrap glass reveal" data-reveal>
@@ -143,7 +150,7 @@
   </section>
 
   <!-- ================= FORFAITS — FEMME ================= -->
-  <section id="forfaits-femme" style="padding-top:0; padding-bottom:30px;">
+  <section id="forfaits-femme" style="padding-top:0;">
     <div class="container">
       <div class="section-head reveal" data-reveal>
         <span class="eyebrow">Femme · Forfaits</span>
@@ -182,11 +189,12 @@
   </section>
 
   <!-- ================= ÉPILATION — HOMME ================= -->
-  <section id="homme" style="padding-top:0; padding-bottom:30px;">
+  <section id="homme" style="padding-top:0;">
     <div class="container">
       <div class="section-head reveal" data-reveal>
         <span class="eyebrow">Homme</span>
         <h2 class="title">Toutes les <em>épilations homme</em></h2>
+        <p class="lede">Visage et corps, dans les mêmes conditions de précision et de douceur.</p>
       </div>
 
       <div class="price-table-wrap glass reveal" data-reveal>
@@ -213,7 +221,7 @@
   </section>
 
   <!-- ================= FORFAITS — HOMME ================= -->
-  <section id="forfaits-homme" style="padding-top:0; padding-bottom:40px;">
+  <section id="forfaits-homme" style="padding-top:0;">
     <div class="container">
       <div class="section-head reveal" data-reveal>
         <span class="eyebrow">Homme · Forfaits</span>
@@ -241,7 +249,7 @@
     </div>
   </section>
 
-  <section style="padding-top:0; padding-bottom:30px;">
+  <section style="padding-top:0;">
     <div class="container">
       <div class="section-head reveal" data-reveal>
         <span class="eyebrow">Questions fréquentes</span>
@@ -256,13 +264,17 @@
           <button class="faq-q" aria-expanded="false">Dois-je laisser repousser le poil avant ma séance ?<span class="plus"></span></button>
           <div class="faq-a"><p>Oui, une repousse de 2 à 3 mm environ est nécessaire pour une épilation efficace. Nos techniciennes vous conseillent lors du diagnostic si besoin.</p></div>
         </div>
+        <div class="faq-item glass">
+          <button class="faq-q" aria-expanded="false">Les forfaits sont-ils valables sur toutes les zones ?<span class="plus"></span></button>
+          <div class="faq-a"><p>Chaque forfait est valable sur la zone pour laquelle il a été souscrit, pendant 12 mois. Vous pouvez combiner plusieurs forfaits pour différentes zones.</p></div>
+        </div>
       </div>
     </div>
   </section>
 
 </main>
 
-<footer style="padding-top:36px;">
+<footer>
   <div class="container">
     <div class="footer-grid">
       <div class="footer-about">
@@ -301,7 +313,7 @@
         <h5>Contact</h5>
         <ul>
           <li><a href="tel:0476373238">04.76.37.32.38</a></li>
-          <li><a href="mailto:lunaya.institut@gmail.com">lunaya.institut@gmail.com</a></li>
+          <li><a href="mailto:contact@lunaya-institut.fr">contact@lunaya-institut.fr</a></li>
           <li><a href="reservation.html">Prendre rendez-vous</a></li>
         </ul>
       </div>
@@ -310,9 +322,9 @@
     <div class="footer-bottom">
       <span>© <span id="year"></span> Lunaya Institut. Tous droits réservés.</span>
       <div class="footer-legal">
-        <a href="mentions-legales.html">Mentions légales</a>
-        <a href="politique-confidentialite.html">Politique de confidentialité</a>
-        <a href="cgv.html">CGV</a>
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">CGV</a>
       </div>
     </div>
   </div>
