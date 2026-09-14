@@ -375,6 +375,14 @@ h2.title em {
   line-height: 1.12;
 }
 .page-hero h1 em { font-style: italic; color: var(--brown-soft); }
+.inline-link { color: var(--brown-deep); text-decoration: underline; text-underline-offset: 3px; transition: color .3s ease; }
+.inline-link:hover { color: var(--gold); }
+.lede-nowrap { white-space: nowrap; }
+.title-nowrap { white-space: nowrap; }
+@media (max-width: 900px) {
+  .lede-nowrap { white-space: normal; }
+  .title-nowrap { white-space: normal; }
+}
 .page-hero .lede { max-width: 560px; margin: 20px auto 0; }
 .page-hero-orb {
   position: absolute;
@@ -457,6 +465,7 @@ h2.title em {
   line-height: 1.08;
   color: var(--cream-light);
   letter-spacing: .005em;
+  white-space: nowrap;
 }
 .hero h1 em {
   font-style: italic;
@@ -464,6 +473,7 @@ h2.title em {
 }
 .hero p.lede { max-width: 720px; white-space: nowrap; color: rgba(253,249,242,.82); }
 @media (max-width: 900px) {
+  .hero h1 { white-space: normal; }
   .hero p.lede { white-space: normal; max-width: 480px; }
 }
 .hero-cta { display: flex; gap: 16px; margin-top: 40px; flex-wrap: wrap; }
@@ -550,6 +560,20 @@ h2.title em {
 .about-grid.reverse .about-visual { order: 2; }
 .about-grid.compact .about-visual { height: 300px; }
 .about-visual { position: relative; height: 460px; }
+.about-visual.video-carousel-wrap { padding: 0; }
+.video-carousel {
+  display: flex;
+  height: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  border-radius: var(--r-lg);
+  scrollbar-width: none;
+}
+.video-carousel::-webkit-scrollbar { display: none; }
+.video-carousel-item { flex: 0 0 100%; height: 100%; }
+.video-carousel-item video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.video-carousel-wrap .carousel-arrow.prev { left: 10px; }
+.video-carousel-wrap .carousel-arrow.next { right: 10px; }
 .about-panel {
   position: absolute;
   inset: 0;
@@ -745,8 +769,6 @@ h2.title em {
   display: flex;
   gap: 18px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
   padding: 4px 4px 12px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -1102,6 +1124,19 @@ h2.title em {
 .service-q-static { cursor: default; }
 .service-q-left { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .service-name { font-family: var(--ff-serif); font-size: 1.05rem; color: var(--brown-deep); font-weight: 600; }
+.service-name-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.service-badge {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: var(--brown-deep);
+  font-family: var(--ff-sans);
+  font-size: .6rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  font-weight: 600;
+  white-space: nowrap;
+}
 .service-q-right { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
 .service-duration {
   font-family: var(--ff-sans);
@@ -1218,6 +1253,15 @@ h2.title em {
 }
 .social-btn:hover { transform: translateY(-3px); background: rgba(255,255,255,.5); }
 .social-btn svg { width: 18px; height: 18px; color: var(--brown); }
+.social-btn[aria-label="Instagram"] {
+  background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+  border-color: transparent;
+}
+.social-btn[aria-label="Facebook"] { background: #1877f2; border-color: transparent; }
+.social-btn[aria-label="Instagram"] svg,
+.social-btn[aria-label="Facebook"] svg { color: #fff; }
+.social-btn[aria-label="Instagram"]:hover { background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%); filter: brightness(1.08); }
+.social-btn[aria-label="Facebook"]:hover { background: #1877f2; filter: brightness(1.08); }
 
 /* ==========================================================================
    NEWSLETTER
