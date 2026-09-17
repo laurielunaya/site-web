@@ -58,18 +58,55 @@
 
 <main id="main">
 
-  <section class="page-hero" style="padding-top:130px; padding-bottom:30px;">
-    <div class="page-hero-orb" aria-hidden="true"></div>
+  <section class="hero hero-compact">
+    <div class="hero-video-wrap" aria-hidden="true" style="background-image:url('assets/gallery-manicure.jpg');">
+      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/gallery-manicure.jpg">
+        <source src="assets/hero-manicure.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
+    </div>
+
     <div class="container">
-      <div class="breadcrumb"><a href="index.html">Accueil</a><span class="sep">/</span><a href="prestations.html">Prestations</a><span class="sep">/</span><span class="here">Mains &amp; Pieds</span></div>
-      <h1>Mains <span style="font-family: var(--ff-sans); font-style: normal; font-weight: 400;">&amp;</span> <em>pieds</em></h1>
-      <p class="lede">Manucure, pédicure et pose semi-permanente ou gel — un fini soigné, à l'unité comme en entretien régulier.</p>
+      <div class="hero-text reveal in" data-reveal>
+        <span class="hero-eyebrow">Institut de Beauté · Mains &amp; Pieds</span>
+        <h1>Mains <span style="font-family: var(--ff-sans); font-style: normal; font-weight: 400;">&amp;</span> <em>pieds</em></h1>
+        <p class="lede">Manucure, pédicure et pose semi-permanente ou gel — un fini soigné, à l'unité comme en entretien régulier.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <section style="padding: 20px 0 70px;">
+    <div class="container">
+      <div class="section-head left reveal" data-reveal style="max-width:none; margin-bottom:36px;">
+        <h2 class="title">Une autre vision <em>des mains &amp; pieds</em></h2>
+      </div>
+    </div>
+    <div class="container about-grid reverse compact">
+      <div>
+        <div class="philosophy-text compact reveal" data-reveal>
+          <p>Chez Lunaya, la beauté des mains et des pieds allie précision technique et finition soignée, pour un résultat net qui tient dans le temps.</p>
+          <p>Manucure, pédicure, pose semi-permanente ou en gel : chaque prestation est réalisée avec des produits professionnels et un soin particulier apporté à la préparation de l'ongle.</p>
+        </div>
+      </div>
+      <div class="about-visual reveal" data-reveal>
+        <div class="media-rotator" data-images="assets/gallery-manicure.jpg,assets/interieur-salon.jpg,assets/gallery-ambiance.jpg"></div>
+      </div>
     </div>
   </section>
 
+  <div class="quick-nav-wrap reveal" data-reveal>
+    <nav class="quick-nav" aria-label="Navigation rapide des catégories">
+      <a href="#soin-mains-pieds" class="btn btn-outline btn-sm">Soin Mains &amp; Pieds</a>
+      <a href="#vernis-classique" class="btn btn-outline btn-sm">Vernis Classique</a>
+      <a href="#semi-permanent" class="btn btn-outline btn-sm">Semi-Permanent</a>
+      <a href="#gel" class="btn btn-outline btn-sm">Gel</a>
+    </nav>
+  </div>
+
   <section style="padding-top:0; padding-bottom:30px;">
     <div class="container">
-      <div class="service-group reveal" data-reveal>
+      <div class="service-group reveal" data-reveal id="soin-mains-pieds">
         <div class="service-group-label">Soin Mains et Pieds</div>
         <div class="service-list">
 
@@ -138,7 +175,7 @@
         </div>
       </div>
 
-      <div class="service-group reveal" data-reveal>
+      <div class="service-group reveal" data-reveal id="vernis-classique">
         <div class="service-group-label">Vernis Classique Mains et Pieds (tenue 3 à 4 jours)</div>
         <div class="service-list">
 
@@ -157,7 +194,7 @@
         </div>
       </div>
 
-      <div class="service-group reveal" data-reveal>
+      <div class="service-group reveal" data-reveal id="semi-permanent">
         <div class="service-group-label">Vernis Semi-Permanent (tenue 10 jours à 3 semaines)</div>
         <div class="service-list">
 
@@ -200,7 +237,7 @@
         </div>
       </div>
 
-      <div class="service-group reveal" data-reveal>
+      <div class="service-group reveal" data-reveal id="gel">
         <div class="service-group-label">Ongles en Gel Main (tenue jusqu'à 4 semaines)</div>
         <div class="service-list">
 

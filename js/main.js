@@ -145,6 +145,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ---------- media rotator (photos de galerie en rotation aléatoire) ---------- */
+  document.querySelectorAll('.media-rotator').forEach((el) => {
+    const images = (el.dataset.images || '').split(',').map((s) => s.trim()).filter(Boolean);
+    if (!images.length) return;
+
+    const layerA = document.createElement('div');
+    const layerB = document.createElement('div');
+    layerA.className = 'layer';
+    layerB.className = 'layer';
+    el.appendChild(layerA);
+    el.appendChild(layerB);
+
+    let currentIndex = Math.floor(Math.random() * images.length);
+    layerA.style.backgroundImage = `url('${images[currentIndex]}')`;
+    layerA.classList.add('active');
+    let activeLayer = layerA;
+
+    if (images.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    setInterval(() => {
+      let nextIndex = Math.floor(Math.random() * images.length);
+      if (nextIndex === currentIndex) nextIndex = (nextIndex + 1) % images.length;
+      currentIndex = nextIndex;
+      const nextLayer = activeLayer === layerA ? layerB : layerA;
+      nextLayer.style.backgroundImage = `url('${images[currentIndex]}')`;
+      nextLayer.classList.add('active');
+      activeLayer.classList.remove('active');
+      activeLayer = nextLayer;
+    }, 2000);
+  });
+
   /* ---------- newsletter (front-end only placeholder) ---------- */
   const newsletterForm = document.getElementById('newsletterForm');
   if (newsletterForm) {

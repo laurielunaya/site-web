@@ -58,24 +58,52 @@
 
 <main id="main">
 
-  <section class="page-hero" style="padding-top:130px; padding-bottom:40px;">
-    <div class="page-hero-orb" aria-hidden="true"></div>
-    <div class="container">
-      <div class="breadcrumb"><a href="index.html">Accueil</a><span class="sep">/</span><a href="prestations.html">Prestations</a><span class="sep">/</span><span class="here">Épilation</span></div>
+  <section class="hero hero-compact">
+    <div class="hero-video-wrap" aria-hidden="true" style="background-image:url('assets/gallery-epilation.jpg');">
+      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/gallery-epilation.jpg">
+        <source src="assets/hero-epilation.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
     </div>
+
+    <div class="container">
+      <div class="hero-text reveal in" data-reveal>
+        <span class="hero-eyebrow">Institut de Beauté · Épilation</span>
+        <h1>Épilation, en toute <em>douceur</em></h1>
+        <p class="lede">Femme et homme, visage et corps — précision et douceur à la cire tiède, pour une peau lisse en toute sérénité. À l'unité ou en forfait, selon votre rythme.</p>
+      </div>
+    </div>
+
   </section>
 
-  <section style="padding-top:0; padding-bottom:0;">
+  <section style="padding: 20px 0 70px;">
     <div class="container">
-      <div class="quick-nav reveal" data-reveal>
-        <a href="#visage-femme" class="btn btn-outline btn-sm">Visage Femme</a>
-        <a href="#corps-femme" class="btn btn-outline btn-sm">Corps Femme</a>
-        <a href="#forfaits-femme" class="btn btn-outline btn-sm">Forfaits Femme</a>
-        <a href="#homme" class="btn btn-outline btn-sm">Homme</a>
-        <a href="#forfaits-homme" class="btn btn-outline btn-sm">Forfaits Homme</a>
+      <div class="section-head left reveal" data-reveal style="max-width:none; margin-bottom:36px;">
+        <h2 class="title">Une autre vision <em>de l'épilation</em></h2>
+      </div>
+    </div>
+    <div class="container about-grid reverse compact">
+      <div>
+        <div class="philosophy-text compact reveal" data-reveal>
+          <p>Chez Lunaya, l'épilation est pensée comme un soin à part entière, où précision technique et douceur se rencontrent. Nos techniciennes travaillent à la <strong>cire tiède</strong>, formulée pour respecter les peaux les plus sensibles.</p>
+          <p>Chaque séance débute par une préparation soignée de la peau, pour un résultat net et durable, dans le respect de votre confort du début à la fin du soin.</p>
+        </div>
+      </div>
+      <div class="about-visual reveal" data-reveal>
+        <div class="media-rotator" data-images="assets/gallery-epilation.jpg,assets/interieur-salon.jpg,assets/gallery-ambiance.jpg"></div>
       </div>
     </div>
   </section>
+
+  <div class="quick-nav-wrap reveal" data-reveal>
+    <nav class="quick-nav" aria-label="Navigation rapide des catégories">
+      <a href="#visage-femme" class="btn btn-outline btn-sm">Visage Femme</a>
+      <a href="#corps-femme" class="btn btn-outline btn-sm">Corps Femme</a>
+      <a href="#forfaits-femme" class="btn btn-outline btn-sm">Forfaits Femme</a>
+      <a href="#homme" class="btn btn-outline btn-sm">Homme</a>
+      <a href="#forfaits-homme" class="btn btn-outline btn-sm">Forfaits Homme</a>
+    </nav>
+  </div>
 
   <!-- ================= ÉPILATION VISAGE — FEMME ================= -->
   <section id="visage-femme" style="padding-top:0; padding-bottom:30px;">
