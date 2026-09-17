@@ -960,6 +960,7 @@ h2.title em {
   z-index: 50;
   display: flex;
   justify-content: center;
+  padding-top: 40px;
   padding-bottom: 60px;
 }
 .quick-nav {
@@ -986,7 +987,7 @@ h2.title em {
   border-color: transparent;
 }
 @media (max-width: 640px) {
-  .quick-nav-wrap { top: 98px; padding-bottom: 40px; padding-left: 12px; padding-right: 12px; }
+  .quick-nav-wrap { top: 98px; padding-top: 24px; padding-bottom: 40px; padding-left: 12px; padding-right: 12px; }
   .quick-nav { justify-content: flex-start; width: 100%; flex-wrap: nowrap; }
 }
 
