@@ -582,6 +582,7 @@ h2.title em {
 .media-rotator .layer.active { opacity: 1; }
 
 .about-visual.video-carousel-wrap { padding: 0; }
+#soinVisageAboutSection { padding-bottom: 70px; }
 .video-carousel {
   display: flex;
   height: 100%;
@@ -1518,6 +1519,7 @@ footer { padding: 80px 0 30px; }
   .price-table { min-width: 0; width: 100%; }
   #soinVisageAbout .about-visual { display: none; }
   #soinVisageAbout { grid-template-columns: 1fr; }
+  #soinVisageAboutSection { padding-bottom: 20px; }
   .price-table th, .price-table td { padding: 12px 6px; font-size: .82rem; }
   .price-table td:first-child { font-size: .9rem; }
 }
