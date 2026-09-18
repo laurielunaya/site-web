@@ -1516,6 +1516,8 @@ footer { padding: 80px 0 30px; }
   .menu-tile { aspect-ratio: 16 / 10; }
   .price-table-wrap { padding: 12px; }
   .price-table { min-width: 0; width: 100%; }
+  #soinVisageAbout .about-visual { display: none; }
+  #soinVisageAbout { grid-template-columns: 1fr; }
   .price-table th, .price-table td { padding: 12px 6px; font-size: .82rem; }
   .price-table td:first-child { font-size: .9rem; }
 }
