@@ -335,6 +335,10 @@ h2.title em {
   font-size: 1.7rem;
   color: var(--brown-deep);
 }
+.mobile-menu a.btn {
+  font-family: var(--ff-sans);
+  font-size: .82rem;
+}
 
 /* ---------- floating booking pill ---------- */
 .fab-book {
