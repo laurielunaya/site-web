@@ -176,18 +176,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2000);
   });
 
-  /* ---------- newsletter (front-end only placeholder) ---------- */
-  const newsletterForm = document.getElementById('newsletterForm');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const input = newsletterForm.querySelector('input');
-      const btn = newsletterForm.querySelector('button');
-      const original = btn.textContent;
-      btn.textContent = 'Merci !';
-      input.value = '';
-      setTimeout(() => { btn.textContent = original; }, 2400);
-    });
-  }
-
 });
