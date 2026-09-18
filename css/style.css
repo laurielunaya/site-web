@@ -582,7 +582,7 @@ h2.title em {
 .media-rotator .layer.active { opacity: 1; }
 
 .about-visual.video-carousel-wrap { padding: 0; }
-#soinVisageAboutSection { padding-bottom: 70px; }
+#soinVisageAboutSection, #soinsCorpsAboutSection { padding-bottom: 70px; }
 .video-carousel {
   display: flex;
   height: 100%;
@@ -1517,9 +1517,9 @@ footer { padding: 80px 0 30px; }
   .menu-tile { aspect-ratio: 16 / 10; }
   .price-table-wrap { padding: 12px; }
   .price-table { min-width: 0; width: 100%; }
-  #soinVisageAbout .about-visual { display: none; }
-  #soinVisageAbout { grid-template-columns: 1fr; }
-  #soinVisageAboutSection { padding-bottom: 20px; }
+  #soinVisageAbout .about-visual, #soinsCorpsAbout .about-visual { display: none; }
+  #soinVisageAbout, #soinsCorpsAbout { grid-template-columns: 1fr; }
+  #soinVisageAboutSection, #soinsCorpsAboutSection { padding-bottom: 20px; }
   .price-table th, .price-table td { padding: 12px 6px; font-size: .82rem; }
   .price-table td:first-child { font-size: .9rem; }
 }
