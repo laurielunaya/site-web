@@ -45,7 +45,7 @@
 
 /* ---------- reset ---------- */
 * , *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   margin: 0;
   font-family: var(--ff-sans);
@@ -351,6 +351,7 @@ h2.title em {
   padding: 190px 0 90px;
   text-align: center;
   position: relative;
+  overflow: hidden;
 }
 .breadcrumb {
   display: flex;
