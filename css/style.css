@@ -1495,6 +1495,7 @@ footer { padding: 80px 0 30px; }
   .spotlight-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .fab-book { display: block; }
+  footer { padding-bottom: 90px; }
   section { padding: 90px 0; }
   .pricing-grid { grid-template-columns: 1fr; }
   .page-hero { padding: 150px 0 70px; }
@@ -1515,7 +1516,7 @@ footer { padding: 80px 0 30px; }
   .values { grid-template-columns: 1fr; }
   .hero-stats { gap: 22px; flex-wrap: wrap; }
   .footer-grid { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; padding-bottom: 70px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
   .booking-panel, .spotlight, .newsletter { border-radius: 28px; }
   .menu-grid, .menu-grid.cols-4 { grid-template-columns: 1fr; }
   .menu-tile { aspect-ratio: 16 / 10; }
