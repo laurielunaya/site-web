@@ -1244,7 +1244,7 @@ h2.title em {
   .service-q { padding: 18px; flex-wrap: wrap; }
   .service-a-inner { padding: 0 18px 24px; }
   .service-q-right { gap: 8px 10px; flex-wrap: wrap; justify-content: flex-end; }
-  .service-book-link { padding: 8px 14px; }
+  .service-book-link { padding: 14px 18px; font-size: .78rem; }
   .service-duration { padding: 5px 10px; }
 }
 
