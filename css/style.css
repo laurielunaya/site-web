@@ -1480,6 +1480,7 @@ footer { padding: 80px 0 30px; }
 @media (max-width: 900px) {
   .nav-links { display: none; }
   .nav-toggle { display: flex; }
+  .nav-actions a.btn-primary { display: none; }
   .about-grid, .about-grid.reverse { grid-template-columns: 1fr; }
   .about-grid.reverse .about-visual { order: initial; }
   .about-visual { height: 320px; }
