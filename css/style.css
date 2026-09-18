@@ -988,7 +988,14 @@ h2.title em {
 }
 @media (max-width: 640px) {
   .quick-nav-wrap { top: 98px; padding-top: 24px; padding-bottom: 40px; padding-left: 12px; padding-right: 12px; }
-  .quick-nav { justify-content: flex-start; width: 100%; flex-wrap: nowrap; }
+  .quick-nav {
+    justify-content: flex-start;
+    width: 100%;
+    flex-wrap: nowrap;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 20px, black calc(100% - 28px), transparent);
+    mask-image: linear-gradient(to right, transparent, black 20px, black calc(100% - 28px), transparent);
+  }
+  .quick-nav a:last-child { margin-right: 20px; }
 }
 
 /* ==========================================================================
@@ -1502,9 +1509,12 @@ footer { padding: 80px 0 30px; }
   .values { grid-template-columns: 1fr; }
   .hero-stats { gap: 22px; flex-wrap: wrap; }
   .footer-grid { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; padding-bottom: 70px; }
   .booking-panel, .spotlight, .newsletter { border-radius: 28px; }
   .menu-grid, .menu-grid.cols-4 { grid-template-columns: 1fr; }
   .menu-tile { aspect-ratio: 16 / 10; }
-  .price-table-wrap { padding: 16px; }
+  .price-table-wrap { padding: 12px; }
+  .price-table { min-width: 0; width: 100%; }
+  .price-table th, .price-table td { padding: 12px 6px; font-size: .82rem; }
+  .price-table td:first-child { font-size: .9rem; }
 }
