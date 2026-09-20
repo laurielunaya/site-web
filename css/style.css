@@ -1239,6 +1239,11 @@ h2.title em {
   margin-bottom: 16px;
   padding-left: 4px;
 }
+.product-brand {
+  color: var(--brown-mist);
+  font-weight: 400;
+  letter-spacing: .08em;
+}
 .service-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
 .service-item { border-radius: var(--r-md); overflow: hidden; }
 .service-q {
