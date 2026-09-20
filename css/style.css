@@ -1710,12 +1710,15 @@ footer { padding: 80px 0 30px; }
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */
-@media (max-width: 1080px) {
+@media (max-width: 1200px) {
   .nav-links { display: none; }
   .nav-toggle { display: flex; }
   .nav-actions a.btn-primary { display: none; }
   .fab-book { display: block; }
   footer { padding-bottom: 90px; }
+}
+
+@media (max-width: 1080px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
   .gallery-item.big { grid-column: span 2; grid-row: span 1; }
