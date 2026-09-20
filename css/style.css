@@ -698,7 +698,15 @@ body:has(#productBar:not([hidden])) .fab-book {
   transition: transform .5s var(--ease), box-shadow .5s var(--ease);
 }
 .gift-card:hover { transform: translateY(-6px); box-shadow: var(--glass-shadow); }
-.gift-card-icon { font-size: 2.2rem; margin-bottom: 18px; }
+.gift-card-icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.gift-card-icon svg { width: 26px; height: 26px; color: var(--brown); }
 .gift-card h3 { font-family: var(--ff-serif); font-size: 1.2rem; color: var(--brown-deep); font-weight: 600; margin-bottom: 12px; }
 .gift-card p { font-size: .88rem; color: var(--brown-soft); line-height: 1.7; font-weight: 300; margin-bottom: 26px; }
 .gift-card .btn { margin-top: auto; }
