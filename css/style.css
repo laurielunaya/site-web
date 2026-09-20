@@ -1081,15 +1081,42 @@ h2.title em {
   box-shadow: 0 -10px 30px -14px rgba(107,69,48,.25);
   padding: 16px 0;
 }
-.product-bar-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-.product-bar-info { display: flex; flex-direction: column; gap: 2px; }
+.product-bar-inner { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.product-bar-step[hidden] { display: none; }
+.product-bar-step { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; width: 100%; }
+#stepSelect { justify-content: space-between; }
 .product-bar-count { font-family: var(--ff-serif); font-size: 1rem; color: var(--brown-deep); }
-.product-bar-steps { font-size: .74rem; color: var(--brown-mist); }
-.product-bar-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+.product-checkout { gap: 14px; }
+.product-checkout-back {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: transparent;
+  color: var(--brown-deep);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.product-checkout-back:hover { background: rgba(107,69,48,.06); }
+.product-checkout-back svg { width: 18px; height: 18px; }
+.checkout-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.checkout-item-label { font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--brown-mist); font-weight: 600; }
+.checkout-item-hint { font-size: .68rem; color: var(--brown-mist); font-style: italic; }
+.checkout-arrow { width: 20px; height: 20px; color: var(--brown-mist); flex-shrink: 0; }
+.checkout-item.is-locked .btn { opacity: .45; pointer-events: none; }
+.checkout-item.is-locked .checkout-item-hint { color: var(--gold); font-style: normal; }
+.checkout-item-hint.shake { animation: shake .4s var(--ease); }
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
 @media (max-width: 560px) {
-  .product-bar-inner { justify-content: center; text-align: center; }
-  .product-bar-info { align-items: center; }
-  .product-bar-actions { justify-content: center; width: 100%; }
+  .product-bar-step, #stepSelect { justify-content: center; text-align: center; }
+  .product-checkout { flex-direction: column; }
+  .checkout-arrow { transform: rotate(90deg); }
 }
 
 /* ==========================================================================
