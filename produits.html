@@ -338,11 +338,21 @@
 
 <div class="product-bar" id="productBar" hidden>
   <div class="container product-bar-inner">
-    <span class="product-bar-count" id="productBarCount">0 produit sélectionné</span>
-    <a href="#" class="btn btn-primary" id="productBarBtn" target="_blank" rel="noopener">
-      Réserver sur WhatsApp
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M9 7h8v8"/></svg>
-    </a>
+    <div class="product-bar-info">
+      <span class="product-bar-count" id="productBarCount">0 produit sélectionné</span>
+      <span class="product-bar-steps">Étape 1 : envoyez votre liste. Étape 2 : choisissez votre créneau de retrait.</span>
+    </div>
+    <div class="product-bar-actions">
+      <a href="#" class="btn btn-primary btn-sm" id="productBarBtn" target="_blank" rel="noopener">
+        1. Envoyer sur WhatsApp
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+      <!-- ⚠️ LIEN PLACEHOLDER — remplacer par le lien Planity du service "Retrait de commande" créé dans l'espace pro -->
+      <a href="https://www.planity.com/" class="btn btn-outline btn-sm" target="_blank" rel="noopener">
+        2. Choisir mon créneau
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 7V3M16 7V3M4 11h16M5 7h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2z"/></svg>
+      </a>
+    </div>
   </div>
 </div>
 

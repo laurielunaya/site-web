@@ -1082,9 +1082,14 @@ h2.title em {
   padding: 16px 0;
 }
 .product-bar-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.product-bar-info { display: flex; flex-direction: column; gap: 2px; }
 .product-bar-count { font-family: var(--ff-serif); font-size: 1rem; color: var(--brown-deep); }
+.product-bar-steps { font-size: .74rem; color: var(--brown-mist); }
+.product-bar-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 @media (max-width: 560px) {
   .product-bar-inner { justify-content: center; text-align: center; }
+  .product-bar-info { align-items: center; }
+  .product-bar-actions { justify-content: center; width: 100%; }
 }
 
 /* ==========================================================================
