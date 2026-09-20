@@ -349,6 +349,35 @@ h2.title em {
   display: none;
 }
 
+/* ---------- floating WhatsApp button ---------- */
+.fab-whatsapp {
+  position: fixed;
+  left: 22px; bottom: 22px;
+  z-index: 400;
+  width: 54px; height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #25D366;
+  color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 6px 20px rgba(0,0,0,.22);
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.fab-whatsapp svg { width: 28px; height: 28px; }
+.fab-whatsapp:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 26px rgba(0,0,0,.3);
+}
+@media (max-width: 560px) {
+  .fab-whatsapp { left: 16px; bottom: 16px; width: 48px; height: 48px; }
+  .fab-whatsapp svg { width: 24px; height: 24px; }
+}
+body:has(#productBar:not([hidden])) .fab-whatsapp,
+body:has(#productBar:not([hidden])) .fab-book {
+  display: none;
+}
+
 /* ==========================================================================
    PAGE HERO (sub-pages)
    ========================================================================== */
@@ -464,6 +493,25 @@ h2.title em {
   margin-bottom: 26px;
   display: block;
 }
+.hero-trust {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding: 8px 16px;
+  border-radius: var(--r-pill);
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.25);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--cream-light);
+  font-family: var(--ff-sans);
+  font-size: .78rem;
+  font-weight: 600;
+  transition: background .3s ease;
+}
+.hero-trust span { font-weight: 300; opacity: .85; }
+.hero-trust:hover { background: rgba(255,255,255,.2); }
 .hero h1 {
   font-family: var(--ff-serif);
   font-weight: 500;
@@ -635,6 +683,29 @@ h2.title em {
   gap: 22px;
   margin-top: 42px;
 }
+.gift-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.gift-card {
+  padding: 40px 32px;
+  border-radius: var(--r-lg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+}
+.gift-card:hover { transform: translateY(-6px); box-shadow: var(--glass-shadow); }
+.gift-card-icon { font-size: 2.2rem; margin-bottom: 18px; }
+.gift-card h3 { font-family: var(--ff-serif); font-size: 1.2rem; color: var(--brown-deep); font-weight: 600; margin-bottom: 12px; }
+.gift-card p { font-size: .88rem; color: var(--brown-soft); line-height: 1.7; font-weight: 300; margin-bottom: 26px; }
+.gift-card .btn { margin-top: auto; }
+@media (max-width: 900px) {
+  .gift-grid { grid-template-columns: 1fr; }
+}
+
 .cross-sell-banner {
   display: flex;
   align-items: center;
