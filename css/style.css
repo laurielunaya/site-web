@@ -1465,6 +1465,13 @@ body:has(#productBar:not([hidden])) .fab-book {
 .brand-badge-organethic { background: linear-gradient(135deg, var(--gold-light), var(--gold)); }
 .brand-badge-phyts { background: linear-gradient(135deg, var(--rose), #f0ded4); }
 .brand-badge-myspa { background: linear-gradient(135deg, var(--sage), #d3dac3); }
+.brand-divider {
+  height: 1px;
+  max-width: 780px;
+  margin: 56px auto;
+  background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+  opacity: .4;
+}
 .service-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
 .service-item { border-radius: var(--r-md); overflow: hidden; }
 .service-q {
