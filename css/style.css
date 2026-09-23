@@ -1164,6 +1164,47 @@ body:has(#productBar:not([hidden])) .fab-book {
   .product-grid { grid-template-columns: 1fr; }
 }
 
+/* ---------- product list (rows, compact, avec détail dépliant) ---------- */
+.product-list { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+.product-row { padding: 0; overflow: hidden; }
+.product-row-main { display: flex; align-items: center; gap: 16px; padding: 12px 20px; cursor: pointer; }
+.product-row-thumb {
+  width: 56px; height: 56px;
+  flex-shrink: 0;
+  border-radius: var(--r-md);
+  background-color: var(--cream);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.product-row-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.product-row-info h3 { font-family: var(--ff-serif); font-size: 1rem; color: var(--brown-deep); font-weight: 600; }
+.product-row-right { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+.product-row-toggle {
+  width: 22px; height: 22px;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.product-row-toggle .plus { display: block; width: 100%; height: 100%; position: relative; }
+.product-row-toggle .plus::before, .product-row-toggle .plus::after { content: ''; position: absolute; background: var(--brown); border-radius: 2px; transition: transform .35s var(--ease); }
+.product-row-toggle .plus::before { width: 100%; height: 1.5px; top: 50%; left: 0; transform: translateY(-50%); }
+.product-row-toggle .plus::after { width: 1.5px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
+.product-row.open .product-row-toggle .plus::after { transform: translateX(-50%) rotate(90deg); opacity: 0; }
+.product-row-detail { max-height: 0; overflow: hidden; transition: max-height .5s var(--ease); }
+.product-row-detail-inner { padding: 0 20px 22px 92px; max-width: 640px; }
+.product-row-detail-inner p { font-size: .86rem; color: var(--brown-soft); line-height: 1.65; font-weight: 300; margin-bottom: 10px; }
+.product-row-detail-inner ul { margin: 0; padding-left: 18px; list-style: disc; }
+.product-row-detail-inner li { font-size: .83rem; color: var(--brown-soft); line-height: 1.75; }
+.product-row-detail-inner li::marker { color: var(--gold); }
+@media (max-width: 560px) {
+  .product-row-main { flex-wrap: wrap; padding: 14px 16px; }
+  .product-row-right { margin-left: 72px; }
+  .product-row-detail-inner { padding-left: 16px; }
+}
+
 .product-bar {
   position: fixed;
   left: 0; right: 0; bottom: 0;
