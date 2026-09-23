@@ -1472,6 +1472,8 @@ body:has(#productBar:not([hidden])) .fab-book {
   background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
   opacity: .4;
 }
+.brand-chapter { margin-bottom: 48px; }
+.brand-chapter .title { font-size: 2.1rem; }
 .service-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
 .service-item { border-radius: var(--r-md); overflow: hidden; }
 .service-q {
