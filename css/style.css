@@ -1103,6 +1103,14 @@ body:has(#productBar:not([hidden])) .fab-book {
 .quick-nav-group-label {
   margin-left: 0;
   font-size: .68rem;
+  margin-bottom: -4px;
+}
+.quick-nav-group-sub {
+  font-family: var(--ff-sans);
+  font-size: .78rem;
+  font-weight: 300;
+  color: var(--brown-soft);
+  font-style: italic;
 }
 @media (max-width: 640px) {
   .quick-nav-wrap { position: static; top: auto; padding-top: 24px; padding-bottom: 24px; padding-left: 12px; padding-right: 12px; }
