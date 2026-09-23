@@ -1082,6 +1082,12 @@ body:has(#productBar:not([hidden])) .fab-book {
 }
 .quick-nav::-webkit-scrollbar { display: none; }
 .quick-nav a { white-space: nowrap; }
+.quick-nav a.nav-pill-long {
+  white-space: normal;
+  text-align: center;
+  max-width: 260px;
+  line-height: 1.4;
+}
 .quick-nav a.active {
   background: linear-gradient(135deg, var(--brown), var(--brown-deep));
   color: var(--cream-light);
