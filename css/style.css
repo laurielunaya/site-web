@@ -1169,13 +1169,15 @@ body:has(#productBar:not([hidden])) .fab-book {
 .product-row { padding: 0; overflow: hidden; }
 .product-row-main { display: flex; align-items: center; gap: 16px; padding: 12px 20px; cursor: pointer; }
 .product-row-thumb {
-  width: 56px; height: 56px;
+  width: 68px; height: 68px;
   flex-shrink: 0;
   border-radius: var(--r-md);
-  background-color: var(--cream);
+  background-color: var(--cream-light);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 6px 16px -10px rgba(107,69,48,.4);
 }
 .product-row-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .product-row-info h3 { font-family: var(--ff-serif); font-size: 1rem; color: var(--brown-deep); font-weight: 600; }
