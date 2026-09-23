@@ -1165,6 +1165,7 @@ body:has(#productBar:not([hidden])) .fab-book {
 .product-card-body p { font-size: .85rem; color: var(--brown-soft); line-height: 1.6; font-weight: 300; }
 .product-card-foot { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
 .product-price { font-family: var(--ff-serif); font-size: 1.2rem; color: var(--brown-deep); font-weight: 600; }
+.product-price-pending { font-family: var(--ff-sans); font-size: .78rem; font-weight: 300; font-style: italic; color: var(--brown-mist); }
 .product-add {
   padding: 10px 20px;
   border-radius: var(--r-pill);
