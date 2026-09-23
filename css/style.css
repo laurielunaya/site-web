@@ -1082,12 +1082,6 @@ body:has(#productBar:not([hidden])) .fab-book {
 }
 .quick-nav::-webkit-scrollbar { display: none; }
 .quick-nav a { white-space: nowrap; }
-.quick-nav a.nav-pill-long {
-  white-space: normal;
-  text-align: center;
-  max-width: 260px;
-  line-height: 1.4;
-}
 .quick-nav a.active {
   background: linear-gradient(135deg, var(--brown), var(--brown-deep));
   color: var(--cream-light);
@@ -1097,14 +1091,15 @@ body:has(#productBar:not([hidden])) .fab-book {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
   width: 100%;
 }
 .quick-nav-group {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  width: 100%;
 }
 .quick-nav-group-label {
   margin-left: 0;
@@ -1117,11 +1112,14 @@ body:has(#productBar:not([hidden])) .fab-book {
   -webkit-backdrop-filter: none;
   border: none;
   box-shadow: none;
-  padding: 0;
+  padding: 0 4px 6px;
   border-radius: 0;
-  max-width: 640px;
-  overflow: visible;
-  row-gap: 10px;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  max-width: 92vw;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  mask-image: linear-gradient(90deg, transparent, #000 16px, #000 calc(100% - 16px), transparent);
 }
 .quick-nav-group-sub {
   font-family: var(--ff-sans);
