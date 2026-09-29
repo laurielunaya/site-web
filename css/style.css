@@ -1544,6 +1544,13 @@ body:has(#productBar:not([hidden])) .fab-book {
   object-fit: contain;
 }
 .quick-nav-group-label.brand-logo { height: 19px; }
+.brand-logo-square {
+  height: 22px;
+  width: 22px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px -2px rgba(74,52,42,.35);
+}
+.quick-nav-group-label.brand-logo-square { height: 26px; width: 26px; }
 .brand-badge-myspa {
   font-family: var(--ff-sans);
   font-size: .74rem;
