@@ -1527,9 +1527,9 @@ body:has(#productBar:not([hidden])) .fab-book {
   vertical-align: middle;
   white-space: nowrap;
 }
-.brand-badge-organethic { background: linear-gradient(135deg, var(--gold-light), var(--gold)); }
-.brand-badge-phyts { background: linear-gradient(135deg, var(--rose), #f0ded4); }
-.brand-badge-myspa { background: linear-gradient(135deg, var(--sage), #d3dac3); }
+.brand-badge-organethic { background: linear-gradient(135deg, #d38a54, #b0602c); color: var(--cream-light); }
+.brand-badge-phyts { background: linear-gradient(135deg, #d67c93, #ad4d68); color: var(--cream-light); }
+.brand-badge-myspa { background: linear-gradient(135deg, #6f9c68, #46704a); color: var(--cream-light); }
 .brand-divider {
   height: 1px;
   max-width: 780px;
