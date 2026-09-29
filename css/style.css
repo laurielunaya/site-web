@@ -1537,6 +1537,13 @@ body:has(#productBar:not([hidden])) .fab-book {
   font-style: italic;
   letter-spacing: .01em;
 }
+.brand-logo {
+  height: 15px;
+  width: auto;
+  display: inline-block;
+  object-fit: contain;
+}
+.quick-nav-group-label.brand-logo { height: 19px; }
 .brand-badge-myspa {
   font-family: var(--ff-sans);
   font-size: .74rem;
