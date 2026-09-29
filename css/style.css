@@ -1515,21 +1515,35 @@ body:has(#productBar:not([hidden])) .fab-book {
 }
 .brand-badge {
   display: inline-block;
-  font-family: var(--ff-sans);
-  font-size: .62rem;
-  letter-spacing: .07em;
-  text-transform: uppercase;
-  padding: 4px 12px;
-  border-radius: var(--r-pill);
-  font-weight: 600;
+  background: none;
+  padding: 0;
+  border-radius: 0;
   color: var(--brown-deep);
-  margin-left: 6px;
+  margin-left: 8px;
   vertical-align: middle;
   white-space: nowrap;
 }
-.brand-badge-organethic { background: linear-gradient(135deg, #cd9f4f, #9c7328); color: var(--cream-light); }
-.brand-badge-phyts { background: linear-gradient(135deg, #d67c93, #ad4d68); color: var(--cream-light); }
-.brand-badge-myspa { background: linear-gradient(135deg, #6f9c68, #46704a); color: var(--cream-light); }
+.brand-badge-organethic {
+  font-family: var(--ff-sans);
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.brand-badge-phyts {
+  font-family: var(--ff-serif);
+  font-size: .88rem;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: .01em;
+}
+.brand-badge-myspa {
+  font-family: var(--ff-sans);
+  font-size: .74rem;
+  font-weight: 400;
+  letter-spacing: .05em;
+  text-transform: lowercase;
+}
 .brand-divider {
   height: 1px;
   max-width: 780px;
