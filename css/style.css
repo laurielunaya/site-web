@@ -1133,7 +1133,7 @@ body:has(#productBar:not([hidden])) .fab-book {
 @media (min-width: 900px) {
   .quick-nav-group .quick-nav {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-columns: repeat(8, 1fr);
     width: 100%;
     max-width: 1100px;
     margin: 0 auto;
@@ -1142,11 +1142,16 @@ body:has(#productBar:not([hidden])) .fab-book {
     gap: 10px;
   }
   .quick-nav-group .quick-nav a {
+    grid-column: span 2;
     width: 100%;
     text-align: center;
     white-space: normal;
     line-height: 1.4;
   }
+  /* centre la derniere ligne quand il ne reste qu'1 ou 2 pastilles */
+  .quick-nav-group .quick-nav a:nth-last-child(1):nth-child(4n+1) { grid-column: 4 / 6; }
+  .quick-nav-group .quick-nav a:nth-last-child(2):nth-child(4n+1) { grid-column: 3 / 5; }
+  .quick-nav-group .quick-nav a:nth-last-child(1):nth-child(4n+2) { grid-column: 5 / 7; }
 }
 @media (max-width: 640px) {
   .quick-nav-wrap { position: static; top: auto; padding-top: 24px; padding-bottom: 24px; padding-left: 12px; padding-right: 12px; }
