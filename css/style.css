@@ -685,10 +685,11 @@ body:has(#productBar:not([hidden])) .fab-book {
 }
 .gift-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 24px;
 }
 .gift-card {
+  grid-column: span 2;
   padding: 40px 32px;
   border-radius: var(--r-lg);
   text-align: center;
@@ -712,6 +713,7 @@ body:has(#productBar:not([hidden])) .fab-book {
 .gift-card .btn { margin-top: auto; }
 @media (max-width: 900px) {
   .gift-grid { grid-template-columns: 1fr; }
+  .gift-card { grid-column: auto; }
 }
 
 .cross-sell-banner {
