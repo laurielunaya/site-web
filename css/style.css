@@ -1132,12 +1132,20 @@ body:has(#productBar:not([hidden])) .fab-book {
 }
 @media (min-width: 900px) {
   .quick-nav-group .quick-nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
     overflow: visible;
     mask-image: none;
-    row-gap: 8px;
+    gap: 10px;
+  }
+  .quick-nav-group .quick-nav a {
+    width: 100%;
+    text-align: center;
+    white-space: normal;
+    line-height: 1.4;
   }
 }
 @media (max-width: 640px) {
