@@ -1495,9 +1495,9 @@ body:has(#productBar:not([hidden])) .fab-book {
   object-fit: contain;
 }
 .brand-logo-square {
-  height: 22px;
-  width: 22px;
-  border-radius: 4px;
+  height: 34px;
+  width: 34px;
+  border-radius: 6px;
   box-shadow: 0 2px 6px -2px rgba(74,52,42,.35);
 }
 .brand-badge-myspa {
