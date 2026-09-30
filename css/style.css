@@ -1131,6 +1131,15 @@ body:has(#productBar:not([hidden])) .fab-book {
   font-style: italic;
 }
 @media (min-width: 900px) {
+  .quick-nav-groups { gap: 28px; }
+  .quick-nav-group {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--r-lg);
+    box-shadow: var(--glass-shadow-sm);
+    padding: 28px 32px 32px;
+    gap: 18px;
+  }
   .quick-nav-group .quick-nav {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
