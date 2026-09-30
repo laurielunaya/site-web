@@ -1111,15 +1111,23 @@ body:has(#productBar:not([hidden])) .fab-book {
 .quick-nav-group-label {
   margin-left: 0;
   font-size: .68rem;
-  margin-bottom: -4px;
 }
-.quick-nav-group-sub {
-  font-family: var(--ff-sans);
-  font-size: .78rem;
-  font-weight: 300;
-  color: var(--brown-soft);
-  font-style: italic;
+.quick-nav-group-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
+.quick-nav-group-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--cream);
+  flex-shrink: 0;
+}
+.quick-nav-group-icon svg { width: 13px; height: 13px; color: var(--brown); }
 .quick-nav-group-toggle {
   display: flex;
   align-items: center;
