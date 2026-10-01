@@ -2197,15 +2197,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <button type="button" class="btn btn-primary btn-sm" id="validateBtn">
-        Étape 1/2 — Envoyer par email
+        <span id="validateBtnLabel">Étape 1/2 — Envoyer par email</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
-      <a href="#" id="productBarBtn" target="_blank" rel="noopener" hidden></a>
     </div>
 
-    <!-- ÉTAPE 2 : email envoyé, reste Planity -->
+    <!-- ÉTAPE 2 : email envoyé automatiquement, reste Planity -->
     <div class="product-bar-step product-bar-progress" id="stepPlanity" hidden>
-      <p class="product-bar-done-text">✅ Étape 1/2 : votre messagerie vient de s'ouvrir avec l'email pré-rempli — pensez à l'envoyer. <strong>Il reste une étape</strong> : choisir votre créneau de retrait.</p>
+      <p class="product-bar-done-text">✅ Étape 1/2 : votre message vient d'être envoyé directement à l'institut. <strong>Il reste une étape</strong> : choisir votre créneau de retrait.</p>
       <!-- ⚠️ LIEN PLACEHOLDER — remplacer par le lien Planity du service "Retrait de commande" créé dans l'espace pro -->
       <button type="button" class="btn btn-primary btn-sm" id="planityStepBtn" data-planity-url="https://www.planity.com/">
         Étape 2/2 — Choisir mon créneau sur Planity
@@ -2216,7 +2215,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- ÉTAPE 3 : rappel avant de terminer -->
     <div class="product-bar-step product-bar-done" id="stepDone" hidden>
-      <p class="product-bar-done-text">⚠️ Ce n'est pas encore fini ! Vérifiez que vous avez bien <strong>envoyé l'email</strong> et <strong>validé votre créneau sur Planity</strong>, puis cliquez sur Terminer.</p>
+      <p class="product-bar-done-text">⚠️ Ce n'est pas encore fini ! Vérifiez que vous avez bien <strong>validé votre créneau sur Planity</strong>, puis cliquez sur Terminer.</p>
       <button type="button" class="btn btn-outline btn-sm" id="productBarDone">Terminer</button>
     </div>
 
@@ -2284,12 +2283,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="js/main.js"></script>
 <script>
 (function() {
-  const INSTITUT_EMAIL = 'lunaya.institut@gmail.com';
+  /* ⚠️ CLÉ PLACEHOLDER — à remplacer par la vraie clé Web3Forms (voir instructions fournies) */
+  const WEB3FORMS_ACCESS_KEY = 'VOTRE_CLE_WEB3FORMS';
 
   const selected = new Map();
   const bar = document.getElementById('productBar');
   const barCount = document.getElementById('productBarCount');
-  const barBtn = document.getElementById('productBarBtn');
   const planityBtn = document.getElementById('productBarPlanityBtn');
   const stepSelect = document.getElementById('stepSelect');
   const stepCheckout = document.getElementById('stepCheckout');
@@ -2300,6 +2299,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const backBtn = document.getElementById('productBarBack');
   const hint = document.getElementById('checkoutHint');
   const validateBtn = document.getElementById('validateBtn');
+  const validateBtnLabel = document.getElementById('validateBtnLabel');
   const planityStepBtn = document.getElementById('planityStepBtn');
   const firstNameInput = document.getElementById('customerFirstName');
   const lastNameInput = document.getElementById('customerLastName');
@@ -2347,7 +2347,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     updateBar();
   });
 
-  /* Étape 1/2 : envoyer le message WhatsApp */
+  /* Étape 1/2 : envoyer directement le message par email (Web3Forms, aucune messagerie ouverte) */
   validateBtn.addEventListener('click', () => {
     const firstName = firstNameInput.value.trim();
     const lastName = lastNameInput.value.trim();
@@ -2365,13 +2365,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const names = [...selected.values()];
     const subject = 'Réservation produits — ' + firstName + ' ' + lastName;
     const body = 'Bonjour,\n\nJe suis ' + firstName + ' ' + lastName + '. Je souhaite réserver les produits suivants à l\'institut :\n- ' + names.join('\n- ') + '\n\nJe choisis mon créneau de retrait sur Planity.\n\nÀ bientôt !';
-    barBtn.href = 'mailto:' + INSTITUT_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 
-    /* ouvre la messagerie (pré-remplie, un dernier clic sur "Envoyer" reste nécessaire côté cliente) */
-    barBtn.click();
+    validateBtn.disabled = true;
+    validateBtnLabel.textContent = 'Envoi en cours…';
 
-    hideAllSteps();
-    stepPlanity.hidden = false;
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: subject,
+        from_name: firstName + ' ' + lastName,
+        message: body
+      })
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.success) throw new Error('web3forms');
+        hideAllSteps();
+        stepPlanity.hidden = false;
+      })
+      .catch(() => {
+        hint.textContent = 'Erreur d\'envoi, merci de réessayer ou de nous contacter directement';
+        hint.classList.add('shake');
+        setTimeout(() => hint.classList.remove('shake'), 400);
+      })
+      .finally(() => {
+        validateBtn.disabled = false;
+        validateBtnLabel.textContent = 'Étape 1/2 — Envoyer par email';
+      });
   });
 
   /* Étape 2/2 : choisir le créneau sur Planity */
