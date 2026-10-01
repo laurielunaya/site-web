@@ -2182,7 +2182,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
     </div>
 
-    <!-- ÉTAPE 1 : coordonnées puis validation -->
+    <!-- ÉTAPE 1 : coordonnées -->
     <div class="product-bar-step product-checkout" id="stepCheckout" hidden>
       <button type="button" class="product-checkout-back" id="productBarBack" aria-label="Revenir à la sélection">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
@@ -2196,19 +2196,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="checkout-item-hint" id="checkoutHint">Pour qu'on sache à qui préparer la commande</span>
       </div>
 
-      <!-- ⚠️ LIEN PLACEHOLDER — remplacer par le lien Planity du service "Retrait de commande" créé dans l'espace pro -->
-      <button type="button" class="btn btn-primary btn-sm" id="validateBtn" data-planity-url="https://www.planity.com/">
-        Valider mon créneau
+      <button type="button" class="btn btn-primary btn-sm" id="validateBtn">
+        Étape 1/2 — Envoyer sur WhatsApp
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
       <a href="#" id="productBarBtn" target="_blank" rel="noopener" hidden></a>
+    </div>
+
+    <!-- ÉTAPE 2 : WhatsApp envoyé, reste Planity -->
+    <div class="product-bar-step product-bar-progress" id="stepPlanity" hidden>
+      <p class="product-bar-done-text">✅ Étape 1/2 : le message WhatsApp est prêt dans le nouvel onglet — pensez à l'envoyer. <strong>Il reste une étape</strong> : choisir votre créneau de retrait.</p>
+      <!-- ⚠️ LIEN PLACEHOLDER — remplacer par le lien Planity du service "Retrait de commande" créé dans l'espace pro -->
+      <button type="button" class="btn btn-primary btn-sm" id="planityStepBtn" data-planity-url="https://www.planity.com/">
+        Étape 2/2 — Choisir mon créneau sur Planity
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
       <a href="#" id="productBarPlanityBtn" target="_blank" rel="noopener" hidden></a>
     </div>
 
-    <!-- ÉTAPE 2 : confirmation, deux onglets ouverts -->
+    <!-- ÉTAPE 3 : rappel avant de terminer -->
     <div class="product-bar-step product-bar-done" id="stepDone" hidden>
-      <p class="product-bar-done-text">Deux onglets viennent de s'ouvrir : <strong>WhatsApp</strong> (envoyez le message pré-rempli) et <strong>Planity</strong> (choisissez votre créneau de retrait). Merci de valider les deux pour finaliser votre commande !</p>
-      <button type="button" class="btn btn-outline btn-sm" id="productBarDone">Terminé</button>
+      <p class="product-bar-done-text">⚠️ Ce n'est pas encore fini ! Vérifiez que vous avez bien <strong>envoyé le message sur WhatsApp</strong> et <strong>validé votre créneau sur Planity</strong>, puis cliquez sur Terminer.</p>
+      <button type="button" class="btn btn-outline btn-sm" id="productBarDone">Terminer</button>
     </div>
 
   </div>
@@ -2285,24 +2294,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const planityBtn = document.getElementById('productBarPlanityBtn');
   const stepSelect = document.getElementById('stepSelect');
   const stepCheckout = document.getElementById('stepCheckout');
+  const stepPlanity = document.getElementById('stepPlanity');
   const stepDone = document.getElementById('stepDone');
   const doneBtn = document.getElementById('productBarDone');
   const nextBtn = document.getElementById('productBarNext');
   const backBtn = document.getElementById('productBarBack');
   const hint = document.getElementById('checkoutHint');
   const validateBtn = document.getElementById('validateBtn');
+  const planityStepBtn = document.getElementById('planityStepBtn');
   const firstNameInput = document.getElementById('customerFirstName');
   const lastNameInput = document.getElementById('customerLastName');
 
-  function goToSelect() {
+  function hideAllSteps() {
+    stepSelect.hidden = true;
     stepCheckout.hidden = true;
+    stepPlanity.hidden = true;
     stepDone.hidden = true;
+  }
+
+  function goToSelect() {
+    hideAllSteps();
     stepSelect.hidden = false;
   }
 
   function goToCheckout() {
-    stepSelect.hidden = true;
-    stepDone.hidden = true;
+    hideAllSteps();
     stepCheckout.hidden = false;
   }
 
@@ -2332,6 +2348,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     updateBar();
   });
 
+  /* Étape 1/2 : envoyer le message WhatsApp */
   validateBtn.addEventListener('click', () => {
     const firstName = firstNameInput.value.trim();
     const lastName = lastNameInput.value.trim();
@@ -2349,14 +2366,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const names = [...selected.values()];
     const message = 'Bonjour, je suis ' + firstName + ' ' + lastName + '. Je souhaite réserver les produits suivants à l\'institut :\n- ' + names.join('\n- ') + '\n\nJe choisis mon créneau de retrait sur Planity. À bientôt !';
     barBtn.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
-    planityBtn.href = validateBtn.dataset.planityUrl;
 
-    /* ouvre WhatsApp et Planity chacun dans un nouvel onglet (pré-rempli côté WhatsApp, un dernier tap sur "Envoyer" reste nécessaire côté cliente) */
+    /* ouvre WhatsApp dans un nouvel onglet (pré-rempli, un dernier tap sur "Envoyer" reste nécessaire côté cliente) */
     barBtn.click();
+
+    hideAllSteps();
+    stepPlanity.hidden = false;
+  });
+
+  /* Étape 2/2 : choisir le créneau sur Planity */
+  planityStepBtn.addEventListener('click', () => {
+    planityBtn.href = planityStepBtn.dataset.planityUrl;
     planityBtn.click();
 
-    /* la page reste ouverte : on affiche un message pour que la cliente valide bien les deux onglets */
-    stepCheckout.hidden = true;
+    hideAllSteps();
     stepDone.hidden = false;
   });
 

@@ -398,18 +398,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="checkout-item-hint" id="coffretHint">Pour qu'on sache à qui préparer le coffret</span>
       </div>
 
-      <!-- ⚠️ LIEN PLACEHOLDER — remplacer par le lien Planity du service "Retrait de commande" créé dans l'espace pro -->
-      <button type="button" class="btn btn-primary btn-sm" id="coffretValidateBtn" data-planity-url="https://www.planity.com/">
-        Réserver ce coffret
+      <button type="button" class="btn btn-primary btn-sm" id="coffretValidateBtn">
+        Étape 1/2 — Envoyer sur WhatsApp
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
       <a href="#" id="coffretBarBtn" target="_blank" rel="noopener" hidden></a>
+    </div>
+
+    <!-- ÉTAPE 2 : WhatsApp envoyé, reste Planity -->
+    <div class="product-bar-step product-bar-progress" id="coffretStepPlanity" hidden>
+      <p class="product-bar-done-text">✅ Étape 1/2 : le message WhatsApp est prêt dans le nouvel onglet — pensez à l'envoyer. <strong>Il reste une étape</strong> : choisir votre créneau de retrait.</p>
+      <!-- ⚠️ LIEN PLACEHOLDER — remplacer par le lien Planity du service "Retrait de commande" créé dans l'espace pro -->
+      <button type="button" class="btn btn-primary btn-sm" id="coffretPlanityStepBtn" data-planity-url="https://www.planity.com/">
+        Étape 2/2 — Choisir mon créneau sur Planity
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
       <a href="#" id="coffretPlanityBtn" target="_blank" rel="noopener" hidden></a>
     </div>
 
+    <!-- ÉTAPE 3 : rappel avant de terminer -->
     <div class="product-bar-step product-bar-done" id="coffretStepDone" hidden>
-      <p class="product-bar-done-text">Deux onglets viennent de s'ouvrir : <strong>WhatsApp</strong> (envoyez le message pré-rempli) et <strong>Planity</strong> (choisissez votre créneau de retrait). Merci de valider les deux pour finaliser votre réservation !</p>
-      <button type="button" class="btn btn-outline btn-sm" id="coffretBarDone">Terminé</button>
+      <p class="product-bar-done-text">⚠️ Ce n'est pas encore fini ! Vérifiez que vous avez bien <strong>envoyé le message sur WhatsApp</strong> et <strong>validé votre créneau sur Planity</strong>, puis cliquez sur Terminer.</p>
+      <button type="button" class="btn btn-outline btn-sm" id="coffretBarDone">Terminer</button>
     </div>
   </div>
 </div>
@@ -480,12 +490,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   const bar = document.getElementById('coffretBar');
   const stepForm = document.getElementById('coffretStepForm');
+  const stepPlanity = document.getElementById('coffretStepPlanity');
   const stepDone = document.getElementById('coffretStepDone');
   const doneBtn = document.getElementById('coffretBarDone');
   const selectedLabel = document.getElementById('coffretSelectedLabel');
   const hint = document.getElementById('coffretHint');
   const closeBtn = document.getElementById('coffretBarClose');
   const validateBtn = document.getElementById('coffretValidateBtn');
+  const planityStepBtn = document.getElementById('coffretPlanityStepBtn');
   const firstNameInput = document.getElementById('coffretFirstName');
   const lastNameInput = document.getElementById('coffretLastName');
   const barBtn = document.getElementById('coffretBarBtn');
@@ -501,6 +513,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     hint.textContent = 'Pour qu\'on sache à qui préparer le coffret';
   }
 
+  function hideAllSteps() {
+    stepForm.hidden = true;
+    stepPlanity.hidden = true;
+    stepDone.hidden = true;
+  }
+
   function openBar(card) {
     currentCoffret = {
       name: card.dataset.coffret,
@@ -509,7 +527,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     };
     selectedLabel.textContent = 'Coffret sélectionné : ' + currentCoffret.name;
     resetFields();
-    stepDone.hidden = true;
+    hideAllSteps();
     stepForm.hidden = false;
     bar.hidden = false;
   }
@@ -532,6 +550,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     input.addEventListener('input', () => input.classList.remove('is-error'));
   });
 
+  /* Étape 1/2 : envoyer le message WhatsApp */
   validateBtn.addEventListener('click', () => {
     if (!currentCoffret) return;
     const firstName = firstNameInput.value.trim();
@@ -549,14 +568,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     const message = 'Bonjour, je suis ' + firstName + ' ' + lastName + '. Je souhaite réserver le COFFRET CADEAU « ' + currentCoffret.name + ' » (' + currentCoffret.price + '), qui contient :\n- ' + currentCoffret.items.join('\n- ') + '\n\nIl s\'agit d\'un coffret cadeau, merci de prévoir l\'emballage. Je choisis mon créneau de retrait sur Planity. À bientôt !';
     barBtn.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
-    planityBtn.href = validateBtn.dataset.planityUrl;
 
-    /* ouvre WhatsApp et Planity chacun dans un nouvel onglet (pré-rempli côté WhatsApp, un dernier tap sur "Envoyer" reste nécessaire côté cliente) */
+    /* ouvre WhatsApp dans un nouvel onglet (pré-rempli, un dernier tap sur "Envoyer" reste nécessaire côté cliente) */
     barBtn.click();
+
+    hideAllSteps();
+    stepPlanity.hidden = false;
+  });
+
+  /* Étape 2/2 : choisir le créneau sur Planity */
+  planityStepBtn.addEventListener('click', () => {
+    if (!currentCoffret) return;
+    planityBtn.href = planityStepBtn.dataset.planityUrl;
     planityBtn.click();
 
-    /* la page reste ouverte : on affiche un message pour que la cliente valide bien les deux onglets */
-    stepForm.hidden = true;
+    hideAllSteps();
     stepDone.hidden = false;
   });
 })();
