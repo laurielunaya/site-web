@@ -719,6 +719,9 @@ body:has(#productBar:not([hidden])) .fab-book {
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
+.coffret-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.coffret-subhead { text-align: center; font-family: var(--ff-sans); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; color: var(--brown-deep); font-weight: 600; margin: 48px 0 20px; }
+.coffret-subhead:first-of-type { margin-top: 0; }
 .coffret-card {
   padding: 30px 24px;
   border-radius: var(--r-lg);
