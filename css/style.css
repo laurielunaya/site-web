@@ -707,7 +707,8 @@ body:has(#productBar:not([hidden])) .fab-book {
   margin-bottom: 14px;
 }
 .gift-card-icon svg { width: 19px; height: 19px; color: var(--brown); }
-.gift-card h3 { font-family: var(--ff-serif); font-size: .96rem; line-height: 1.3; color: var(--brown-deep); font-weight: 600; margin-bottom: 16px; }
+.gift-card h3 { font-family: var(--ff-serif); font-size: .96rem; line-height: 1.3; color: var(--brown-deep); font-weight: 600; margin-bottom: 6px; }
+.gift-card-tag { display: block; font-family: var(--ff-sans); font-size: .66rem; letter-spacing: .02em; color: var(--brown-mist); font-style: italic; margin-bottom: 16px; }
 .gift-card .btn { margin-top: auto; }
 @media (max-width: 900px) {
   .gift-grid { grid-template-columns: repeat(2, 1fr); }
