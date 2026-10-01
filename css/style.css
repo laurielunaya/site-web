@@ -1234,9 +1234,9 @@ body:has(#productBar:not([hidden])) .fab-book {
 .product-row-thumb {
   width: 68px; height: 68px;
   flex-shrink: 0;
-  border-radius: var(--r-md);
+  border-radius: 50%;
   background-color: var(--cream-light);
-  background-size: contain;
+  background-size: 76%;
   background-repeat: no-repeat;
   background-position: center;
   border: 1px solid var(--glass-border);
