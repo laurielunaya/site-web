@@ -399,15 +399,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <button type="button" class="btn btn-primary btn-sm" id="coffretValidateBtn">
-        Étape 1/2 — Envoyer sur WhatsApp
+        Étape 1/2 — Envoyer par email
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
       <a href="#" id="coffretBarBtn" target="_blank" rel="noopener" hidden></a>
     </div>
 
-    <!-- ÉTAPE 2 : WhatsApp envoyé, reste Planity -->
+    <!-- ÉTAPE 2 : email envoyé, reste Planity -->
     <div class="product-bar-step product-bar-progress" id="coffretStepPlanity" hidden>
-      <p class="product-bar-done-text">✅ Étape 1/2 : le message WhatsApp est prêt dans le nouvel onglet — pensez à l'envoyer. <strong>Il reste une étape</strong> : choisir votre créneau de retrait.</p>
+      <p class="product-bar-done-text">✅ Étape 1/2 : votre messagerie vient de s'ouvrir avec l'email pré-rempli — pensez à l'envoyer. <strong>Il reste une étape</strong> : choisir votre créneau de retrait.</p>
       <!-- ⚠️ LIEN PLACEHOLDER — remplacer par le lien Planity du service "Retrait de commande" créé dans l'espace pro -->
       <button type="button" class="btn btn-primary btn-sm" id="coffretPlanityStepBtn" data-planity-url="https://www.planity.com/">
         Étape 2/2 — Choisir mon créneau sur Planity
@@ -418,7 +418,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- ÉTAPE 3 : rappel avant de terminer -->
     <div class="product-bar-step product-bar-done" id="coffretStepDone" hidden>
-      <p class="product-bar-done-text">⚠️ Ce n'est pas encore fini ! Vérifiez que vous avez bien <strong>envoyé le message sur WhatsApp</strong> et <strong>validé votre créneau sur Planity</strong>, puis cliquez sur Terminer.</p>
+      <p class="product-bar-done-text">⚠️ Ce n'est pas encore fini ! Vérifiez que vous avez bien <strong>envoyé l'email</strong> et <strong>validé votre créneau sur Planity</strong>, puis cliquez sur Terminer.</p>
       <button type="button" class="btn btn-outline btn-sm" id="coffretBarDone">Terminer</button>
     </div>
   </div>
@@ -485,8 +485,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="js/main.js"></script>
 <script>
 (function() {
-  /* ⚠️ NUMÉRO PLACEHOLDER — remplacer par le vrai numéro WhatsApp de l'institut (format international, sans + ni espaces, ex. 33612345678) */
-  const WHATSAPP_NUMBER = '33000000000';
+  const INSTITUT_EMAIL = 'lunaya.institut@gmail.com';
 
   const bar = document.getElementById('coffretBar');
   const stepForm = document.getElementById('coffretStepForm');
@@ -566,10 +565,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       return;
     }
 
-    const message = 'Bonjour, je suis ' + firstName + ' ' + lastName + '. Je souhaite réserver le COFFRET CADEAU « ' + currentCoffret.name + ' » (' + currentCoffret.price + '), qui contient :\n- ' + currentCoffret.items.join('\n- ') + '\n\nIl s\'agit d\'un coffret cadeau, merci de prévoir l\'emballage. Je choisis mon créneau de retrait sur Planity. À bientôt !';
-    barBtn.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+    const subject = 'Réservation coffret cadeau — ' + currentCoffret.name;
+    const body = 'Bonjour,\n\nJe suis ' + firstName + ' ' + lastName + '. Je souhaite réserver le COFFRET CADEAU « ' + currentCoffret.name + ' » (' + currentCoffret.price + '), qui contient :\n- ' + currentCoffret.items.join('\n- ') + '\n\nIl s\'agit d\'un coffret cadeau, merci de prévoir l\'emballage.\n\nJe choisis mon créneau de retrait sur Planity.\n\nÀ bientôt !';
+    barBtn.href = 'mailto:' + INSTITUT_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 
-    /* ouvre WhatsApp dans un nouvel onglet (pré-rempli, un dernier tap sur "Envoyer" reste nécessaire côté cliente) */
+    /* ouvre la messagerie (pré-remplie, un dernier clic sur "Envoyer" reste nécessaire côté cliente) */
     barBtn.click();
 
     hideAllSteps();
