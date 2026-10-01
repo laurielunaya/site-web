@@ -157,7 +157,106 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
+  <section style="padding-top:0; padding-bottom:100px;">
+    <div class="container">
+      <div class="section-head reveal" data-reveal>
+        <span class="eyebrow">Pour aller plus loin</span>
+        <h2 class="title">Nos Coffrets Cadeaux</h2>
+        <p class="lede">Plusieurs produits complémentaires réunis dans un même coffret, à prix réduit, pour une idée cadeau prête à offrir.</p>
+      </div>
+
+      <div class="coffret-grid">
+
+        <div class="coffret-card glass reveal" data-reveal
+             data-coffret="Rituel Capillaire Hydratation"
+             data-coffret-price="109,90€"
+             data-coffret-items="Shampooing Hydrating 250 ml|Conditionneur Silk 150 ml|Inca Remedy Mask++ 200 ml">
+          <span class="coffret-tag">Univers Capillaire · Organethic PureCare</span>
+          <h3>Rituel Capillaire Hydratation</h3>
+          <ul class="coffret-items">
+            <li>Shampooing Hydrating 250 ml</li>
+            <li>Conditionneur Silk 150 ml</li>
+            <li>Inca Remedy Mask++ 200 ml</li>
+          </ul>
+          <div class="coffret-pricing">
+            <span class="coffret-price-old">124,70€</span>
+            <span class="coffret-price-new">109,90€</span>
+            <span class="coffret-save">-12%</span>
+          </div>
+          <button type="button" class="btn btn-primary btn-sm coffret-reserve-btn">Réserver ce coffret</button>
+        </div>
+
+        <div class="coffret-card glass reveal" data-reveal
+             data-coffret="Éclat Anti-Pollution"
+             data-coffret-price="129,90€"
+             data-coffret-items="Gelée Nettoyante Anti-Pollution 100 ml|Sérum Anti-Pollution 15 ml|Crème Anti-Pollution 40 ml">
+          <span class="coffret-tag">Univers Visage · Phyt's</span>
+          <h3>Éclat Anti-Pollution</h3>
+          <ul class="coffret-items">
+            <li>Gelée Nettoyante Anti-Pollution 100 ml</li>
+            <li>Sérum Anti-Pollution 15 ml</li>
+            <li>Crème Anti-Pollution 40 ml</li>
+          </ul>
+          <div class="coffret-pricing">
+            <span class="coffret-price-old">145,30€</span>
+            <span class="coffret-price-new">129,90€</span>
+            <span class="coffret-save">-11%</span>
+          </div>
+          <button type="button" class="btn btn-primary btn-sm coffret-reserve-btn">Réserver ce coffret</button>
+        </div>
+
+        <div class="coffret-card glass reveal" data-reveal
+             data-coffret="Douceur Mangue Exotique"
+             data-coffret-price="89,90€"
+             data-coffret-items="Gel Douche Mangue Exotique 200 ml|Exfoliant Sucre et Mangue Exotique 300 g|Huile Mangue Exotique 100 ml">
+          <span class="coffret-tag">Univers Corps · MySpa</span>
+          <h3>Douceur Mangue Exotique</h3>
+          <ul class="coffret-items">
+            <li>Gel Douche Mangue Exotique 200 ml</li>
+            <li>Exfoliant Sucre et Mangue Exotique 300 g</li>
+            <li>Huile Mangue Exotique 100 ml</li>
+          </ul>
+          <div class="coffret-pricing">
+            <span class="coffret-price-old">102,10€</span>
+            <span class="coffret-price-new">89,90€</span>
+            <span class="coffret-save">-12%</span>
+          </div>
+          <button type="button" class="btn btn-primary btn-sm coffret-reserve-btn">Réserver ce coffret</button>
+        </div>
+
+      </div>
+
+      <p style="text-align:center; font-size:.82rem; color:var(--brown-mist); font-style:italic; margin-top:28px;">Chaque coffret est préparé et emballé pour l'offrir, à récupérer à l'institut au créneau de votre choix.</p>
+    </div>
+  </section>
+
 </main>
+
+<div class="product-bar" id="coffretBar" hidden>
+  <div class="container product-bar-inner">
+    <div class="product-bar-step product-checkout">
+      <button type="button" class="product-checkout-back" id="coffretBarClose" aria-label="Annuler la réservation du coffret">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+
+      <div class="checkout-form">
+        <span class="coffret-selected-label" id="coffretSelectedLabel">Coffret sélectionné : —</span>
+        <div class="checkout-fields">
+          <input type="text" id="coffretLastName" class="checkout-input" placeholder="Nom" autocomplete="family-name">
+          <input type="text" id="coffretFirstName" class="checkout-input" placeholder="Prénom" autocomplete="given-name">
+        </div>
+        <span class="checkout-item-hint" id="coffretHint">Pour qu'on sache à qui préparer le coffret</span>
+      </div>
+
+      <!-- ⚠️ LIEN PLACEHOLDER — remplacer par le lien Planity du service "Retrait de commande" créé dans l'espace pro -->
+      <button type="button" class="btn btn-primary btn-sm" id="coffretValidateBtn" data-planity-url="https://www.planity.com/">
+        Réserver ce coffret
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <a href="#" id="coffretBarBtn" target="_blank" rel="noopener" hidden></a>
+    </div>
+  </div>
+</div>
 
 <footer style="padding-top:36px;">
   <div class="container">
@@ -218,5 +317,83 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+(function() {
+  /* ⚠️ NUMÉRO PLACEHOLDER — remplacer par le vrai numéro WhatsApp de l'institut (format international, sans + ni espaces, ex. 33612345678) */
+  const WHATSAPP_NUMBER = '33000000000';
+
+  const bar = document.getElementById('coffretBar');
+  const selectedLabel = document.getElementById('coffretSelectedLabel');
+  const hint = document.getElementById('coffretHint');
+  const closeBtn = document.getElementById('coffretBarClose');
+  const validateBtn = document.getElementById('coffretValidateBtn');
+  const firstNameInput = document.getElementById('coffretFirstName');
+  const lastNameInput = document.getElementById('coffretLastName');
+  const barBtn = document.getElementById('coffretBarBtn');
+
+  let currentCoffret = null;
+
+  function resetFields() {
+    [firstNameInput, lastNameInput].forEach((input) => {
+      input.value = '';
+      input.classList.remove('is-error');
+    });
+    hint.textContent = 'Pour qu\'on sache à qui préparer le coffret';
+  }
+
+  function openBar(card) {
+    currentCoffret = {
+      name: card.dataset.coffret,
+      price: card.dataset.coffretPrice,
+      items: card.dataset.coffretItems.split('|')
+    };
+    selectedLabel.textContent = 'Coffret sélectionné : ' + currentCoffret.name;
+    resetFields();
+    bar.hidden = false;
+  }
+
+  function closeBar() {
+    bar.hidden = true;
+    currentCoffret = null;
+  }
+
+  document.querySelectorAll('.coffret-reserve-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      openBar(btn.closest('.coffret-card'));
+    });
+  });
+
+  closeBtn.addEventListener('click', closeBar);
+
+  [firstNameInput, lastNameInput].forEach((input) => {
+    input.addEventListener('input', () => input.classList.remove('is-error'));
+  });
+
+  validateBtn.addEventListener('click', () => {
+    if (!currentCoffret) return;
+    const firstName = firstNameInput.value.trim();
+    const lastName = lastNameInput.value.trim();
+
+    if (!firstName || !lastName) {
+      [firstNameInput, lastNameInput].forEach((input) => {
+        if (!input.value.trim()) input.classList.add('is-error');
+      });
+      hint.textContent = 'Merci de renseigner votre nom et prénom';
+      hint.classList.add('shake');
+      setTimeout(() => hint.classList.remove('shake'), 400);
+      return;
+    }
+
+    const message = 'Bonjour, je suis ' + firstName + ' ' + lastName + '. Je souhaite réserver le COFFRET CADEAU « ' + currentCoffret.name + ' » (' + currentCoffret.price + '), qui contient :\n- ' + currentCoffret.items.join('\n- ') + '\n\nIl s\'agit d\'un coffret cadeau, merci de prévoir l\'emballage. Je choisis mon créneau de retrait sur Planity. À bientôt !';
+    barBtn.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+
+    /* ouvre WhatsApp (pré-rempli, un dernier tap sur "Envoyer" reste nécessaire côté cliente — WhatsApp ne permet pas l'envoi 100% automatique depuis un site) */
+    barBtn.click();
+
+    /* redirige vers Planity pour choisir le créneau */
+    window.location.href = validateBtn.dataset.planityUrl;
+  });
+})();
+</script>
 </body>
 </html>
