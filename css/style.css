@@ -1295,7 +1295,7 @@ body:has(#productBar:not([hidden])) .fab-book {
 .checkout-item-label { font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--brown-mist); font-weight: 600; }
 .checkout-item-hint { font-size: .68rem; color: var(--brown-mist); font-style: italic; }
 .checkout-form { display: flex; flex-direction: column; gap: 6px; }
-.checkout-fields { display: flex; gap: 10px; }
+.checkout-fields { display: flex; flex-wrap: wrap; gap: 10px; }
 .checkout-input {
   padding: 10px 16px;
   border-radius: var(--r-pill);

@@ -2192,8 +2192,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="checkout-fields">
           <input type="text" id="customerLastName" class="checkout-input" placeholder="Nom" autocomplete="family-name">
           <input type="text" id="customerFirstName" class="checkout-input" placeholder="Prénom" autocomplete="given-name">
+          <input type="tel" id="customerPhone" class="checkout-input" placeholder="Téléphone" autocomplete="tel">
         </div>
-        <span class="checkout-item-hint" id="checkoutHint">Pour qu'on sache à qui préparer la commande</span>
+        <span class="checkout-item-hint" id="checkoutHint">Pour qu'on sache à qui préparer la commande, et vous joindre en cas de souci sur le créneau</span>
       </div>
 
       <button type="button" class="btn btn-primary btn-sm" id="validateBtn">
@@ -2302,6 +2303,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const planityStepBtn = document.getElementById('planityStepBtn');
   const firstNameInput = document.getElementById('customerFirstName');
   const lastNameInput = document.getElementById('customerLastName');
+  const phoneInput = document.getElementById('customerPhone');
 
   function hideAllSteps() {
     stepSelect.hidden = true;
@@ -2343,6 +2345,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
     firstNameInput.value = '';
     lastNameInput.value = '';
+    phoneInput.value = '';
     updateBar();
   });
 
@@ -2350,12 +2353,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   validateBtn.addEventListener('click', () => {
     const firstName = firstNameInput.value.trim();
     const lastName = lastNameInput.value.trim();
+    const phone = phoneInput.value.trim();
 
-    if (!firstName || !lastName) {
-      [firstNameInput, lastNameInput].forEach((input) => {
+    if (!firstName || !lastName || !phone) {
+      [firstNameInput, lastNameInput, phoneInput].forEach((input) => {
         if (!input.value.trim()) input.classList.add('is-error');
       });
-      hint.textContent = 'Merci de renseigner votre nom et prénom';
+      hint.textContent = 'Merci de renseigner votre nom, prénom et téléphone';
       hint.classList.add('shake');
       setTimeout(() => hint.classList.remove('shake'), 400);
       return;
@@ -2363,7 +2367,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     const names = [...selected.values()];
     const subject = 'Réservation produits — ' + firstName + ' ' + lastName;
-    const body = 'Bonjour,\n\nJe suis ' + firstName + ' ' + lastName + '. Je souhaite réserver les produits suivants à l\'institut :\n- ' + names.join('\n- ') + '\n\nJe choisis mon créneau de retrait sur Planity.\n\nÀ bientôt !';
+    const body = 'Bonjour,\n\nJe suis ' + firstName + ' ' + lastName + ' (tél. ' + phone + '). Je souhaite réserver les produits suivants à l\'institut :\n- ' + names.join('\n- ') + '\n\nJe choisis mon créneau de retrait sur Planity.\n\nÀ bientôt !';
 
     validateBtn.disabled = true;
     validateBtnLabel.textContent = 'Envoi en cours…';
@@ -2376,6 +2380,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         subject: subject,
         from_name: firstName + ' ' + lastName,
         name: firstName + ' ' + lastName,
+        phone: phone,
         message: body
       })
     })
@@ -2405,7 +2410,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     stepDone.hidden = false;
   });
 
-  [firstNameInput, lastNameInput].forEach((input) => {
+  [firstNameInput, lastNameInput, phoneInput].forEach((input) => {
     input.addEventListener('input', () => input.classList.remove('is-error'));
   });
 

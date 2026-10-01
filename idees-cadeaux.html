@@ -394,8 +394,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="checkout-fields">
           <input type="text" id="coffretLastName" class="checkout-input" placeholder="Nom" autocomplete="family-name">
           <input type="text" id="coffretFirstName" class="checkout-input" placeholder="Prénom" autocomplete="given-name">
+          <input type="tel" id="coffretPhone" class="checkout-input" placeholder="Téléphone" autocomplete="tel">
         </div>
-        <span class="checkout-item-hint" id="coffretHint">Pour qu'on sache à qui préparer le coffret</span>
+        <span class="checkout-item-hint" id="coffretHint">Pour qu'on sache à qui préparer le coffret, et vous joindre en cas de souci sur le créneau</span>
       </div>
 
       <button type="button" class="btn btn-primary btn-sm" id="coffretValidateBtn">
@@ -499,16 +500,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const planityStepBtn = document.getElementById('coffretPlanityStepBtn');
   const firstNameInput = document.getElementById('coffretFirstName');
   const lastNameInput = document.getElementById('coffretLastName');
+  const phoneInput = document.getElementById('coffretPhone');
   const planityBtn = document.getElementById('coffretPlanityBtn');
 
   let currentCoffret = null;
 
   function resetFields() {
-    [firstNameInput, lastNameInput].forEach((input) => {
+    [firstNameInput, lastNameInput, phoneInput].forEach((input) => {
       input.value = '';
       input.classList.remove('is-error');
     });
-    hint.textContent = 'Pour qu\'on sache à qui préparer le coffret';
+    hint.textContent = 'Pour qu\'on sache à qui préparer le coffret, et vous joindre en cas de souci sur le créneau';
   }
 
   function hideAllSteps() {
@@ -544,7 +546,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   closeBtn.addEventListener('click', closeBar);
   doneBtn.addEventListener('click', closeBar);
 
-  [firstNameInput, lastNameInput].forEach((input) => {
+  [firstNameInput, lastNameInput, phoneInput].forEach((input) => {
     input.addEventListener('input', () => input.classList.remove('is-error'));
   });
 
@@ -553,19 +555,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (!currentCoffret) return;
     const firstName = firstNameInput.value.trim();
     const lastName = lastNameInput.value.trim();
+    const phone = phoneInput.value.trim();
 
-    if (!firstName || !lastName) {
-      [firstNameInput, lastNameInput].forEach((input) => {
+    if (!firstName || !lastName || !phone) {
+      [firstNameInput, lastNameInput, phoneInput].forEach((input) => {
         if (!input.value.trim()) input.classList.add('is-error');
       });
-      hint.textContent = 'Merci de renseigner votre nom et prénom';
+      hint.textContent = 'Merci de renseigner votre nom, prénom et téléphone';
       hint.classList.add('shake');
       setTimeout(() => hint.classList.remove('shake'), 400);
       return;
     }
 
     const subject = 'Réservation coffret cadeau — ' + currentCoffret.name;
-    const body = 'Bonjour,\n\nJe suis ' + firstName + ' ' + lastName + '. Je souhaite réserver le COFFRET CADEAU « ' + currentCoffret.name + ' » (' + currentCoffret.price + '), qui contient :\n- ' + currentCoffret.items.join('\n- ') + '\n\nIl s\'agit d\'un coffret cadeau, merci de prévoir l\'emballage.\n\nJe choisis mon créneau de retrait sur Planity.\n\nÀ bientôt !';
+    const body = 'Bonjour,\n\nJe suis ' + firstName + ' ' + lastName + ' (tél. ' + phone + '). Je souhaite réserver le COFFRET CADEAU « ' + currentCoffret.name + ' » (' + currentCoffret.price + '), qui contient :\n- ' + currentCoffret.items.join('\n- ') + '\n\nIl s\'agit d\'un coffret cadeau, merci de prévoir l\'emballage.\n\nJe choisis mon créneau de retrait sur Planity.\n\nÀ bientôt !';
 
     validateBtn.disabled = true;
     validateBtnLabel.textContent = 'Envoi en cours…';
@@ -578,6 +581,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         subject: subject,
         from_name: firstName + ' ' + lastName,
         name: firstName + ' ' + lastName,
+        phone: phone,
         message: body
       })
     })
