@@ -1274,6 +1274,10 @@ body:has(#productBar:not([hidden])) .fab-book {
 #stepSelect { justify-content: space-between; }
 .product-bar-count { font-family: var(--ff-serif); font-size: 1rem; color: var(--brown-deep); }
 
+.product-bar-done { gap: 16px; }
+.product-bar-done-text { font-size: .86rem; color: var(--brown-deep); line-height: 1.6; text-align: center; max-width: 560px; }
+.product-bar-done-text strong { color: var(--gold); }
+
 .product-checkout { gap: 14px; }
 .product-checkout-back {
   width: 38px; height: 38px;

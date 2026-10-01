@@ -2202,6 +2202,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
       <a href="#" id="productBarBtn" target="_blank" rel="noopener" hidden></a>
+      <a href="#" id="productBarPlanityBtn" target="_blank" rel="noopener" hidden></a>
+    </div>
+
+    <!-- ÉTAPE 2 : confirmation, deux onglets ouverts -->
+    <div class="product-bar-step product-bar-done" id="stepDone" hidden>
+      <p class="product-bar-done-text">Deux onglets viennent de s'ouvrir : <strong>WhatsApp</strong> (envoyez le message pré-rempli) et <strong>Planity</strong> (choisissez votre créneau de retrait). Merci de valider les deux pour finaliser votre commande !</p>
+      <button type="button" class="btn btn-outline btn-sm" id="productBarDone">Terminé</button>
     </div>
 
   </div>
@@ -2275,8 +2282,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const bar = document.getElementById('productBar');
   const barCount = document.getElementById('productBarCount');
   const barBtn = document.getElementById('productBarBtn');
+  const planityBtn = document.getElementById('productBarPlanityBtn');
   const stepSelect = document.getElementById('stepSelect');
   const stepCheckout = document.getElementById('stepCheckout');
+  const stepDone = document.getElementById('stepDone');
+  const doneBtn = document.getElementById('productBarDone');
   const nextBtn = document.getElementById('productBarNext');
   const backBtn = document.getElementById('productBarBack');
   const hint = document.getElementById('checkoutHint');
@@ -2286,11 +2296,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   function goToSelect() {
     stepCheckout.hidden = true;
+    stepDone.hidden = true;
     stepSelect.hidden = false;
   }
 
   function goToCheckout() {
     stepSelect.hidden = true;
+    stepDone.hidden = true;
     stepCheckout.hidden = false;
   }
 
@@ -2307,6 +2319,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   nextBtn.addEventListener('click', goToCheckout);
   backBtn.addEventListener('click', goToSelect);
+
+  doneBtn.addEventListener('click', () => {
+    selected.clear();
+    document.querySelectorAll('.product-add[aria-pressed="true"]').forEach((btn) => {
+      btn.setAttribute('aria-pressed', 'false');
+      btn.textContent = 'Ajouter';
+      btn.closest('.product-card').classList.remove('selected');
+    });
+    firstNameInput.value = '';
+    lastNameInput.value = '';
+    updateBar();
+  });
 
   validateBtn.addEventListener('click', () => {
     const firstName = firstNameInput.value.trim();
@@ -2325,12 +2349,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const names = [...selected.values()];
     const message = 'Bonjour, je suis ' + firstName + ' ' + lastName + '. Je souhaite réserver les produits suivants à l\'institut :\n- ' + names.join('\n- ') + '\n\nJe choisis mon créneau de retrait sur Planity. À bientôt !';
     barBtn.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+    planityBtn.href = validateBtn.dataset.planityUrl;
 
-    /* ouvre WhatsApp (pré-rempli, un dernier tap sur "Envoyer" reste nécessaire côté cliente — WhatsApp ne permet pas l'envoi 100% automatique depuis un site) */
+    /* ouvre WhatsApp et Planity chacun dans un nouvel onglet (pré-rempli côté WhatsApp, un dernier tap sur "Envoyer" reste nécessaire côté cliente) */
     barBtn.click();
+    planityBtn.click();
 
-    /* redirige vers Planity pour choisir le créneau */
-    window.location.href = validateBtn.dataset.planityUrl;
+    /* la page reste ouverte : on affiche un message pour que la cliente valide bien les deux onglets */
+    stepCheckout.hidden = true;
+    stepDone.hidden = false;
   });
 
   [firstNameInput, lastNameInput].forEach((input) => {

@@ -384,7 +384,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="product-bar" id="coffretBar" hidden>
   <div class="container product-bar-inner">
-    <div class="product-bar-step product-checkout">
+    <div class="product-bar-step product-checkout" id="coffretStepForm">
       <button type="button" class="product-checkout-back" id="coffretBarClose" aria-label="Annuler la réservation du coffret">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
@@ -404,6 +404,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
       <a href="#" id="coffretBarBtn" target="_blank" rel="noopener" hidden></a>
+      <a href="#" id="coffretPlanityBtn" target="_blank" rel="noopener" hidden></a>
+    </div>
+
+    <div class="product-bar-step product-bar-done" id="coffretStepDone" hidden>
+      <p class="product-bar-done-text">Deux onglets viennent de s'ouvrir : <strong>WhatsApp</strong> (envoyez le message pré-rempli) et <strong>Planity</strong> (choisissez votre créneau de retrait). Merci de valider les deux pour finaliser votre réservation !</p>
+      <button type="button" class="btn btn-outline btn-sm" id="coffretBarDone">Terminé</button>
     </div>
   </div>
 </div>
@@ -473,6 +479,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const WHATSAPP_NUMBER = '33000000000';
 
   const bar = document.getElementById('coffretBar');
+  const stepForm = document.getElementById('coffretStepForm');
+  const stepDone = document.getElementById('coffretStepDone');
+  const doneBtn = document.getElementById('coffretBarDone');
   const selectedLabel = document.getElementById('coffretSelectedLabel');
   const hint = document.getElementById('coffretHint');
   const closeBtn = document.getElementById('coffretBarClose');
@@ -480,6 +489,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const firstNameInput = document.getElementById('coffretFirstName');
   const lastNameInput = document.getElementById('coffretLastName');
   const barBtn = document.getElementById('coffretBarBtn');
+  const planityBtn = document.getElementById('coffretPlanityBtn');
 
   let currentCoffret = null;
 
@@ -499,6 +509,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     };
     selectedLabel.textContent = 'Coffret sélectionné : ' + currentCoffret.name;
     resetFields();
+    stepDone.hidden = true;
+    stepForm.hidden = false;
     bar.hidden = false;
   }
 
@@ -514,6 +526,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 
   closeBtn.addEventListener('click', closeBar);
+  doneBtn.addEventListener('click', closeBar);
 
   [firstNameInput, lastNameInput].forEach((input) => {
     input.addEventListener('input', () => input.classList.remove('is-error'));
@@ -536,12 +549,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     const message = 'Bonjour, je suis ' + firstName + ' ' + lastName + '. Je souhaite réserver le COFFRET CADEAU « ' + currentCoffret.name + ' » (' + currentCoffret.price + '), qui contient :\n- ' + currentCoffret.items.join('\n- ') + '\n\nIl s\'agit d\'un coffret cadeau, merci de prévoir l\'emballage. Je choisis mon créneau de retrait sur Planity. À bientôt !';
     barBtn.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+    planityBtn.href = validateBtn.dataset.planityUrl;
 
-    /* ouvre WhatsApp (pré-rempli, un dernier tap sur "Envoyer" reste nécessaire côté cliente — WhatsApp ne permet pas l'envoi 100% automatique depuis un site) */
+    /* ouvre WhatsApp et Planity chacun dans un nouvel onglet (pré-rempli côté WhatsApp, un dernier tap sur "Envoyer" reste nécessaire côté cliente) */
     barBtn.click();
+    planityBtn.click();
 
-    /* redirige vers Planity pour choisir le créneau */
-    window.location.href = validateBtn.dataset.planityUrl;
+    /* la page reste ouverte : on affiche un message pour que la cliente valide bien les deux onglets */
+    stepForm.hidden = true;
+    stepDone.hidden = false;
   });
 })();
 </script>
