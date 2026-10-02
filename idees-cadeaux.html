@@ -104,7 +104,7 @@
             <option value="Head Spa Duo (1h)" data-price="180€">Head Spa Duo (1h) — 180€</option>
             <option value="Head Spa Duo X Soin Visage (1h30)" data-price="240€">Head Spa Duo X Soin Visage (1h30) — 240€</option>
           </select>
-          <button type="button" class="btn btn-primary btn-sm gift-card-offer-btn" disabled>Offrir</button>
+          <button type="button" class="btn btn-primary btn-sm gift-card-offer-btn">Offrir</button>
         </div>
 
         <div class="gift-card glass">
@@ -119,7 +119,7 @@
             <option value="Majestueux (90 min)" data-price="95€">Majestueux (90 min) — 95€</option>
             <option value="Anti-Âge Global, appareil Dermophyt's (90 min)" data-price="105€">Anti-Âge Global, appareil Dermophyt's (90 min) — 105€</option>
           </select>
-          <button type="button" class="btn btn-primary btn-sm gift-card-offer-btn" disabled>Offrir</button>
+          <button type="button" class="btn btn-primary btn-sm gift-card-offer-btn">Offrir</button>
         </div>
 
         <div class="gift-card glass">
@@ -138,7 +138,7 @@
             <option value="Rituel Évasion (90 min)" data-price="99€">Rituel Évasion (90 min) — 99€</option>
             <option value="Rituel Reiki (75 min)" data-price="80€">Rituel Reiki (75 min) — 80€</option>
           </select>
-          <button type="button" class="btn btn-primary btn-sm gift-card-offer-btn" disabled>Offrir</button>
+          <button type="button" class="btn btn-primary btn-sm gift-card-offer-btn">Offrir</button>
         </div>
 
         <div class="gift-card glass">
@@ -148,7 +148,7 @@
             <input type="number" class="checkout-input gift-card-select gift-card-amount" min="1" step="1" inputmode="numeric" placeholder="Montant libre" aria-label="Montant du bon cadeau en euros">
             <span class="gift-card-amount-eur" aria-hidden="true">€</span>
           </div>
-          <button type="button" class="btn btn-primary btn-sm gift-card-offer-btn" disabled>Offrir</button>
+          <button type="button" class="btn btn-primary btn-sm gift-card-offer-btn">Offrir</button>
         </div>
 
         <div class="gift-card glass">
@@ -656,12 +656,27 @@
     });
   });
 
+  function makeHint(btn) {
+    const hint = document.createElement('p');
+    hint.className = 'gift-card-hint';
+    hint.hidden = true;
+    btn.insertAdjacentElement('afterend', hint);
+    return hint;
+  }
+
   document.querySelectorAll('.gift-card-amount').forEach((input) => {
     const offerBtn = input.closest('.gift-card').querySelector('.gift-card-offer-btn');
     const amount = () => Math.floor(Number(input.value));
-    input.addEventListener('input', () => { offerBtn.disabled = !(amount() >= 1); });
+    const hint = makeHint(offerBtn);
+    input.addEventListener('input', () => { input.classList.remove('is-error'); hint.hidden = true; });
     offerBtn.addEventListener('click', () => {
-      if (!(amount() >= 1)) return;
+      if (!(amount() >= 1)) {
+        input.classList.add('is-error');
+        hint.textContent = 'Indiquez le montant à offrir';
+        hint.hidden = false;
+        input.focus();
+        return;
+      }
       openGiftBar('Lunaya', 'Montant libre', amount() + '€');
     });
   });
@@ -669,9 +684,16 @@
   document.querySelectorAll('.gift-card-select:not(.gift-card-amount)').forEach((sel) => {
     const card = sel.closest('.gift-card');
     const offerBtn = card.querySelector('.gift-card-offer-btn');
-    sel.addEventListener('change', () => { offerBtn.disabled = !sel.value; });
+    const hint = makeHint(offerBtn);
+    sel.addEventListener('change', () => { sel.classList.remove('is-error'); hint.hidden = true; });
     offerBtn.addEventListener('click', () => {
-      if (!sel.value) return;
+      if (!sel.value) {
+        sel.classList.add('is-error');
+        hint.textContent = 'Choisissez d\'abord un soin dans la liste';
+        hint.hidden = false;
+        sel.focus();
+        return;
+      }
       openGiftBar(sel.dataset.universe, sel.value, sel.options[sel.selectedIndex].dataset.price);
     });
   });
