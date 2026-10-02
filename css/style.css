@@ -2113,9 +2113,9 @@ footer { padding: 80px 0 30px; }
 
 /* ---------- produits : cadeau ou pour soi ---------- */
 .gift-note {
-  max-width: 560px;
+  max-width: 820px;
   margin: 14px auto 0;
-  padding: 10px 18px;
+  padding: 10px 24px;
   border-radius: var(--r-pill);
   background: rgba(184,146,90,.12);
   border: 1px solid rgba(184,146,90,.35);
