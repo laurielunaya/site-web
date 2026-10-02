@@ -267,13 +267,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <span class="service-name">🎁 Offrez un bon cadeau</span>
             </div>
             <div class="service-q-right">
-              <a href="https://www.planity.com/" target="_blank" rel="noopener" class="service-book-link" aria-label="Offrir un bon cadeau Soin du Visage">Offrir</a>
               <span class="plus"></span>
             </div>
           </div>
           <div class="service-a">
             <div class="service-a-inner">
               <p>Offrez un moment de détente absolue. Valable 6 mois à compter de sa date d'achat, le bon cadeau peut être retiré directement à l'institut ou envoyé par mail en version numérique.</p>
+              <div class="giftcard-picker">
+                <select id="giftcardService" class="checkout-input giftcard-select">
+                  <option value="">Choisissez le soin à offrir…</option>
+                  <option value="Sublimateur (30 min)" data-price="35€">Sublimateur (30 min) — 35€</option>
+                  <option value="Peaux Jeunes, 18 ans (50 min)" data-price="52€">Peaux Jeunes, 18 ans (50 min) — 52€</option>
+                  <option value="Un Moment Pour Soi (60 min)" data-price="65€">Un Moment Pour Soi (60 min) — 65€</option>
+                  <option value="Sur Mesure (75 min)" data-price="75€">Sur Mesure (75 min) — 75€</option>
+                  <option value="Majestueux (90 min)" data-price="95€">Majestueux (90 min) — 95€</option>
+                  <option value="Anti-Âge Global, appareil Dermophyt's (90 min)" data-price="105€">Anti-Âge Global, appareil Dermophyt's (90 min) — 105€</option>
+                </select>
+                <button type="button" class="btn btn-primary btn-sm" id="giftcardContinueBtn" disabled>Offrir ce bon cadeau</button>
+              </div>
             </div>
           </div>
         </div>
@@ -298,6 +309,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
 
 </main>
+
+<div class="product-bar" id="giftcardBar" hidden>
+  <div class="container product-bar-inner">
+    <div class="product-bar-step product-checkout" id="giftcardStepForm">
+      <button type="button" class="product-checkout-back" id="giftcardBarClose" aria-label="Annuler">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+
+      <div class="checkout-form">
+        <span class="coffret-selected-label" id="giftcardSelectedLabel">Bon cadeau sélectionné : —</span>
+        <div class="checkout-fields">
+          <input type="text" id="giftcardLastName" class="checkout-input" placeholder="Nom" autocomplete="family-name">
+          <input type="text" id="giftcardFirstName" class="checkout-input" placeholder="Prénom" autocomplete="given-name">
+          <input type="tel" id="giftcardPhone" class="checkout-input" placeholder="Téléphone" autocomplete="tel">
+        </div>
+        <span class="checkout-item-hint" id="giftcardHint">Pour qu'on sache à qui préparer le bon cadeau, et vous joindre en cas de souci</span>
+      </div>
+
+      <button type="button" class="btn btn-primary btn-sm" id="giftcardValidateBtn">
+        <span id="giftcardValidateBtnLabel">Étape 1/2 — Envoyer par email</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+
+    <div class="product-bar-step product-bar-progress" id="giftcardStepPlanity" hidden>
+      <p class="product-bar-done-text">✅ Étape 1/2 : votre message vient d'être envoyé directement à l'institut. <strong>Il reste une étape</strong> : choisir votre créneau.</p>
+      <!-- ⚠️ LIEN PLACEHOLDER — remplacer par le lien Planity du service "Bon Cadeau" créé dans l'espace pro -->
+      <button type="button" class="btn btn-primary btn-sm" id="giftcardPlanityStepBtn" data-planity-url="https://www.planity.com/">
+        Étape 2/2 — Choisir mon créneau sur Planity
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <a href="#" id="giftcardPlanityBtn" target="_blank" rel="noopener" hidden></a>
+    </div>
+
+    <div class="product-bar-step product-bar-done" id="giftcardStepDone" hidden>
+      <p class="product-bar-done-text">⚠️ Ce n'est pas encore fini ! Vérifiez que vous avez bien <strong>validé votre créneau sur Planity</strong>, puis cliquez sur Terminer.</p>
+      <button type="button" class="btn btn-outline btn-sm" id="giftcardBarDone">Terminer</button>
+    </div>
+  </div>
+</div>
 
 <footer style="padding-top:36px;">
   <div class="container">
@@ -358,5 +409,129 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+(function() {
+  const WEB3FORMS_ACCESS_KEY = '1adfa4f5-1b9b-4f57-a04f-faaf8a5f4889';
+  const UNIVERS = 'Soin du Visage';
+
+  const select = document.getElementById('giftcardService');
+  const continueBtn = document.getElementById('giftcardContinueBtn');
+  const bar = document.getElementById('giftcardBar');
+  const stepForm = document.getElementById('giftcardStepForm');
+  const stepPlanity = document.getElementById('giftcardStepPlanity');
+  const stepDone = document.getElementById('giftcardStepDone');
+  const doneBtn = document.getElementById('giftcardBarDone');
+  const closeBtn = document.getElementById('giftcardBarClose');
+  const selectedLabel = document.getElementById('giftcardSelectedLabel');
+  const hint = document.getElementById('giftcardHint');
+  const validateBtn = document.getElementById('giftcardValidateBtn');
+  const validateBtnLabel = document.getElementById('giftcardValidateBtnLabel');
+  const planityStepBtn = document.getElementById('giftcardPlanityStepBtn');
+  const planityBtn = document.getElementById('giftcardPlanityBtn');
+  const firstNameInput = document.getElementById('giftcardFirstName');
+  const lastNameInput = document.getElementById('giftcardLastName');
+  const phoneInput = document.getElementById('giftcardPhone');
+
+  if (!select || !bar) return;
+
+  let currentGift = null;
+
+  select.addEventListener('change', () => {
+    continueBtn.disabled = !select.value;
+  });
+
+  function hideAllSteps() {
+    stepForm.hidden = true;
+    stepPlanity.hidden = true;
+    stepDone.hidden = true;
+  }
+
+  function resetFields() {
+    [firstNameInput, lastNameInput, phoneInput].forEach((input) => {
+      input.value = '';
+      input.classList.remove('is-error');
+    });
+    hint.textContent = 'Pour qu\'on sache à qui préparer le bon cadeau, et vous joindre en cas de souci';
+  }
+
+  continueBtn.addEventListener('click', () => {
+    if (!select.value) return;
+    const selectedOption = select.options[select.selectedIndex];
+    currentGift = { name: select.value, price: selectedOption.dataset.price };
+    selectedLabel.textContent = 'Bon cadeau sélectionné : ' + currentGift.name + ' — ' + currentGift.price;
+    resetFields();
+    hideAllSteps();
+    stepForm.hidden = false;
+    bar.hidden = false;
+  });
+
+  closeBtn.addEventListener('click', () => { bar.hidden = true; currentGift = null; });
+  doneBtn.addEventListener('click', () => { bar.hidden = true; currentGift = null; });
+
+  [firstNameInput, lastNameInput, phoneInput].forEach((input) => {
+    input.addEventListener('input', () => input.classList.remove('is-error'));
+  });
+
+  validateBtn.addEventListener('click', () => {
+    if (!currentGift) return;
+    const firstName = firstNameInput.value.trim();
+    const lastName = lastNameInput.value.trim();
+    const phone = phoneInput.value.trim();
+
+    if (!firstName || !lastName || !phone) {
+      [firstNameInput, lastNameInput, phoneInput].forEach((input) => {
+        if (!input.value.trim()) input.classList.add('is-error');
+      });
+      hint.textContent = 'Merci de renseigner votre nom, prénom et téléphone';
+      hint.classList.add('shake');
+      setTimeout(() => hint.classList.remove('shake'), 400);
+      return;
+    }
+
+    const subject = 'Bon cadeau ' + UNIVERS + ' — ' + firstName + ' ' + lastName;
+    const body = 'Bonjour,\n\nJe suis ' + firstName + ' ' + lastName + ' (tél. ' + phone + '). Je souhaite offrir le BON CADEAU suivant (' + UNIVERS + ') :\n- ' + currentGift.name + ' — ' + currentGift.price + '\n\nJe choisis mon créneau de retrait sur Planity.\n\nÀ bientôt !';
+
+    validateBtn.disabled = true;
+    validateBtnLabel.textContent = 'Envoi en cours…';
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: subject,
+        from_name: firstName + ' ' + lastName,
+        name: firstName + ' ' + lastName,
+        phone: phone,
+        message: body
+      })
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.success) throw new Error('web3forms');
+        hideAllSteps();
+        stepPlanity.hidden = false;
+      })
+      .catch(() => {
+        hint.textContent = 'Erreur d\'envoi, merci de réessayer ou de nous contacter directement';
+        hint.classList.add('shake');
+        setTimeout(() => hint.classList.remove('shake'), 400);
+      })
+      .finally(() => {
+        validateBtn.disabled = false;
+        validateBtnLabel.textContent = 'Étape 1/2 — Envoyer par email';
+      });
+  });
+
+  planityStepBtn.addEventListener('click', () => {
+    if (!currentGift) return;
+    planityBtn.href = planityStepBtn.dataset.planityUrl;
+    planityBtn.click();
+
+    hideAllSteps();
+    stepDone.hidden = false;
+  });
+})();
+</script>
 </body>
 </html>
