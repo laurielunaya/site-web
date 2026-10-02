@@ -145,6 +145,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ---------- images en chargement différé (data-bg) : chargées à l'approche de l'écran ---------- */
+  const lazyBgs = document.querySelectorAll('[data-bg]');
+  const loadBg = (el) => {
+    el.style.backgroundImage = "url('" + el.dataset.bg + "')";
+    el.removeAttribute('data-bg');
+  };
+  if ('IntersectionObserver' in window) {
+    const bgObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          loadBg(entry.target);
+          bgObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '400px 0px' });
+    lazyBgs.forEach((el) => bgObserver.observe(el));
+  } else {
+    lazyBgs.forEach(loadBg);
+  }
+
   /* ---------- contenus saisonniers : Noël, du 1er novembre au 6 janvier ----------
      Ajouter ?noel=1 à l'adresse d'une page pour prévisualiser en dehors de la période. */
   const today = new Date();
