@@ -2172,7 +2172,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- ÉTAPE 0 : récapitulatif de la sélection -->
     <div class="product-bar-step" id="stepSelect">
-      <span class="product-bar-count" id="productBarCount">0 produit sélectionné</span>
+      <div class="product-bar-basket">
+        <span class="product-bar-count" id="productBarCount">0 produit sélectionné</span>
+        <span class="product-bar-sum">Total : <b id="productBarSum">0,00&nbsp;€</b></span>
+      </div>
       <button type="button" class="btn btn-primary btn-sm" id="productBarNext">
         Suivant
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -2186,6 +2189,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
 
       <div class="checkout-form">
+        <div class="checkout-total" id="checkoutTotal"></div>
         <div class="gift-choice" id="giftChoice" role="radiogroup" aria-label="Pour qui sont ces produits ?">
           <span class="gift-choice-label">Ces produits sont :</span>
           <button type="button" class="gift-choice-btn" role="radio" aria-checked="false" data-gift="no">Pour moi</button>
@@ -2296,6 +2300,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const selected = new Map();
   const bar = document.getElementById('productBar');
   const barCount = document.getElementById('productBarCount');
+  const barSum = document.getElementById('productBarSum');
+  const checkoutTotal = document.getElementById('checkoutTotal');
+  const prices = new Map();
+  const formatEuro = (n) => n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '\u00a0€';
+  function currentTotal() {
+    let sum = 0;
+    selected.forEach((label) => { sum += prices.get(label) || 0; });
+    return sum;
+  }
   const planityBtn = document.getElementById('productBarPlanityBtn');
   const stepSelect = document.getElementById('stepSelect');
   const stepCheckout = document.getElementById('stepCheckout');
@@ -2354,7 +2367,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       return;
     }
     bar.hidden = false;
-    barCount.textContent = count === 1 ? '1 produit sélectionné' : count + ' produits sélectionnés';
+    const countText = count === 1 ? '1 produit sélectionné' : count + ' produits sélectionnés';
+    barCount.textContent = countText;
+    barSum.textContent = formatEuro(currentTotal());
+    checkoutTotal.innerHTML = (count === 1 ? '1 produit' : count + ' produits') + ' · Total : <b>' + formatEuro(currentTotal()) + '</b>';
   }
 
   nextBtn.addEventListener('click', goToCheckout);
@@ -2410,10 +2426,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     const names = [...selected.values()];
     const subject = (isGift ? 'CADEAU — ' : '') + 'Réservation produits — ' + firstName + ' ' + lastName;
+    const totalLine = 'Total : ' + formatEuro(currentTotal()).replace('\u00a0', ' ');
     const giftLine = isGift
       ? '🎁 CADEAU : merci de prévoir un emballage soigné et sophistiqué (cadeau pour offrir, ou pour la cliente elle-même).'
       : 'Produits pour usage personnel (emballage standard).';
-    const body = 'Bonjour,\n\nJe suis ' + firstName + ' ' + lastName + ' (tél. ' + phone + '). Je souhaite réserver les produits suivants à l\'institut :\n- ' + names.join('\n- ') + '\n\n' + giftLine + '\n\nJe choisis mon créneau de retrait sur Planity.\n\nÀ bientôt !';
+    const body = 'Bonjour,\n\nJe suis ' + firstName + ' ' + lastName + ' (tél. ' + phone + '). Je souhaite réserver les produits suivants à l\'institut :\n- ' + names.join('\n- ') + '\n\n' + totalLine + '\n\n' + giftLine + '\n\nJe choisis mon créneau de retrait sur Planity.\n\nÀ bientôt !';
 
     validateBtn.disabled = true;
     validateBtnLabel.textContent = 'Envoi en cours…';
@@ -2435,7 +2452,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       .then((res) => res.json())
       .then((data) => {
         if (!data.success) throw new Error('web3forms');
-        recap.textContent = 'Votre demande' + (isGift ? ' (cadeau, emballage soigné)' : '') + ' : ' + names.join(' · ');
+        recap.textContent = 'Votre demande' + (isGift ? ' (cadeau, emballage soigné)' : '') + ' : ' + names.join(' · ') + '. ' + totalLine;
         hideAllSteps();
         stepPlanity.hidden = false;
       })
@@ -2466,6 +2483,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   document.querySelectorAll('.product-add').forEach((btn) => {
     const card = btn.closest('.product-card');
     const label = card.dataset.product;
+    prices.set(label, parseFloat(card.dataset.price) || 0);
     btn.addEventListener('click', () => {
       const pressed = btn.getAttribute('aria-pressed') === 'true';
       if (pressed) {

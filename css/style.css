@@ -2187,3 +2187,8 @@ footer { padding: 80px 0 30px; }
 .hours-grid td:first-child { padding-right: 8px; }
 .hours-grid td.part { white-space: nowrap; }
 .gift-choice-hint { width: 100%; font-size: .72rem; font-style: italic; color: var(--brown-mist); }
+.product-bar-basket { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+.product-bar-sum { font-family: var(--ff-serif); font-size: 1rem; color: var(--brown-soft); }
+.product-bar-sum b { color: var(--brown-deep); font-weight: 600; font-size: 1.12rem; }
+.checkout-total { font-family: var(--ff-serif); font-size: .95rem; color: var(--brown-soft); margin-bottom: 2px; }
+.checkout-total b { color: var(--brown-deep); font-weight: 600; }
