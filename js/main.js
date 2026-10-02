@@ -145,6 +145,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ---------- badge "Noël" sur le lien Idées Cadeaux du menu ---------- */
+  document.querySelectorAll('.nav-links a[href="idees-cadeaux.html"], .mobile-menu a[href="idees-cadeaux.html"]').forEach((a) => {
+    const badge = document.createElement('span');
+    badge.className = 'nav-badge';
+    badge.textContent = 'Noël';
+    a.appendChild(badge);
+  });
+
+  /* ---------- pied de page : lien direct vers les bons cadeaux ---------- */
+  document.querySelectorAll('footer .footer-col').forEach((col) => {
+    const list = col.querySelector('ul');
+    const title = col.querySelector('h5');
+    if (!list || !title || title.textContent.trim() !== 'Contact') return;
+    const li = document.createElement('li');
+    li.innerHTML = '<a href="idees-cadeaux.html#bons-cadeaux">Offrir un bon cadeau</a>';
+    list.appendChild(li);
+  });
+
+  /* ---------- bouton "Copier le lien" (page d'accueil) ---------- */
+  const copyBtn = document.getElementById('shareCopyBtn');
+  if (copyBtn) {
+    const label = copyBtn.textContent;
+    copyBtn.addEventListener('click', () => {
+      const url = copyBtn.dataset.url;
+      const done = () => {
+        copyBtn.textContent = 'Lien copié ✓';
+        setTimeout(() => { copyBtn.textContent = label; }, 2200);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(done).catch(() => { window.prompt('Copiez ce lien :', url); });
+      } else {
+        window.prompt('Copiez ce lien :', url);
+      }
+    });
+  }
+
   /* ---------- quick-nav : surligne la rubrique en cours de lecture ---------- */
   document.querySelectorAll('.quick-nav').forEach((nav) => {
     if (!('IntersectionObserver' in window)) return;

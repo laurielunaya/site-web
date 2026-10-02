@@ -2010,3 +2010,128 @@ footer { padding: 80px 0 30px; }
   .price-table th, .price-table td { padding: 12px 6px; font-size: .82rem; }
   .price-table td:first-child { font-size: .9rem; }
 }
+
+/* ==========================================================================
+   ACCUEIL : sections de conversion (note, Noël, Head Spa, visite, partage)
+   ========================================================================== */
+.hero-rating {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-top: 26px; padding: 10px 18px;
+  border-radius: var(--r-pill);
+  background: rgba(255,252,246,.14);
+  border: 1px solid rgba(255,255,255,.35);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  color: var(--cream-light); font-size: .84rem; text-decoration: none;
+  transition: background .3s var(--ease), transform .3s var(--ease);
+}
+.hero-rating:hover { background: rgba(255,252,246,.26); transform: translateY(-2px); }
+.hero-rating-stars { color: var(--gold-light); letter-spacing: .12em; }
+.hero-rating b { font-weight: 600; }
+
+.xmas-band {
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: space-between; gap: 28px;
+  padding: 36px 46px;
+  border-radius: var(--r-lg);
+  background: linear-gradient(135deg, var(--brown), var(--brown-deep));
+  color: var(--cream-light); text-decoration: none;
+  box-shadow: 0 24px 50px -28px rgba(74,52,42,.7);
+}
+.xmas-band::before, .xmas-band::after {
+  content: '✦'; position: absolute; color: var(--gold-light); pointer-events: none;
+  animation: xmasTwinkle 3.4s ease-in-out infinite;
+}
+.xmas-band::before { right: 26%; top: 12px; font-size: 1.4rem; }
+.xmas-band::after { left: 46%; bottom: 10px; font-size: .9rem; animation-delay: 1s; animation-duration: 4.2s; }
+@keyframes xmasTwinkle { 0%, 100% { opacity: .2; transform: scale(.85); } 50% { opacity: .85; transform: scale(1.1); } }
+.xmas-band .eyebrow { color: var(--gold-light); }
+.xmas-band .eyebrow::before, .xmas-band .eyebrow::after { background: var(--gold-light); }
+.xmas-band h2 { font-family: var(--ff-serif); font-weight: 500; font-size: clamp(1.4rem, 2.4vw, 1.95rem); color: var(--cream-light); margin: 8px 0; line-height: 1.2; }
+.xmas-band p { font-size: .95rem; font-weight: 300; color: rgba(251,246,236,.86); max-width: 560px; line-height: 1.6; }
+.xmas-band strong { color: var(--gold-light); font-weight: 600; }
+.xmas-band-cta { flex-shrink: 0; background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: var(--brown-deep); transition: transform .35s var(--ease); }
+.xmas-band:hover .xmas-band-cta { transform: translateX(5px); }
+
+.hs-spot {
+  display: grid; grid-template-columns: 1.05fr 1fr;
+  border-radius: var(--r-lg); overflow: hidden;
+  background: linear-gradient(135deg, var(--brown-deep), #3a2820);
+  color: var(--cream-light);
+  box-shadow: 0 30px 60px -34px rgba(74,52,42,.8);
+}
+.hs-spot-media { position: relative; min-height: 340px; background: #2b1d17; }
+.hs-spot-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hs-spot-text { padding: 56px 52px; display: flex; flex-direction: column; justify-content: center; }
+.hs-spot-text .eyebrow { color: var(--gold-light); align-self: flex-start; }
+.hs-spot-text .eyebrow::before, .hs-spot-text .eyebrow::after { background: var(--gold-light); }
+.hs-spot-text h2.title { color: var(--cream-light); font-size: clamp(1.9rem, 3vw, 2.5rem); margin: 10px 0 14px; }
+.hs-spot-text h2.title em { color: var(--gold-light); }
+.hs-spot-text p { color: rgba(251,246,236,.82); font-weight: 300; line-height: 1.7; font-size: .95rem; }
+.hs-spot-points { margin: 20px 0 18px; display: flex; flex-direction: column; gap: 10px; list-style: none; padding: 0; }
+.hs-spot-points li { position: relative; padding-left: 20px; font-size: .9rem; color: rgba(251,246,236,.92); font-weight: 300; }
+.hs-spot-points li::before { content: ''; position: absolute; left: 0; top: .6em; width: 7px; height: 7px; border-radius: 50%; background: var(--gold-light); }
+.hs-spot-price { font-family: var(--ff-serif); font-size: 1.05rem; color: var(--gold-light); margin-bottom: 24px; }
+.hs-spot-price b { color: var(--cream-light); font-weight: 600; }
+.hs-spot-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hs-spot .btn-primary { background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: var(--brown-deep); }
+.hs-spot .btn-outline { color: var(--cream-light); border-color: rgba(251,246,236,.5); }
+.hs-spot .btn-outline:hover { background: rgba(255,255,255,.1); }
+
+.first-visit { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.first-visit-item { padding: 30px 26px; border-radius: var(--r-md); }
+.first-visit-item h3 { font-family: var(--ff-serif); font-size: 1.1rem; color: var(--brown-deep); font-weight: 600; margin-bottom: 8px; }
+.first-visit-item p { font-size: .86rem; color: var(--brown-soft); font-weight: 300; line-height: 1.65; }
+
+.share-card { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 38px 46px; border-radius: var(--r-lg); }
+.share-text h2 { font-family: var(--ff-serif); font-weight: 500; font-size: clamp(1.4rem, 2.2vw, 1.8rem); color: var(--brown-deep); margin: 8px 0; }
+.share-text p { font-size: .92rem; color: var(--brown-soft); font-weight: 300; max-width: 480px; line-height: 1.65; }
+.share-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
+
+.insta { margin-top: 36px; }
+.insta-head { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 18px; color: var(--brown-deep); font-size: .92rem; text-decoration: none; }
+.insta-head svg { width: 22px; height: 22px; color: var(--gold); }
+.insta-head b { font-weight: 600; }
+.insta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.insta-tile { position: relative; aspect-ratio: 1 / 1; border-radius: var(--r-md); background-size: cover; background-position: center; overflow: hidden; transition: transform .45s var(--ease), box-shadow .45s var(--ease); }
+.insta-tile::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(107,69,48,.0), rgba(74,52,42,.35)); opacity: 0; transition: opacity .4s var(--ease); }
+.insta-tile:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 18px 34px -18px rgba(74,52,42,.6); }
+.insta-tile:hover::after { opacity: 1; }
+
+.give-cta {
+  display: flex; align-items: center; justify-content: space-between; gap: 28px;
+  padding: 38px 46px; border-radius: var(--r-lg);
+  background: linear-gradient(135deg, rgba(224,196,150,.38), rgba(255,252,246,.75));
+  border: 1px solid rgba(176,134,92,.4);
+}
+.give-cta h2 { font-family: var(--ff-serif); font-weight: 500; font-size: clamp(1.4rem, 2.2vw, 1.8rem); color: var(--brown-deep); margin-bottom: 6px; }
+.give-cta p { font-size: .92rem; color: var(--brown-soft); font-weight: 300; }
+.give-cta .btn { flex-shrink: 0; }
+
+.nav-badge {
+  display: inline-block; margin-left: 6px; padding: 2px 7px;
+  border-radius: 99px; vertical-align: middle;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: var(--brown-deep); font-size: .55rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  animation: navBadgePulse 2.6s ease-in-out infinite;
+}
+@keyframes navBadgePulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+#coffrets, #bons-cadeaux { scroll-margin-top: 110px; }
+
+@media (max-width: 900px) {
+  .first-visit { grid-template-columns: repeat(2, 1fr); }
+  .hs-spot { grid-template-columns: 1fr; }
+  .hs-spot-media { min-height: 240px; }
+  .hs-spot-text { padding: 38px 28px; }
+  .insta-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 760px) {
+  .xmas-band, .share-card, .give-cta { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+  .share-actions { justify-content: flex-start; }
+}
+@media (max-width: 520px) {
+  .first-visit { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .xmas-band::before, .xmas-band::after, .nav-badge { animation: none; }
+}
