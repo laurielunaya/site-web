@@ -2210,4 +2210,4 @@ footer { padding: 80px 0 30px; }
 .hours-grid td.no { color: var(--brown-mist); opacity: .5; }
 .hours-grid tr.closed td:last-child { padding-left: 14px; }
 .hours-grid td:first-child { padding-right: 8px; }
-.hours-grid td.part { color: var(--gold); font-weight: 600; font-size: .8rem; white-space: nowrap; }
+.hours-grid td.part { white-space: nowrap; }
