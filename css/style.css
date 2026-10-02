@@ -715,6 +715,8 @@ body:has(#productBar:not([hidden])) .fab-book {
 .gift-card .btn { margin-top: auto; width: 100%; justify-content: center; }
 .gift-card-select { width: 100%; max-width: 100%; font-size: .72rem; padding: 9px 28px 9px 12px; margin-bottom: 16px; cursor: pointer; text-overflow: ellipsis; }
 .gift-card .btn:disabled { opacity: .5; cursor: not-allowed; }
+.gift-card-amount { cursor: text; text-align: center; padding: 9px 12px; -moz-appearance: textfield; }
+.gift-card-amount::-webkit-outer-spin-button, .gift-card-amount::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 
 .coffret-grid {
   display: grid;

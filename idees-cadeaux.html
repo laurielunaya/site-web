@@ -161,8 +161,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="gift-card glass">
           <div class="gift-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="9" width="18" height="11" rx="1.5"/><path d="M3 9h18M12 9v11"/><path d="M12 9c-1.8 0-3.2-1.3-3.2-3S10.2 3 12 4.5c1.8-1.5 4-.3 4 1.5S13.8 9 12 9z"/></svg></div>
           <h3>Bon Cadeau Lunaya</h3>
-          <span class="gift-card-tag">Montant libre</span>
-          <a href="https://www.planity.com/" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Offrir</a>
+          <input type="number" class="checkout-input gift-card-select gift-card-amount" min="1" step="1" inputmode="numeric" placeholder="Montant libre (€)" aria-label="Montant du bon cadeau en euros">
+          <button type="button" class="btn btn-primary btn-sm gift-card-offer-btn" disabled>Offrir</button>
         </div>
 
         <div class="gift-card glass">
@@ -626,6 +626,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     currentCoffret = { kind: 'bon', universe: universe, name: soin, price: price };
     selectedLabel.textContent = 'Bon cadeau sélectionné : ' + soin + ' — ' + price;
     resetFields();
+    hint.textContent = 'Pour qu\'on sache à qui préparer le bon cadeau, et vous joindre en cas de souci sur le créneau';
     hideAllSteps();
     stepForm.hidden = false;
     bar.hidden = false;
@@ -642,7 +643,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   });
 
-  document.querySelectorAll('.gift-card-select').forEach((sel) => {
+  document.querySelectorAll('.gift-card-amount').forEach((input) => {
+    const offerBtn = input.closest('.gift-card').querySelector('.gift-card-offer-btn');
+    const amount = () => Math.floor(Number(input.value));
+    input.addEventListener('input', () => { offerBtn.disabled = !(amount() >= 1); });
+    offerBtn.addEventListener('click', () => {
+      if (!(amount() >= 1)) return;
+      openGiftBar('Lunaya', 'Montant libre', amount() + '€');
+    });
+  });
+
+  document.querySelectorAll('.gift-card-select:not(.gift-card-amount)').forEach((sel) => {
     const card = sel.closest('.gift-card');
     const offerBtn = card.querySelector('.gift-card-offer-btn');
     sel.addEventListener('change', () => { offerBtn.disabled = !sel.value; });
