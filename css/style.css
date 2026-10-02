@@ -1294,6 +1294,7 @@ body:has(#productBar:not([hidden])) .fab-book {
 #stepSelect { justify-content: space-between; }
 .product-bar-count { font-family: var(--ff-serif); font-size: 1rem; color: var(--brown-deep); }
 
+.product-bar .btn { max-width: 100%; white-space: normal; text-align: center; }
 .product-bar-done { gap: 16px; }
 .product-bar-mode { gap: 14px; }
 .giftcard-modes { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
@@ -1635,6 +1636,8 @@ body:has(#productBar:not([hidden])) .fab-book {
   transition: transform .3s var(--ease), box-shadow .3s var(--ease);
 }
 .service-book-link:hover, .service-book-link:focus-visible { transform: translateY(-2px); box-shadow: 0 10px 22px -10px rgba(107,69,48,.5); }
+button.service-gift-link { border: 1px solid var(--gold); background: transparent; cursor: pointer; }
+.product-bar-recap { width: 100%; text-align: center; font-size: .78rem; color: var(--brown-mist); font-style: italic; margin: 0; }
 .service-q .plus { width: 22px; height: 22px; position: relative; flex-shrink: 0; }
 .service-q .plus::before, .service-q .plus::after { content: ''; position: absolute; background: var(--brown); border-radius: 2px; transition: transform .35s var(--ease); }
 .service-q .plus::before { width: 100%; height: 1.5px; top: 50%; left: 0; transform: translateY(-50%); }

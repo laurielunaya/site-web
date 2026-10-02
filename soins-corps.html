@@ -403,6 +403,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <input type="text" id="giftcardLastName" class="checkout-input" placeholder="Nom" autocomplete="family-name">
           <input type="text" id="giftcardFirstName" class="checkout-input" placeholder="Prénom" autocomplete="given-name">
           <input type="tel" id="giftcardPhone" class="checkout-input" placeholder="Téléphone" autocomplete="tel">
+          <input type="email" id="giftcardEmail" class="checkout-input" placeholder="Email (facultatif)" autocomplete="email">
+          <input type="checkbox" id="giftcardBotcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;width:1px;height:1px;">
         </div>
         <span class="checkout-item-hint" id="giftcardHint">Pour qu'on sache à qui préparer le bon cadeau, et vous joindre en cas de souci</span>
       </div>
@@ -414,6 +416,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="product-bar-step product-bar-progress" id="giftcardStepPlanity" hidden>
+      <p class="product-bar-recap" id="giftcardRecap"></p>
       <p class="product-bar-done-text">✅ Étape 1/2 : votre message vient d'être envoyé directement à l'institut. <strong>Il reste une étape</strong> : choisir votre créneau.</p>
       <!-- ⚠️ LIEN PLACEHOLDER — remplacer par le lien Planity du service "Bon Cadeau" créé dans l'espace pro -->
       <button type="button" class="btn btn-primary btn-sm" id="giftcardPlanityStepBtn" data-planity-url="https://www.planity.com/">
@@ -497,6 +500,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 (function() {
   const WEB3FORMS_ACCESS_KEY = '1adfa4f5-1b9b-4f57-a04f-faaf8a5f4889';
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const UNIVERS = 'Soin du Corps';
 
   const select = document.getElementById('giftcardService');
@@ -516,6 +520,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const firstNameInput = document.getElementById('giftcardFirstName');
   const lastNameInput = document.getElementById('giftcardLastName');
   const phoneInput = document.getElementById('giftcardPhone');
+  const emailInput = document.getElementById('giftcardEmail');
+  const botInput = document.getElementById('giftcardBotcheck');
+  const recap = document.getElementById('giftcardRecap');
   const stepMode = document.getElementById('giftcardStepMode');
   const stepDigital = document.getElementById('giftcardStepDigital');
   const modeLabel = document.getElementById('giftcardModeLabel');
@@ -542,7 +549,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   function resetFields() {
-    [firstNameInput, lastNameInput, phoneInput].forEach((input) => {
+    [firstNameInput, lastNameInput, phoneInput, emailInput].forEach((input) => {
       input.value = '';
       input.classList.remove('is-error');
     });
@@ -580,7 +587,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
   doneBtn.addEventListener('click', () => { bar.hidden = true; currentGift = null; });
 
-  [firstNameInput, lastNameInput, phoneInput].forEach((input) => {
+  [firstNameInput, lastNameInput, phoneInput, emailInput].forEach((input) => {
     input.addEventListener('input', () => input.classList.remove('is-error'));
   });
 
@@ -589,12 +596,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const firstName = firstNameInput.value.trim();
     const lastName = lastNameInput.value.trim();
     const phone = phoneInput.value.trim();
+    const email = emailInput.value.trim();
 
     if (!firstName || !lastName || !phone) {
       [firstNameInput, lastNameInput, phoneInput].forEach((input) => {
         if (!input.value.trim()) input.classList.add('is-error');
       });
       hint.textContent = 'Merci de renseigner votre nom, prénom et téléphone';
+      hint.classList.add('shake');
+      setTimeout(() => hint.classList.remove('shake'), 400);
+      return;
+    }
+
+    if (email && !EMAIL_RE.test(email)) {
+      emailInput.classList.add('is-error');
+      hint.textContent = 'Cette adresse email semble incorrecte';
       hint.classList.add('shake');
       setTimeout(() => hint.classList.remove('shake'), 400);
       return;
@@ -615,12 +631,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         from_name: firstName + ' ' + lastName,
         name: firstName + ' ' + lastName,
         phone: phone,
+        email: email || undefined,
+        botcheck: botInput.checked,
         message: body
       })
     })
       .then((res) => res.json())
       .then((data) => {
         if (!data.success) throw new Error('web3forms');
+        recap.textContent = 'Votre demande : bon cadeau ' + currentGift.name + ' — ' + currentGift.price + ' (version imprimée)';
         hideAllSteps();
         stepPlanity.hidden = false;
       })
@@ -642,6 +661,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     hideAllSteps();
     stepDone.hidden = false;
+  });
+
+  document.querySelectorAll('.service-item').forEach((item) => {
+    const nameEl = item.querySelector('.service-name');
+    const durEl = item.querySelector('.service-duration');
+    const right = item.querySelector('.service-q-right');
+    if (!nameEl || !durEl || !right) return;
+    const base = nameEl.textContent.split(/\s[–—-]\s/)[0].trim();
+    const dur = durEl.textContent.trim();
+    const opt = Array.from(select.options).find((o) => o.value && o.value.startsWith(base) && o.value.endsWith('(' + dur + ')'));
+    if (!opt) return;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'service-book-link service-gift-link';
+    btn.textContent = 'Offrir';
+    btn.setAttribute('aria-label', 'Offrir ' + base + ' en bon cadeau');
+    btn.addEventListener('click', () => {
+      select.value = opt.value;
+      select.dispatchEvent(new Event('change'));
+      continueBtn.click();
+    });
+    right.insertBefore(btn, right.querySelector('.service-book-link'));
   });
 })();
 </script>

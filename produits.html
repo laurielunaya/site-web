@@ -2193,6 +2193,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <input type="text" id="customerLastName" class="checkout-input" placeholder="Nom" autocomplete="family-name">
           <input type="text" id="customerFirstName" class="checkout-input" placeholder="Prénom" autocomplete="given-name">
           <input type="tel" id="customerPhone" class="checkout-input" placeholder="Téléphone" autocomplete="tel">
+          <input type="email" id="customerEmail" class="checkout-input" placeholder="Email (facultatif)" autocomplete="email">
+          <input type="checkbox" id="customerBotcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;width:1px;height:1px;">
         </div>
         <span class="checkout-item-hint" id="checkoutHint">Pour qu'on sache à qui préparer la commande, et vous joindre en cas de souci sur le créneau</span>
       </div>
@@ -2205,6 +2207,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- ÉTAPE 2 : email envoyé automatiquement, reste Planity -->
     <div class="product-bar-step product-bar-progress" id="stepPlanity" hidden>
+      <p class="product-bar-recap" id="productRecap"></p>
       <p class="product-bar-done-text">✅ Étape 1/2 : votre message vient d'être envoyé directement à l'institut. <strong>Il reste une étape</strong> : choisir votre créneau de retrait.</p>
       <!-- ⚠️ LIEN PLACEHOLDER — remplacer par le lien Planity du service "Retrait de commande" créé dans l'espace pro -->
       <button type="button" class="btn btn-primary btn-sm" id="planityStepBtn" data-planity-url="https://www.planity.com/">
@@ -2285,6 +2288,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 (function() {
   const WEB3FORMS_ACCESS_KEY = '1adfa4f5-1b9b-4f57-a04f-faaf8a5f4889';
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const selected = new Map();
   const bar = document.getElementById('productBar');
@@ -2304,6 +2308,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const firstNameInput = document.getElementById('customerFirstName');
   const lastNameInput = document.getElementById('customerLastName');
   const phoneInput = document.getElementById('customerPhone');
+  const emailInput = document.getElementById('customerEmail');
+  const botInput = document.getElementById('customerBotcheck');
+  const recap = document.getElementById('productRecap');
 
   function hideAllSteps() {
     stepSelect.hidden = true;
@@ -2346,6 +2353,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     firstNameInput.value = '';
     lastNameInput.value = '';
     phoneInput.value = '';
+    emailInput.value = '';
     updateBar();
   });
 
@@ -2354,12 +2362,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const firstName = firstNameInput.value.trim();
     const lastName = lastNameInput.value.trim();
     const phone = phoneInput.value.trim();
+    const email = emailInput.value.trim();
 
     if (!firstName || !lastName || !phone) {
       [firstNameInput, lastNameInput, phoneInput].forEach((input) => {
         if (!input.value.trim()) input.classList.add('is-error');
       });
       hint.textContent = 'Merci de renseigner votre nom, prénom et téléphone';
+      hint.classList.add('shake');
+      setTimeout(() => hint.classList.remove('shake'), 400);
+      return;
+    }
+
+    if (email && !EMAIL_RE.test(email)) {
+      emailInput.classList.add('is-error');
+      hint.textContent = 'Cette adresse email semble incorrecte';
       hint.classList.add('shake');
       setTimeout(() => hint.classList.remove('shake'), 400);
       return;
@@ -2381,12 +2398,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         from_name: firstName + ' ' + lastName,
         name: firstName + ' ' + lastName,
         phone: phone,
+        email: email || undefined,
+        botcheck: botInput.checked,
         message: body
       })
     })
       .then((res) => res.json())
       .then((data) => {
         if (!data.success) throw new Error('web3forms');
+        recap.textContent = 'Votre demande : ' + names.join(' · ');
         hideAllSteps();
         stepPlanity.hidden = false;
       })
@@ -2410,7 +2430,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     stepDone.hidden = false;
   });
 
-  [firstNameInput, lastNameInput, phoneInput].forEach((input) => {
+  [firstNameInput, lastNameInput, phoneInput, emailInput].forEach((input) => {
     input.addEventListener('input', () => input.classList.remove('is-error'));
   });
 
