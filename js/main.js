@@ -145,6 +145,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ---------- quick-nav : surligne la rubrique en cours de lecture ---------- */
+  document.querySelectorAll('.quick-nav').forEach((nav) => {
+    if (!('IntersectionObserver' in window)) return;
+    const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+    const targets = links
+      .map((a) => ({ a, el: document.getElementById(a.getAttribute('href').slice(1)) }))
+      .filter((x) => x.el);
+    if (!targets.length) return;
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const hit = targets.find((x) => x.el === entry.target);
+        if (hit) links.forEach((l) => l.classList.toggle('active', l === hit.a));
+      });
+      if (targets[0].el.getBoundingClientRect().top > window.innerHeight * 0.45) {
+        links.forEach((l) => l.classList.remove('active'));
+      }
+    }, { rootMargin: '-35% 0px -55% 0px' });
+    targets.forEach((x) => spy.observe(x.el));
+  });
+
   /* ---------- media rotator (photos de galerie en rotation aléatoire) ---------- */
   document.querySelectorAll('.media-rotator').forEach((el) => {
     const images = (el.dataset.images || '').split(',').map((s) => s.trim()).filter(Boolean);
