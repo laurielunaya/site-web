@@ -154,6 +154,17 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-seasonal="noel"]').forEach((el) => {
     el.hidden = !noelActive;
   });
+  if (noelActive) {
+    /* textes et noms de coffrets : version Noël */
+    document.querySelectorAll('[data-noel-text]').forEach((el) => {
+      el.textContent = el.dataset.noelText;
+    });
+    document.querySelectorAll('[data-noel-name]').forEach((card) => {
+      card.dataset.coffret = card.dataset.noelName;
+      const title = card.querySelector('h3');
+      if (title) title.textContent = card.dataset.noelName;
+    });
+  }
 
   /* ---------- badge "Noël" sur le lien Idées Cadeaux du menu ---------- */
   if (noelActive) {
