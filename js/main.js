@@ -153,17 +153,24 @@ document.addEventListener('DOMContentLoaded', () => {
       .map((a) => ({ a, el: document.getElementById(a.getAttribute('href').slice(1)) }))
       .filter((x) => x.el);
     if (!targets.length) return;
-    const spy = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const hit = targets.find((x) => x.el === entry.target);
-        if (hit) links.forEach((l) => l.classList.toggle('active', l === hit.a));
+    const LINE = 190;
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      let current = null;
+      let bestTop = -Infinity;
+      targets.forEach((x) => {
+        const top = x.el.getBoundingClientRect().top;
+        if (top <= LINE && top > bestTop) { bestTop = top; current = x; }
       });
-      if (targets[0].el.getBoundingClientRect().top > window.innerHeight * 0.45) {
-        links.forEach((l) => l.classList.remove('active'));
-      }
-    }, { rootMargin: '-35% 0px -55% 0px' });
-    targets.forEach((x) => spy.observe(x.el));
+      links.forEach((l) => l.classList.toggle('active', !!current && l === current.a));
+    };
+    const onScroll = () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
   });
 
   /* ---------- media rotator (photos de galerie en rotation aléatoire) ---------- */
