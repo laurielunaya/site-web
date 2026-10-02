@@ -2199,3 +2199,14 @@ footer { padding: 80px 0 30px; }
 }
 .footer-info-sub { display: block; font-size: .78rem; opacity: .75; margin-top: 2px; }
 .footer-info { margin-bottom: 4px; }
+
+/* ---------- horaires : tableau par jour ---------- */
+.hours-grid th { padding: 6px 0 8px; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--brown-mist); font-weight: 600; text-align: center; border-bottom: 1px solid rgba(107,69,48,.2); }
+.hours-grid th:first-child, .hours-grid td:first-child { text-align: left; }
+.hours-grid td { text-align: center; }
+.hours-grid td:last-child { text-align: center; }
+.hours-grid tr.closed td:last-child { text-align: left; }
+.hours-grid td.yes { color: var(--gold); font-weight: 700; font-size: 1rem; }
+.hours-grid td.no { color: var(--brown-mist); opacity: .5; }
+.hours-grid tr.closed td:last-child { padding-left: 14px; }
+.hours-grid td:first-child { padding-right: 8px; }

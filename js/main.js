@@ -190,7 +190,8 @@ document.addEventListener('DOMContentLoaded', () => {
     info.className = 'footer-info';
     info.innerHTML = '<a href="https://www.google.com/maps/search/?api=1&query=Lunaya+110+route+de+Rives+38140+Apprieu" target="_blank" rel="noopener">110 route de Rives, 38140 Apprieu</a>'
       + '<span class="footer-info-sub">Parking gratuit sur place</span>'
-      + '<span class="footer-info-sub">Lun. – ven. 9h – 19h · Sam. 9h – 18h</span>';
+      + '<span class="footer-info-sub">Sur rendez-vous, du lundi au samedi</span>'
+      + '<a class="footer-info-sub" href="contact.html#horaires">Voir les horaires détaillés</a>';
     list.insertBefore(info, list.firstChild);
   });
 

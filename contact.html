@@ -126,18 +126,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </div>
 
-          <table class="hours-table">
-            <tr><td>Lundi</td><td>9h – 19h</td></tr>
-            <tr><td>Mardi</td><td>9h – 19h</td></tr>
-            <tr><td>Mercredi</td><td>9h – 19h</td></tr>
-            <tr><td>Jeudi</td><td>9h – 19h</td></tr>
-            <tr><td>Vendredi</td><td>9h – 19h</td></tr>
-            <tr><td>Samedi</td><td>9h – 18h</td></tr>
-            <tr class="closed"><td>Dimanche</td><td>Fermé</td></tr>
+          <table class="hours-table hours-grid" id="horaires">
+            <thead>
+              <tr><th scope="col">Jour</th><th scope="col">Horaires</th><th scope="col">Head Spa</th><th scope="col">Soins beauté</th></tr>
+            </thead>
+            <tbody>
+            <tr><td>Lundi</td><td>9h – 19h</td><td class="yes" aria-label="Oui">✓</td><td class="yes" aria-label="Oui">✓</td></tr>
+            <tr><td>Mardi</td><td>9h – 19h</td><td class="yes" aria-label="Oui">✓</td><td class="no" aria-label="Non">–</td></tr>
+            <tr><td>Mercredi</td><td>9h – 19h</td><td class="yes" aria-label="Oui">✓</td><td class="no" aria-label="Non">–</td></tr>
+            <tr><td>Jeudi</td><td>9h – 19h</td><td class="yes" aria-label="Oui">✓</td><td class="yes" aria-label="Oui">✓</td></tr>
+            <tr><td>Vendredi</td><td>9h – 19h</td><td class="yes" aria-label="Oui">✓</td><td class="yes" aria-label="Oui">✓</td></tr>
+            <tr><td>Samedi</td><td>9h – 18h</td><td class="yes" aria-label="Oui">✓</td><td class="yes" aria-label="Oui">✓</td></tr>
+            <tr class="closed"><td>Dimanche</td><td colspan="3">Fermé</td></tr>
+            </tbody>
           </table>
-          <p style="font-size:.8rem; color:var(--brown-mist); font-style:italic; margin-top:10px;">Uniquement sur rendez-vous, tous les jours.</p>
-          <p style="font-size:.8rem; color:var(--brown-mist); font-style:italic; margin-top:6px;">Prestations de beauté : lundi, jeudi, vendredi et samedi.<br>Head Spa : du lundi au samedi.</p>
-
+          <p style="font-size:.8rem; color:var(--brown-mist); font-style:italic; margin-top:10px;">Uniquement sur rendez-vous. Soins beauté : visage, corps, épilation, mains et pieds, regard.</p>
           <span class="social-label">Suis-nous pour ne rien manquer</span>
         <div class="social-row">
             <a href="https://www.instagram.com/linstitutdebeauteapprieu/" target="_blank" rel="noopener" class="social-btn glass" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
