@@ -2285,3 +2285,4 @@ footer { padding: 80px 0 30px; }
 .map-consent-note { max-width: 340px; font-size: .8rem; color: var(--brown-mist); font-style: italic; line-height: 1.55; }
 .gift-card-select.is-error { border-color: #c0574a; }
 .gift-card-hint { margin: 8px 0 0; font-size: .74rem; font-style: italic; color: #b0483c; line-height: 1.4; }
+.giftcard-select.is-error { border-color: #c0574a; }

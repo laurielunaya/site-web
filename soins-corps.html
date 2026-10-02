@@ -331,7 +331,7 @@
                   <option value="Rituel Évasion (90 min)" data-price="99€">Rituel Évasion (90 min) — 99€</option>
                   <option value="Rituel Reiki (75 min)" data-price="80€">Rituel Reiki (75 min) — 80€</option>
                 </select>
-                <button type="button" class="btn btn-primary btn-sm" id="giftcardContinueBtn" disabled>Offrir ce bon cadeau</button>
+                <button type="button" class="btn btn-primary btn-sm" id="giftcardContinueBtn">Offrir ce bon cadeau</button>
               </div>
             </div>
           </div>
@@ -555,7 +555,8 @@
   let currentGift = null;
 
   select.addEventListener('change', () => {
-    continueBtn.disabled = !select.value;
+    select.classList.remove('is-error');
+    selectHint.hidden = true;
   });
 
   function hideAllSteps() {
@@ -574,8 +575,19 @@
     hint.textContent = 'Pour qu\'on sache à qui préparer le bon cadeau, et vous joindre en cas de souci';
   }
 
+  const selectHint = document.createElement('p');
+  selectHint.className = 'gift-card-hint';
+  selectHint.hidden = true;
+  selectHint.textContent = 'Choisissez d\'abord un soin dans la liste';
+  continueBtn.insertAdjacentElement('afterend', selectHint);
+
   continueBtn.addEventListener('click', () => {
-    if (!select.value) return;
+    if (!select.value) {
+      select.classList.add('is-error');
+      selectHint.hidden = false;
+      select.focus();
+      return;
+    }
     const selectedOption = select.options[select.selectedIndex];
     currentGift = { name: select.value, price: selectedOption.dataset.price };
     selectedLabel.textContent = 'Bon cadeau sélectionné : ' + currentGift.name + ' — ' + currentGift.price;
