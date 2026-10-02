@@ -92,7 +92,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="breadcrumb"><a href="index.html">Accueil</a><span class="sep">/</span><span class="here">Réserver mes produits</span></div>
       <h1>Retrouvez chez vous <em>les produits de vos soins</em></h1>
       <p class="lede">Sélectionnez les produits qui vous intéressent, réservez-les en un message, et venez les récupérer à l'institut au créneau de votre choix.</p>
-      <p class="gift-note"><span aria-hidden="true">🎁</span> Pour offrir, <strong>composez vous-même votre coffret</strong> : choisissez vos produits et indiquez que c'est un cadeau, nous préparons un emballage soigné.</p>
+      <p class="gift-note"><span aria-hidden="true">🎁</span> Ces produits sont pour vous, ou pour offrir. <strong>Composez vous-même votre coffret</strong> : en choisissant l'option « cadeau », nous préparons un emballage soigné, que ce soit pour une proche ou pour vous faire plaisir.</p>
     </div>
   </section>
 
@@ -2189,7 +2189,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="gift-choice" id="giftChoice" role="radiogroup" aria-label="Pour qui sont ces produits ?">
           <span class="gift-choice-label">Ces produits sont :</span>
           <button type="button" class="gift-choice-btn" role="radio" aria-checked="false" data-gift="no">Pour moi</button>
-          <button type="button" class="gift-choice-btn" role="radio" aria-checked="false" data-gift="yes"><span aria-hidden="true">🎁</span> C'est un cadeau</button>
+          <button type="button" class="gift-choice-btn" role="radio" aria-checked="false" data-gift="yes"><span aria-hidden="true">🎁</span> Un cadeau</button>
+          <span class="gift-choice-hint">Cadeau pour une proche ou pour vous-même : emballage soigné.</span>
         </div>
         <div class="checkout-fields">
           <input type="text" id="customerLastName" class="checkout-input" placeholder="Nom" autocomplete="family-name">
@@ -2401,7 +2402,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     if (isGift === null) {
       giftChoice.classList.add('is-error');
-      hint.textContent = 'Merci d\'indiquer si ces produits sont pour vous ou pour offrir';
+      hint.textContent = 'Merci d\'indiquer : pour vous (sans emballage particulier) ou en cadeau (emballage soigné)';
       hint.classList.add('shake');
       setTimeout(() => hint.classList.remove('shake'), 400);
       return;
@@ -2410,7 +2411,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const names = [...selected.values()];
     const subject = (isGift ? 'CADEAU — ' : '') + 'Réservation produits — ' + firstName + ' ' + lastName;
     const giftLine = isGift
-      ? '🎁 CADEAU : merci de prévoir un emballage soigné et sophistiqué (coffret composé par la cliente).'
+      ? '🎁 CADEAU : merci de prévoir un emballage soigné et sophistiqué (cadeau pour offrir, ou pour la cliente elle-même).'
       : 'Produits pour usage personnel (emballage standard).';
     const body = 'Bonjour,\n\nJe suis ' + firstName + ' ' + lastName + ' (tél. ' + phone + '). Je souhaite réserver les produits suivants à l\'institut :\n- ' + names.join('\n- ') + '\n\n' + giftLine + '\n\nJe choisis mon créneau de retrait sur Planity.\n\nÀ bientôt !';
 

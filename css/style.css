@@ -2186,3 +2186,4 @@ footer { padding: 80px 0 30px; }
 .hours-grid tr.closed td:last-child { padding-left: 14px; }
 .hours-grid td:first-child { padding-right: 8px; }
 .hours-grid td.part { white-space: nowrap; }
+.gift-choice-hint { width: 100%; font-size: .72rem; font-style: italic; color: var(--brown-mist); }
