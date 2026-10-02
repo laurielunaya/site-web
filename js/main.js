@@ -193,6 +193,10 @@ document.addEventListener('DOMContentLoaded', () => {
       + '<span class="footer-info-sub">Sur rendez-vous, du lundi au samedi</span>'
       + '<a class="footer-info-sub" href="contact.html#horaires">Voir les horaires détaillés</a>';
     list.insertBefore(info, list.firstChild);
+
+    const ig = document.createElement('li');
+    ig.innerHTML = '<a href="https://ig.me/m/linstitutdebeauteapprieu" target="_blank" rel="noopener">Nous écrire sur Instagram</a>';
+    list.appendChild(ig);
   });
 
   /* ---------- bouton "Copier le lien" (page d'accueil) ---------- */
