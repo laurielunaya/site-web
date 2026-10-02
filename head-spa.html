@@ -667,7 +667,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="product-bar" id="giftcardBar" hidden>
   <div class="container product-bar-inner">
-    <div class="product-bar-step product-checkout" id="giftcardStepForm">
+    <div class="product-bar-step product-bar-mode" id="giftcardStepMode" hidden>
+      <button type="button" class="product-checkout-back" id="giftcardModeClose" aria-label="Annuler">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div class="checkout-form">
+        <span class="coffret-selected-label" id="giftcardModeLabel">Bon cadeau sélectionné : —</span>
+        <span class="checkout-item-hint">Quelle version souhaitez-vous ?</span>
+      </div>
+      <div class="giftcard-modes">
+        <!-- ⚠️ LIEN PLACEHOLDER — remplacer par le lien Planity de vente des bons cadeaux électroniques (paiement en ligne) -->
+        <button type="button" class="btn btn-primary btn-sm" id="giftcardModeDigital" data-planity-url="https://www.planity.com/">Version électronique — paiement en ligne</button>
+        <button type="button" class="btn btn-outline btn-sm" id="giftcardModePrint">Version imprimée — retrait et paiement à l'institut</button>
+      </div>
+      <a href="#" id="giftcardDigitalLink" target="_blank" rel="noopener" hidden></a>
+    </div>
+
+    <div class="product-bar-step product-checkout" id="giftcardStepForm" hidden>
       <button type="button" class="product-checkout-back" id="giftcardBarClose" aria-label="Annuler">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
@@ -696,6 +712,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
       <a href="#" id="giftcardPlanityBtn" target="_blank" rel="noopener" hidden></a>
+    </div>
+
+    <div class="product-bar-step product-bar-done" id="giftcardStepDigital" hidden>
+      <p class="product-bar-done-text">✅ Planity vient de s'ouvrir dans un nouvel onglet : réglez votre bon cadeau en ligne, vous le recevrez ensuite par email. Cliquez sur Terminer une fois le paiement effectué.</p>
+      <button type="button" class="btn btn-outline btn-sm" id="giftcardDigitalDone">Terminer</button>
     </div>
 
     <div class="product-bar-step product-bar-done" id="giftcardStepDone" hidden>
@@ -840,6 +861,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const firstNameInput = document.getElementById('giftcardFirstName');
   const lastNameInput = document.getElementById('giftcardLastName');
   const phoneInput = document.getElementById('giftcardPhone');
+  const stepMode = document.getElementById('giftcardStepMode');
+  const stepDigital = document.getElementById('giftcardStepDigital');
+  const modeLabel = document.getElementById('giftcardModeLabel');
+  const modeClose = document.getElementById('giftcardModeClose');
+  const modeDigital = document.getElementById('giftcardModeDigital');
+  const modePrint = document.getElementById('giftcardModePrint');
+  const digitalLink = document.getElementById('giftcardDigitalLink');
+  const digitalDone = document.getElementById('giftcardDigitalDone');
 
   if (!select || !bar) return;
 
@@ -853,6 +882,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     stepForm.hidden = true;
     stepPlanity.hidden = true;
     stepDone.hidden = true;
+    stepMode.hidden = true;
+    stepDigital.hidden = true;
   }
 
   function resetFields() {
@@ -870,12 +901,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     selectedLabel.textContent = 'Bon cadeau sélectionné : ' + currentGift.name + ' — ' + currentGift.price;
     resetFields();
     hideAllSteps();
-    stepForm.hidden = false;
+    modeLabel.textContent = selectedLabel.textContent;
+    stepMode.hidden = false;
     bar.hidden = false;
     bar.scrollIntoView({ behavior: 'smooth', block: 'end' });
   });
 
   closeBtn.addEventListener('click', () => { bar.hidden = true; currentGift = null; });
+  modeClose.addEventListener('click', () => { bar.hidden = true; currentGift = null; });
+  digitalDone.addEventListener('click', () => { bar.hidden = true; currentGift = null; });
+
+  modeDigital.addEventListener('click', () => {
+    if (!currentGift) return;
+    digitalLink.href = modeDigital.dataset.planityUrl;
+    digitalLink.click();
+    hideAllSteps();
+    stepDigital.hidden = false;
+  });
+
+  modePrint.addEventListener('click', () => {
+    if (!currentGift) return;
+    hideAllSteps();
+    stepForm.hidden = false;
+  });
   doneBtn.addEventListener('click', () => { bar.hidden = true; currentGift = null; });
 
   [firstNameInput, lastNameInput, phoneInput].forEach((input) => {
@@ -899,8 +947,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       return;
     }
 
-    const subject = 'Bon cadeau Head Spa — ' + firstName + ' ' + lastName;
-    const body = 'Bonjour,\n\nJe suis ' + firstName + ' ' + lastName + ' (tél. ' + phone + '). Je souhaite offrir le BON CADEAU suivant :\n- ' + currentGift.name + ' — ' + currentGift.price + '\n\nJe choisis mon créneau de retrait sur Planity.\n\nÀ bientôt !';
+    const subject = 'Bon cadeau IMPRIMÉ Head Spa — ' + firstName + ' ' + lastName;
+    const body = 'Bonjour,\n\nJe suis ' + firstName + ' ' + lastName + ' (tél. ' + phone + '). Je souhaite offrir le BON CADEAU suivant :\n- ' + currentGift.name + ' — ' + currentGift.price + '\n\nVERSION IMPRIMÉE : à retirer à l\'institut, paiement sur place.\n\nJe choisis mon créneau de retrait sur Planity.\n\nÀ bientôt !';
 
     validateBtn.disabled = true;
     validateBtnLabel.textContent = 'Envoi en cours…';

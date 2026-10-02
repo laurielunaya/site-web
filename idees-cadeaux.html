@@ -476,6 +476,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="product-bar" id="coffretBar" hidden>
   <div class="container product-bar-inner">
+    <div class="product-bar-step product-bar-mode" id="coffretStepMode" hidden>
+      <button type="button" class="product-checkout-back" id="coffretModeClose" aria-label="Annuler">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div class="checkout-form">
+        <span class="coffret-selected-label" id="coffretModeLabel">Bon cadeau sélectionné : —</span>
+        <span class="checkout-item-hint">Quelle version souhaitez-vous ?</span>
+      </div>
+      <div class="giftcard-modes">
+        <!-- ⚠️ LIEN PLACEHOLDER — remplacer par le lien Planity de vente des bons cadeaux électroniques (paiement en ligne) -->
+        <button type="button" class="btn btn-primary btn-sm" id="coffretModeDigital" data-planity-url="https://www.planity.com/">Version électronique — paiement en ligne</button>
+        <button type="button" class="btn btn-outline btn-sm" id="coffretModePrint">Version imprimée — retrait et paiement à l'institut</button>
+      </div>
+      <a href="#" id="coffretDigitalLink" target="_blank" rel="noopener" hidden></a>
+    </div>
+
     <div class="product-bar-step product-checkout" id="coffretStepForm">
       <button type="button" class="product-checkout-back" id="coffretBarClose" aria-label="Annuler la réservation du coffret">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -509,6 +525,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <!-- ÉTAPE 3 : rappel avant de terminer -->
+    <div class="product-bar-step product-bar-done" id="coffretStepDigital" hidden>
+      <p class="product-bar-done-text">✅ Planity vient de s'ouvrir dans un nouvel onglet : réglez votre bon cadeau en ligne, vous le recevrez ensuite par email. Cliquez sur Terminer une fois le paiement effectué.</p>
+      <button type="button" class="btn btn-outline btn-sm" id="coffretDigitalDone">Terminer</button>
+    </div>
+
     <div class="product-bar-step product-bar-done" id="coffretStepDone" hidden>
       <p class="product-bar-done-text">⚠️ Ce n'est pas encore fini ! Vérifiez que vous avez bien <strong>validé votre créneau sur Planity</strong>, puis cliquez sur Terminer.</p>
       <button type="button" class="btn btn-outline btn-sm" id="coffretBarDone">Terminer</button>
@@ -593,6 +614,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const firstNameInput = document.getElementById('coffretFirstName');
   const lastNameInput = document.getElementById('coffretLastName');
   const phoneInput = document.getElementById('coffretPhone');
+  const stepMode = document.getElementById('coffretStepMode');
+  const stepDigital = document.getElementById('coffretStepDigital');
+  const modeLabel = document.getElementById('coffretModeLabel');
+  const modeClose = document.getElementById('coffretModeClose');
+  const modeDigital = document.getElementById('coffretModeDigital');
+  const modePrint = document.getElementById('coffretModePrint');
+  const digitalLink = document.getElementById('coffretDigitalLink');
+  const digitalDone = document.getElementById('coffretDigitalDone');
   const planityBtn = document.getElementById('coffretPlanityBtn');
 
   let currentCoffret = null;
@@ -609,6 +638,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     stepForm.hidden = true;
     stepPlanity.hidden = true;
     stepDone.hidden = true;
+    stepMode.hidden = true;
+    stepDigital.hidden = true;
   }
 
   function openBar(card) {
@@ -631,7 +662,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     resetFields();
     hint.textContent = 'Pour qu\'on sache à qui préparer le bon cadeau, et vous joindre en cas de souci sur le créneau';
     hideAllSteps();
-    stepForm.hidden = false;
+    modeLabel.textContent = selectedLabel.textContent;
+    stepMode.hidden = false;
     bar.hidden = false;
   }
 
@@ -667,6 +699,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 
   closeBtn.addEventListener('click', closeBar);
+  modeClose.addEventListener('click', closeBar);
+  digitalDone.addEventListener('click', closeBar);
+
+  modeDigital.addEventListener('click', () => {
+    if (!currentCoffret) return;
+    digitalLink.href = modeDigital.dataset.planityUrl;
+    digitalLink.click();
+    hideAllSteps();
+    stepDigital.hidden = false;
+  });
+
+  modePrint.addEventListener('click', () => {
+    if (!currentCoffret) return;
+    hideAllSteps();
+    stepForm.hidden = false;
+  });
   doneBtn.addEventListener('click', closeBar);
 
   [firstNameInput, lastNameInput, phoneInput].forEach((input) => {
@@ -692,8 +740,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     let subject, body;
     if (currentCoffret.kind === 'bon') {
-      subject = 'Bon cadeau ' + currentCoffret.universe + ' — ' + firstName + ' ' + lastName;
-      body = 'Bonjour,\n\nJe suis ' + firstName + ' ' + lastName + ' (tél. ' + phone + '). Je souhaite offrir le BON CADEAU suivant (' + currentCoffret.universe + ') :\n- ' + currentCoffret.name + ' — ' + currentCoffret.price + '\n\nJe choisis mon créneau de retrait sur Planity.\n\nÀ bientôt !';
+      subject = 'Bon cadeau IMPRIMÉ ' + currentCoffret.universe + ' — ' + firstName + ' ' + lastName;
+      body = 'Bonjour,\n\nJe suis ' + firstName + ' ' + lastName + ' (tél. ' + phone + '). Je souhaite offrir le BON CADEAU suivant (' + currentCoffret.universe + ') :\n- ' + currentCoffret.name + ' — ' + currentCoffret.price + '\n\nVERSION IMPRIMÉE : à retirer à l\'institut, paiement sur place.\n\nJe choisis mon créneau de retrait sur Planity.\n\nÀ bientôt !';
     } else {
       subject = 'Réservation coffret cadeau — ' + currentCoffret.name;
       body = 'Bonjour,\n\nJe suis ' + firstName + ' ' + lastName + ' (tél. ' + phone + '). Je souhaite réserver le COFFRET CADEAU « ' + currentCoffret.name + ' » (' + currentCoffret.price + '), qui contient :\n- ' + currentCoffret.items.join('\n- ') + '\n\nIl s\'agit d\'un coffret cadeau, merci de prévoir l\'emballage.\n\nJe choisis mon créneau de retrait sur Planity.\n\nÀ bientôt !';
