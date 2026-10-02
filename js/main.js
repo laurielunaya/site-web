@@ -241,8 +241,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const noelActive = today.getMonth() >= 10
     || (today.getMonth() === 0 && today.getDate() <= 6)
     || ['1', 'fin'].includes(new URLSearchParams(window.location.search).get('noel'));
-  /* dernière ligne droite : du 15 au 24 décembre (ou ?noel=fin pour prévisualiser) */
-  const lastCall = (today.getMonth() === 11 && today.getDate() >= 15 && today.getDate() <= 24)
+  /* dernière ligne droite : du 15 au 25 décembre (ou ?noel=fin pour prévisualiser) */
+  const lastCall = (today.getMonth() === 11 && today.getDate() >= 15 && today.getDate() <= 25)
     || new URLSearchParams(window.location.search).get('noel') === 'fin';
   document.querySelectorAll('[data-seasonal="noel"]').forEach((el) => {
     el.hidden = !noelActive;
