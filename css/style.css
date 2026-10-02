@@ -2167,3 +2167,5 @@ footer { padding: 80px 0 30px; }
   .gift-choice-label { width: 100%; }
 }
 .hs-spot .btn { padding: 11px 22px; font-size: .74rem; }
+
+.hs-spot-text p.hs-spot-tagline { font-family: var(--ff-serif); font-style: italic; font-size: .98rem; line-height: 1.4; color: var(--gold-light); margin: 0; }
