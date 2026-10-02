@@ -755,8 +755,6 @@ body:has(#productBar:not([hidden])) .fab-book {
 .coffret-items { list-style: none; margin: 0 0 22px; padding: 0; display: flex; flex-direction: column; gap: 9px; }
 .coffret-items li { font-size: .84rem; color: var(--brown-soft); font-weight: 300; padding-left: 16px; position: relative; }
 .coffret-items li::before { content: ''; position: absolute; left: 0; top: .6em; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
-.coffret-items li.coffret-item-bonus { color: var(--brown-deep); font-weight: 600; padding-left: 0; }
-.coffret-items li.coffret-item-bonus::before { content: none; }
 .coffret-pricing { display: flex; align-items: baseline; gap: 10px; margin-bottom: 22px; flex-wrap: wrap; }
 .coffret-price-old { font-size: .86rem; color: var(--brown-mist); text-decoration: line-through; }
 .coffret-price-new { font-family: var(--ff-serif); font-size: 1.22rem; color: var(--brown-deep); font-weight: 600; }
