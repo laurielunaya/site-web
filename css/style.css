@@ -2192,3 +2192,31 @@ footer { padding: 80px 0 30px; }
 .product-bar-sum b { color: var(--brown-deep); font-weight: 600; font-size: 1.12rem; }
 .checkout-total { font-family: var(--ff-serif); font-size: .95rem; color: var(--brown-soft); margin-bottom: 2px; }
 .checkout-total b { color: var(--brown-deep); font-weight: 600; }
+
+/* ---------- bandeau de consentement aux cookies ---------- */
+.cookie-banner {
+  position: fixed;
+  left: 16px; right: 16px; bottom: 16px;
+  z-index: 1000;
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 20px;
+  background: rgba(253,249,242,.97);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-md);
+  box-shadow: 0 10px 40px rgba(60,35,20,.22);
+  font-size: .84rem;
+  line-height: 1.55;
+  color: var(--brown-soft);
+}
+.cookie-banner p { margin: 0; flex: 1; }
+.cookie-banner a { color: var(--brown-deep); text-decoration: underline; }
+.cookie-actions { display: flex; gap: 10px; flex-shrink: 0; }
+@media (max-width: 560px) {
+  .cookie-banner { flex-direction: column; align-items: stretch; gap: 12px; padding: 14px 16px; }
+  .cookie-actions { justify-content: stretch; }
+  .cookie-actions .btn { flex: 1; }
+}

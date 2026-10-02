@@ -1,5 +1,75 @@
 // Lunaya — interactions
 
+/* ---------- consentement aux cookies : l'outil de mesure d'audience (Google Tag Manager) ne se charge qu'après accord ---------- */
+(function () {
+  const KEY = 'lunaya-consent';
+  const GTM_ID = 'GTM-TPFK3M8X';
+  const SIX_MONTHS = 182 * 24 * 3600 * 1000;
+
+  function readChoice() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (saved && (saved.choice === 'granted' || saved.choice === 'denied') && Date.now() - saved.date < SIX_MONTHS) return saved.choice;
+    } catch (e) { /* stockage indisponible */ }
+    return null;
+  }
+  function saveChoice(choice) {
+    try { localStorage.setItem(KEY, JSON.stringify({ choice: choice, date: Date.now() })); } catch (e) { /* ignoré */ }
+  }
+  function loadGtm() {
+    if (window.__lunayaGtm) return;
+    window.__lunayaGtm = true;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID;
+    document.head.appendChild(s);
+  }
+
+  function closeBanner() {
+    const el = document.getElementById('cookieBanner');
+    if (el) el.remove();
+  }
+  function showBanner() {
+    if (document.getElementById('cookieBanner')) return;
+    const el = document.createElement('div');
+    el.id = 'cookieBanner';
+    el.className = 'cookie-banner';
+    el.setAttribute('role', 'dialog');
+    el.setAttribute('aria-label', 'Gestion des cookies');
+    el.innerHTML = '<p>Nous utilisons un outil de mesure d\'audience pour comprendre comment le site est utilisé et l\'améliorer. Rien n\'est collecté sans votre accord. <a href="politique-confidentialite.html">En savoir plus</a></p>'
+      + '<div class="cookie-actions">'
+      + '<button type="button" class="btn btn-outline btn-sm" data-consent="denied">Refuser</button>'
+      + '<button type="button" class="btn btn-primary btn-sm" data-consent="granted">Accepter</button>'
+      + '</div>';
+    el.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-consent]');
+      if (!b) return;
+      saveChoice(b.dataset.consent);
+      if (b.dataset.consent === 'granted') loadGtm();
+      closeBanner();
+    });
+    document.body.appendChild(el);
+  }
+
+  window.lunayaCookies = { show: showBanner };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const choice = readChoice();
+    if (choice === 'granted') loadGtm();
+    else if (choice === null) showBanner();
+
+    /* lien "Gérer mes cookies" dans le pied de page */
+    document.querySelectorAll('.footer-legal').forEach((box) => {
+      const a = document.createElement('a');
+      a.href = '#';
+      a.textContent = 'Gérer mes cookies';
+      a.addEventListener('click', (e) => { e.preventDefault(); showBanner(); });
+      box.appendChild(a);
+    });
+  });
+})();
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------- year ---------- */
