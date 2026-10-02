@@ -2135,3 +2135,5 @@ footer { padding: 80px 0 30px; }
 @media (prefers-reduced-motion: reduce) {
   .xmas-band::before, .xmas-band::after, .nav-badge { animation: none; }
 }
+/* Contenus saisonniers : masques tant que le script ne les active pas */
+[data-seasonal][hidden] { display: none !important; }

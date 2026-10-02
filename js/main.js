@@ -145,13 +145,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- badge "Noël" sur le lien Idées Cadeaux du menu ---------- */
-  document.querySelectorAll('.nav-links a[href="idees-cadeaux.html"], .mobile-menu a[href="idees-cadeaux.html"]').forEach((a) => {
-    const badge = document.createElement('span');
-    badge.className = 'nav-badge';
-    badge.textContent = 'Noël';
-    a.appendChild(badge);
+  /* ---------- contenus saisonniers : Noël, du 1er novembre au 6 janvier ----------
+     Ajouter ?noel=1 à l'adresse d'une page pour prévisualiser en dehors de la période. */
+  const today = new Date();
+  const noelActive = today.getMonth() >= 10
+    || (today.getMonth() === 0 && today.getDate() <= 6)
+    || new URLSearchParams(window.location.search).get('noel') === '1';
+  document.querySelectorAll('[data-seasonal="noel"]').forEach((el) => {
+    el.hidden = !noelActive;
   });
+
+  /* ---------- badge "Noël" sur le lien Idées Cadeaux du menu ---------- */
+  if (noelActive) {
+    document.querySelectorAll('.nav-links a[href="idees-cadeaux.html"], .mobile-menu a[href="idees-cadeaux.html"]').forEach((a) => {
+      const badge = document.createElement('span');
+      badge.className = 'nav-badge';
+      badge.textContent = 'Noël';
+      a.appendChild(badge);
+    });
+  }
 
   /* ---------- pied de page : lien direct vers les bons cadeaux ---------- */
   document.querySelectorAll('footer .footer-col').forEach((col) => {
