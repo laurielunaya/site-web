@@ -2172,3 +2172,30 @@ footer { padding: 80px 0 30px; }
 
 .hs-spot-media { background: #2b1d17 url(../assets/gallery-head-spa-video-poster.jpg) center 62% / cover no-repeat; }
 .hs-spot-media video { object-position: center 62%; }
+
+/* ---------- badge nouveauté + note de durée ---------- */
+.service-badge {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: var(--brown-deep);
+  font-family: var(--ff-sans);
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+.service-time-note {
+  max-width: 920px;
+  margin: 0 auto 18px;
+  text-align: center;
+  font-size: .85rem;
+  font-style: italic;
+  color: var(--brown-mist);
+}
+.footer-info-sub { display: block; font-size: .78rem; opacity: .75; margin-top: 2px; }
+.footer-info { margin-bottom: 4px; }
