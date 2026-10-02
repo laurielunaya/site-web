@@ -235,51 +235,21 @@ document.addEventListener('DOMContentLoaded', () => {
     lazyBgs.forEach(loadBg);
   }
 
-  /* ---------- contenus saisonniers : Noël, du 1er novembre au 6 janvier ----------
-     Ajouter ?noel=1 à l'adresse d'une page pour prévisualiser en dehors de la période. */
+  /* ---------- contenus de fin d'année : chargés seulement du 1er novembre au 6 janvier ----------
+     Ajouter ?noel=1 (ou ?noel=fin pour le message du 15 au 25 décembre) à l'adresse d'une page pour prévisualiser. */
   const today = new Date();
-  const noelActive = today.getMonth() >= 10
+  const noelParam = new URLSearchParams(window.location.search).get('noel');
+  const seasonActive = today.getMonth() >= 10
     || (today.getMonth() === 0 && today.getDate() <= 6)
-    || ['1', 'fin'].includes(new URLSearchParams(window.location.search).get('noel'));
-  /* dernière ligne droite : du 15 au 25 décembre (ou ?noel=fin pour prévisualiser) */
+    || noelParam === '1' || noelParam === 'fin';
   const lastCall = (today.getMonth() === 11 && today.getDate() >= 15 && today.getDate() <= 25)
-    || new URLSearchParams(window.location.search).get('noel') === 'fin';
-  document.querySelectorAll('[data-seasonal="noel"]').forEach((el) => {
-    el.hidden = !noelActive;
-  });
-  document.querySelectorAll('[data-seasonal="noel-fin"]').forEach((el) => {
-    el.hidden = !lastCall;
-  });
-  if (lastCall) {
-    document.querySelectorAll('[data-lastcall-text]').forEach((el) => { el.dataset.finalText = el.dataset.lastcallText; });
-    document.querySelectorAll('[data-lastcall-html]').forEach((el) => { el.dataset.finalHtml = el.dataset.lastcallHtml; });
+    || noelParam === 'fin';
+  if (seasonActive) {
+    window.lunayaSeason = { lastCall: lastCall };
+    const seasonScript = document.createElement('script');
+    seasonScript.src = 'js/noel.js';
+    document.body.appendChild(seasonScript);
   }
-  if (noelActive) {
-    /* textes et noms de coffrets : version Noël */
-    document.querySelectorAll('[data-noel-text]').forEach((el) => {
-      el.textContent = el.dataset.noelText;
-    });
-    document.querySelectorAll('[data-noel-name]').forEach((card) => {
-      card.dataset.coffret = card.dataset.noelName;
-      const title = card.querySelector('h3');
-      if (title) title.textContent = card.dataset.noelName;
-    });
-  }
-  if (lastCall) {
-    document.querySelectorAll('[data-final-text]').forEach((el) => { el.textContent = el.dataset.finalText; });
-    document.querySelectorAll('[data-final-html]').forEach((el) => { el.innerHTML = el.dataset.finalHtml; });
-  }
-
-  /* ---------- badge "Noël" sur le lien Idées Cadeaux du menu ---------- */
-  if (noelActive) {
-    document.querySelectorAll('.nav-links a[href="idees-cadeaux.html"], .mobile-menu a[href="idees-cadeaux.html"]').forEach((a) => {
-      const badge = document.createElement('span');
-      badge.className = 'nav-badge';
-      badge.textContent = 'Noël';
-      a.appendChild(badge);
-    });
-  }
-
   /* ---------- pied de page : lien direct vers les bons cadeaux ---------- */
   document.querySelectorAll('footer .footer-col').forEach((col) => {
     const list = col.querySelector('ul');
