@@ -2220,3 +2220,9 @@ footer { padding: 80px 0 30px; }
   .cookie-actions { justify-content: stretch; }
   .cookie-actions .btn { flex: 1; }
 }
+
+.route-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.route-links a { display: inline-block; padding: 8px 16px; border-radius: var(--r-pill); border: 1px solid var(--glass-border); background: rgba(255,255,255,.6); font-size: .78rem; font-weight: 500; color: var(--brown-deep); text-decoration: none; transition: background .25s var(--ease), border-color .25s var(--ease); }
+.route-links a:hover { background: rgba(255,255,255,.95); border-color: var(--gold); }
+
+.last-call { max-width: 820px; margin: 14px auto 0; padding: 10px 24px; border-radius: var(--r-pill); background: rgba(184,146,90,.14); border: 1px solid rgba(184,146,90,.4); font-size: .9rem; color: var(--brown-deep); text-align: center; }

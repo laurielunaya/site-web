@@ -240,10 +240,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const today = new Date();
   const noelActive = today.getMonth() >= 10
     || (today.getMonth() === 0 && today.getDate() <= 6)
-    || new URLSearchParams(window.location.search).get('noel') === '1';
+    || ['1', 'fin'].includes(new URLSearchParams(window.location.search).get('noel'));
+  /* dernière ligne droite : du 15 au 24 décembre (ou ?noel=fin pour prévisualiser) */
+  const lastCall = (today.getMonth() === 11 && today.getDate() >= 15 && today.getDate() <= 24)
+    || new URLSearchParams(window.location.search).get('noel') === 'fin';
   document.querySelectorAll('[data-seasonal="noel"]').forEach((el) => {
     el.hidden = !noelActive;
   });
+  document.querySelectorAll('[data-seasonal="noel-fin"]').forEach((el) => {
+    el.hidden = !lastCall;
+  });
+  if (lastCall) {
+    document.querySelectorAll('[data-lastcall-text]').forEach((el) => { el.dataset.finalText = el.dataset.lastcallText; });
+    document.querySelectorAll('[data-lastcall-html]').forEach((el) => { el.dataset.finalHtml = el.dataset.lastcallHtml; });
+  }
   if (noelActive) {
     /* textes et noms de coffrets : version Noël */
     document.querySelectorAll('[data-noel-text]').forEach((el) => {
@@ -254,6 +264,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const title = card.querySelector('h3');
       if (title) title.textContent = card.dataset.noelName;
     });
+  }
+  if (lastCall) {
+    document.querySelectorAll('[data-final-text]').forEach((el) => { el.textContent = el.dataset.finalText; });
+    document.querySelectorAll('[data-final-html]').forEach((el) => { el.innerHTML = el.dataset.finalHtml; });
   }
 
   /* ---------- badge "Noël" sur le lien Idées Cadeaux du menu ---------- */
