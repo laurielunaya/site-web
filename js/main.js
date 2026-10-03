@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: 0.05, rootMargin: '0px 0px 200px 0px' });
 
     revealEls.forEach(el => {
       el.classList.add('reveal');
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
           bgObserver.unobserve(entry.target);
         }
       });
-    }, { rootMargin: '400px 0px' });
+    }, { rootMargin: '900px 0px' });
     lazyBgs.forEach((el) => bgObserver.observe(el));
   } else {
     lazyBgs.forEach(loadBg);
