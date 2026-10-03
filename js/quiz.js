@@ -13,23 +13,17 @@
     ['1h30', R('Head Spa Intense', '1h30 · 125 €' + HS, 'Un rituel plus long et plus approfondi.', 'head-spa.html', '', 'Head Spa Intense')],
     ['2 h pour vraiment déconnecter', R('Head Spa Holistique', '2h · 180 €' + HS, 'L\'expérience sensorielle signature de l\'institut.', 'head-spa.html', '', 'Head Spa Holistique')]
   ]};
-  const scalp = { q: 'Quelle est votre priorité ?', opts: [
-    ['Purifier : pellicules, excès de sébum', R('AquaPeel', '1h · 80 €' + HS, 'Soin coréen purifiant du cuir chevelu par hydro-aspiration.', 'head-spa.html', '', 'AquaPeel')],
-    ['Un protocole expert complet, avec détente', R('Bubble Hair Spa Coréen', '1h45 · 190 €' + HS, 'Notre nouveauté coréenne : diagnostic au microscope, AquaPeel, soins Histemo, Bubble Shampoo et LED thérapie.', 'head-spa.html', 'Nouveauté', 'Bubble Hair Spa Coréen')],
-    ['Je ne sais pas, je veux d\'abord un avis', R('Diagnostic capillaire', '30 min · 35 €', 'Une analyse de votre cuir chevelu pour savoir quel soin vous convient.', 'head-spa.html', '', 'Diagnostic capillaire')]
-  ]};
-
+  const bubble = R('Bubble Hair Spa Coréen', '1h45 · 190 €' + HS, 'Notre soin coréen le plus complet pour purifier et apaiser le cuir chevelu : diagnostic au microscope, AquaPeel, soins Histemo, Bubble Shampoo et LED thérapie, dans une vraie parenthèse de détente.', 'head-spa.html', 'Nouveauté', 'Bubble Hair Spa Coréen');
   const trees = {
     full: {
       start: { q: 'Qu\'est-ce qui vous ferait du bien ?', opts: [
         ['Un moment de détente profonde', { next: 'relax' }],
-        ['Soigner mon cuir chevelu (chute, pellicules, excès de sébum…)', { next: 'scalp' }],
+        ['Purifier et apaiser mon cuir chevelu (pellicules, excès de sébum, irritations…)', bubble],
         ['Un soin du visage', { next: 'face' }],
         ['Un soin du corps', { next: 'body' }],
         ['Offrir, ou venir à deux', { next: 'gift' }]
       ]},
       relax: relax,
-      scalp: scalp,
       face: { q: 'Quelle est votre envie ?', opts: [
         ['Un coup d\'éclat rapide', R('Sublimateur', '30 min · 35 €', 'Un soin express pour retrouver de l\'éclat.', 'soin-visage.html')],
         ['Un soin complet adapté à ma peau', R('Sur Mesure', '75 min · 75 €', 'Un soin personnalisé selon les besoins de votre peau.', 'soin-visage.html')],
@@ -59,12 +53,11 @@
       ]},
       need: { q: 'Qu\'est-ce qui vous ferait du bien ?', opts: [
         ['Me détendre en profondeur', { next: 'relax' }],
-        ['Soigner mon cuir chevelu (chute, pellicules, excès de sébum…)', { next: 'scalp' }],
+        ['Purifier et apaiser mon cuir chevelu (pellicules, excès de sébum, irritations…)', bubble],
         ['Un moment énergétique et relaxant (Reiki)', R('Head Spa X Reiki', '1h45 · 155 €' + HS, 'Soin énergétique et relaxation profonde.', 'head-spa.html', '', 'Head Spa X Reiki')],
         ['Le cuir chevelu et le corps', R('Head Spa X Massage Corps', '2h · 165 €' + HS, 'Un Head Spa associé à un massage du corps.', 'head-spa.html', '', 'Head Spa X Massage Corps')]
       ]},
       relax: relax,
-      scalp: scalp,
       duo: { q: 'Quelle formule à deux ?', opts: [
         ['Head Spa à deux', R('Head Spa Duo', '1h · 180 €' + HS, 'Un Head Spa à partager.', 'head-spa.html', '', 'Head Spa Duo')],
         ['Head Spa à deux avec soin du visage', R('Head Spa Duo X Soin Visage', '1h30 · 240 €' + HS, 'Le Head Spa à deux, complété d\'un soin du visage.', 'head-spa.html', '', 'Head Spa Duo X Soin Visage')]
