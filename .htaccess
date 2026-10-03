@@ -46,3 +46,8 @@ Header always set Referrer-Policy "strict-origin-when-cross-origin"
 Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 Header always set Strict-Transport-Security "max-age=15552000"
 </IfModule>
+
+# ---------- Fichier technique du déploiement automatique : non accessible depuis Internet ----------
+<Files ".ftp-deploy-sync-state.json">
+Require all denied
+</Files>
