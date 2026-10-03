@@ -29,7 +29,31 @@ jobs:
           grep -c "?v=$V" *.html | head -3
 
       - name: Envoi vers Hostinger
+        id: envoi1
+        continue-on-error: true
         if: env.HAS_FTP_SECRETS == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          security: loose
+          server-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            .claude/**
+            serve.ps1
+            README*
+
+      - name: Attente avant un nouvel essai
+        if: steps.envoi1.outcome == 'failure'
+        run: sleep 45
+
+      - name: Envoi vers Hostinger (2e essai)
+        if: steps.envoi1.outcome == 'failure'
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
