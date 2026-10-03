@@ -21,6 +21,13 @@ jobs:
       - name: Récupération des fichiers
         uses: actions/checkout@v4
 
+      - name: Versionner le CSS et le JavaScript (évite les anciennes versions en cache)
+        run: |
+          V=${GITHUB_SHA::8}
+          sed -i -E "s#(css/style\.css|js/main\.js|js/quiz\.js)\"#\1?v=$V\"#g" *.html
+          sed -i "s#'js/noel\.js'#'js/noel.js?v=$V'#" js/main.js
+          grep -c "?v=$V" *.html | head -3
+
       - name: Envoi vers Hostinger
         if: env.HAS_FTP_SECRETS == 'true'
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
