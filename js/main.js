@@ -284,6 +284,31 @@ document.addEventListener('DOMContentLoaded', () => {
     list.appendChild(ig);
   });
 
+  /* ---------- bouton "Partager cette page" dans le pied de page : le lien envoyé ouvre exactement la même page ---------- */
+  const socialRow = document.querySelector('footer .footer-about .social-row');
+  if (socialRow) {
+    const shareBtn = document.createElement('button');
+    shareBtn.type = 'button';
+    shareBtn.className = 'share-page-btn';
+    shareBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.5l6.8-4M8.6 13.5l6.8 4"/></svg><span>Partager cette page</span>';
+    const label = shareBtn.querySelector('span');
+    shareBtn.addEventListener('click', async () => {
+      const canonical = document.querySelector('link[rel="canonical"]');
+      const url = (canonical && canonical.href) || (window.location.origin + window.location.pathname);
+      const data = { title: 'Head Spa et Institut Lunaya à Apprieu', url: url };
+      if (navigator.share) {
+        try { await navigator.share(data); } catch (e) { /* partage annulé */ }
+        return;
+      }
+      const done = () => { label.textContent = 'Lien copié ✓'; setTimeout(() => { label.textContent = 'Partager cette page'; }, 2200); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(done).catch(() => { window.prompt('Copiez ce lien :', url); });
+      } else {
+        window.prompt('Copiez ce lien :', url);
+      }
+    });
+    socialRow.insertAdjacentElement('afterend', shareBtn);
+  }
   /* ---------- bouton "Copier le lien" (page d'accueil) ---------- */
   const copyBtn = document.getElementById('shareCopyBtn');
   if (copyBtn) {

@@ -2363,3 +2363,8 @@ footer { padding: 80px 0 30px; }
 /* ---------- bandeau cookies : les barres du bas et le bouton Appeler se placent au-dessus ---------- */
 .has-cookie-banner .product-bar { bottom: var(--cookie-h, 0px); }
 .has-cookie-banner .fab-dock { bottom: calc(22px + var(--cookie-h, 0px)); }
+
+/* ---------- bouton Partager cette page (pied de page) ---------- */
+.share-page-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; padding: 9px 16px; border-radius: var(--r-pill); border: 1px solid var(--glass-border); background: rgba(255,255,255,.55); font-family: var(--ff-sans); font-size: .78rem; font-weight: 500; color: var(--brown-deep); cursor: pointer; transition: background .25s var(--ease), border-color .25s var(--ease); }
+.share-page-btn svg { width: 16px; height: 16px; }
+.share-page-btn:hover { background: rgba(255,255,255,.9); border-color: var(--gold); }
