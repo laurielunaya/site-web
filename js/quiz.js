@@ -54,7 +54,7 @@
       need: { q: 'Qu\'est-ce qui vous ferait du bien ?', opts: [
         ['Me détendre en profondeur', { next: 'relax' }],
         ['Purifier et apaiser mon cuir chevelu (pellicules, excès de sébum, irritations…)', bubble],
-        ['Une déconnexion totale : Reiki et Head Spa', R('Head Spa X Reiki', '1h45 · 155 €' + HS, 'Deux soins réunis en un seul rituel : 45 min de Reiki, soin énergétique, suivies d\'1 h de véritable Head Spa, pour une déconnexion totale du corps à l\'esprit.', 'head-spa.html', '', 'Head Spa X Reiki')],
+        ['Une déconnexion totale : soin énergétique et Head Spa', R('Head Spa X Reiki', '1h45 · 155 €' + HS, 'Deux soins réunis en un seul rituel : 45 min de soin énergétique (Reiki), suivies d\'1 h de véritable Head Spa, pour une déconnexion totale du corps à l\'esprit.', 'head-spa.html', '', 'Head Spa X Reiki')],
         ['Le cuir chevelu et le corps', R('Head Spa X Massage Corps', '2h · 165 €' + HS, 'Un Head Spa associé à un massage du corps.', 'head-spa.html', '', 'Head Spa X Massage Corps')]
       ]},
       relax: relax,
