@@ -32,8 +32,8 @@
   --cream-dark: #eeddc4;
   --brown-deep: #4a342a;
   --brown: #7b5c4b;   /* Brun Choc */
-  --brown-soft: #96795f;
-  --brown-mist: #ad8f76;
+  --brown-soft: #7a5f4a;
+  --brown-mist: #80644d;
   --gold: #b89771;    /* Or Mat */
   --gold-light: #d4bb98;
   --rose: #e6c3b3;
@@ -65,7 +65,7 @@
 
 /* ---------- reset ---------- */
 * , *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
+html { scroll-behavior: smooth; overflow-x: hidden; scroll-padding-top: 110px; }
 body {
   margin: 0;
   font-family: var(--ff-sans);
@@ -2354,3 +2354,12 @@ footer { padding: 80px 0 30px; }
   .product-row-right .product-add { justify-self: start; min-width: 130px; text-align: center; }
   .product-row-right .product-row-toggle { justify-self: end; }
 }
+
+/* ---------- anti-zoom iOS : les champs de saisie font au moins 16 px sur téléphone ---------- */
+@media (max-width: 768px) {
+  .checkout-input, .gift-card-select, .giftcard-select { font-size: 16px; }
+}
+
+/* ---------- bandeau cookies : les barres du bas et le bouton Appeler se placent au-dessus ---------- */
+.has-cookie-banner .product-bar { bottom: var(--cookie-h, 0px); }
+.has-cookie-banner .fab-dock { bottom: calc(22px + var(--cookie-h, 0px)); }

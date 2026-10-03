@@ -2424,6 +2424,7 @@
     validateBtnLabel.textContent = 'Envoi en cours…';
 
     fetch('https://api.web3forms.com/submit', {
+      signal: (window.AbortSignal && AbortSignal.timeout) ? AbortSignal.timeout(20000) : undefined,
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
@@ -2445,7 +2446,7 @@
         stepPlanity.hidden = false;
       })
       .catch(() => {
-        hint.textContent = 'Erreur d\'envoi, merci de réessayer ou de nous contacter directement';
+        hint.textContent = 'Envoi impossible : merci de réessayer ou d\'appeler l\'institut au 04.76.37.32.38';
         hint.classList.add('shake');
         setTimeout(() => hint.classList.remove('shake'), 400);
       })

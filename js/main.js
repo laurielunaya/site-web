@@ -30,6 +30,8 @@
   function closeBanner() {
     const el = document.getElementById('cookieBanner');
     if (el) el.remove();
+    document.body.classList.remove('has-cookie-banner');
+    document.body.style.removeProperty('--cookie-h');
   }
   function showBanner() {
     if (document.getElementById('cookieBanner')) return;
@@ -51,6 +53,8 @@
       closeBanner();
     });
     document.body.appendChild(el);
+    document.body.classList.add('has-cookie-banner');
+    document.body.style.setProperty('--cookie-h', (el.offsetHeight + 16) + 'px');
   }
 
   window.lunayaCookies = { show: showBanner };
@@ -71,6 +75,13 @@
   });
 })();
 document.addEventListener('DOMContentLoaded', () => {
+
+  /* ---------- accessibilité : nom accessible pour les champs qui n'ont qu'un texte d'exemple ---------- */
+  document.querySelectorAll('input, select, textarea').forEach((f) => {
+    if (f.type === 'hidden' || f.type === 'checkbox' || f.getAttribute('aria-label') || (f.labels && f.labels.length)) return;
+    const text = f.tagName === 'SELECT' ? (f.options[0] ? f.options[0].textContent : '') : f.placeholder;
+    if (text) f.setAttribute('aria-label', text.replace(/\s*\(facultatif\)/i, ', facultatif').replace(/…$/, ''));
+  });
 
   /* ---------- year ---------- */
   const yearEl = document.getElementById('year');
