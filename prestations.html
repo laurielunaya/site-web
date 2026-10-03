@@ -69,7 +69,7 @@
   <a href="reservation.html" class="btn btn-primary" style="margin-top:20px;">Réserver un soin</a>
 </div>
 
-<a href="reservation.html" class="fab-book btn btn-primary btn-sm">Réserver</a>
+<div class="fab-dock"><a href="tel:0476373238" class="fab-call" aria-label="Appeler l'institut au 04 76 37 32 38"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .7 3a2 2 0 01-.5 2.1L8 10a16 16 0 006 6l1.2-1.3a2 2 0 012.1-.5c1 .4 2 .6 3 .7a2 2 0 011.7 2z"/></svg> Appeler</a><a href="reservation.html" class="fab-book btn btn-primary btn-sm">Réserver</a></div>
 
 <main id="main">
 
@@ -139,7 +139,7 @@
       <div class="quiz glass reveal" data-reveal>
         <span class="eyebrow">Pas sûre de votre choix ?</span>
         <h2 class="title">Quel soin <em>choisir</em> ?</h2>
-        <div class="quiz-body" id="quizBody" aria-live="polite"></div>
+        <div class="quiz-body" id="quizBody" data-quiz="full" aria-live="polite"></div>
       </div>
     </div>
   </section>
@@ -204,112 +204,6 @@
 </footer>
 
 <script src="js/main.js"></script>
-<script>
-(function () {
-  const body = document.getElementById('quizBody');
-  if (!body) return;
-
-  const HS = ' · +15 min de séchage';
-  const R = (name, meta, text, href, extra) => ({ result: { name, meta, text, href, extra: extra || '' } });
-
-  const tree = {
-    start: { q: 'Qu\'est-ce qui vous ferait du bien ?', opts: [
-      ['Un moment de détente profonde', { next: 'relax' }],
-      ['Soigner mon cuir chevelu (chute, pellicules, excès de sébum…)', { next: 'scalp' }],
-      ['Un soin du visage', { next: 'face' }],
-      ['Un soin du corps', { next: 'body' }],
-      ['Offrir, ou venir à deux', { next: 'gift' }]
-    ]},
-    relax: { q: 'Combien de temps voulez-vous vous accorder ?', opts: [
-      ['Environ 1 h', R('Head Spa Essentiel', '1h · 95 €' + HS, 'L\'essentiel du rituel Head Spa, idéal pour découvrir.', 'head-spa.html')],
-      ['1h30', R('Head Spa Intense', '1h30 · 125 €' + HS, 'Un rituel plus long et plus approfondi.', 'head-spa.html')],
-      ['2 h pour vraiment déconnecter', R('Head Spa Holistique', '2h · 180 €' + HS, 'L\'expérience sensorielle signature de l\'institut.', 'head-spa.html')]
-    ]},
-    scalp: { q: 'Quelle est votre priorité ?', opts: [
-      ['Purifier : pellicules, excès de sébum', R('AquaPeel', '1h · 80 €' + HS, 'Soin coréen purifiant du cuir chevelu par hydro-aspiration.', 'head-spa.html')],
-      ['Un protocole expert complet, avec détente', R('Bubble Hair Spa Coréen', '1h45 · 190 €' + HS, 'Notre nouveauté coréenne : diagnostic au microscope, AquaPeel, soins Histemo, Bubble Shampoo et LED thérapie.', 'head-spa.html', 'Nouveauté')],
-      ['Je ne sais pas, je veux d\'abord un avis', R('Diagnostic capillaire', '30 min · 35 €', 'Une analyse de votre cuir chevelu pour savoir quel soin vous convient.', 'head-spa.html')]
-    ]},
-    face: { q: 'Quelle est votre envie ?', opts: [
-      ['Un coup d\'éclat rapide', R('Sublimateur', '30 min · 35 €', 'Un soin express pour retrouver de l\'éclat.', 'soin-visage.html')],
-      ['Un soin complet adapté à ma peau', R('Sur Mesure', '75 min · 75 €', 'Un soin personnalisé selon les besoins de votre peau.', 'soin-visage.html')],
-      ['Le soin le plus complet', R('Majestueux', '90 min · 95 €', 'Notre soin visage d\'exception.', 'soin-visage.html')],
-      ['Une action anti-âge', R('Anti-Âge Global, appareil Dermophyt\'s', '90 min · 105 €', 'Un soin ciblé anti-âge avec appareil.', 'soin-visage.html')],
-      ['J\'ai moins de 18 ans', R('Peaux Jeunes (– 18 ans)', '50 min · 52 €', 'Un soin adapté aux peaux jeunes.', 'soin-visage.html')]
-    ]},
-    body: { q: 'Quelle est votre envie ?', opts: [
-      ['Me détendre en profondeur', R('Rituel Relaxant', '60 min · 75 €', 'Un modelage pour relâcher les tensions.', 'soins-corps.html')],
-      ['Soulager mon dos', R('Rituel Dos', '45 min · 52 €', 'Un soin ciblé pour le dos.', 'soins-corps.html')],
-      ['Alléger mes jambes', R('Rituel Jambes Légères', '45 min · 52 €', 'Un soin pour retrouver des jambes légères.', 'soins-corps.html')],
-      ['Une vraie escapade de 1h30', R('Rituel Évasion', '90 min · 99 €', 'Un long rituel pour déconnecter.', 'soins-corps.html')]
-    ]},
-    gift: { q: 'Que souhaitez-vous faire ?', opts: [
-      ['Offrir un bon cadeau', R('Un bon cadeau', 'Soin ou montant libre', 'Choisissez le soin à offrir, en version électronique ou imprimée.', 'idees-cadeaux.html#bons-cadeaux', 'gift')],
-      ['Composer un coffret', R('Un coffret cadeau', 'Cheveux, visage ou corps', 'Des coffrets prêts à offrir, ou composez le vôtre.', 'idees-cadeaux.html#coffrets', 'gift')],
-      ['Venir à deux', R('Head Spa Duo', '1h · 180 €' + HS, 'Un Head Spa à partager.', 'head-spa.html')]
-    ]}
-  };
-
-  function el(tag, cls, text) {
-    const e = document.createElement(tag);
-    if (cls) e.className = cls;
-    if (text) e.textContent = text;
-    return e;
-  }
-
-  let path = [];
-
-  function render(key) {
-    body.innerHTML = '';
-    const node = tree[key];
-    const step = el('p', 'quiz-q', node.q);
-    body.appendChild(step);
-    const list = el('div', 'quiz-opts');
-    node.opts.forEach(([label, target]) => {
-      const b = el('button', 'quiz-opt', label);
-      b.type = 'button';
-      b.addEventListener('click', () => {
-        if (target.next) { path.push(key); render(target.next); }
-        else showResult(target.result);
-      });
-      list.appendChild(b);
-    });
-    body.appendChild(list);
-    if (path.length) {
-      const back = el('button', 'quiz-link', '← Retour');
-      back.type = 'button';
-      back.addEventListener('click', () => render(path.pop()));
-      body.appendChild(back);
-    }
-  }
-
-  function showResult(r) {
-    body.innerHTML = '';
-    body.appendChild(el('p', 'quiz-q', 'Notre conseil pour vous'));
-    const card = el('div', 'quiz-result');
-    if (r.extra && r.extra !== 'gift') card.appendChild(el('span', 'quiz-tag', r.extra));
-    card.appendChild(el('h3', '', r.name));
-    card.appendChild(el('p', 'quiz-meta', r.meta));
-    card.appendChild(el('p', 'quiz-text', r.text));
-    const actions = el('div', 'quiz-actions');
-    const see = el('a', 'btn btn-outline btn-sm', r.extra === 'gift' ? 'Voir les idées cadeaux' : 'Voir ce soin');
-    see.href = r.href;
-    actions.appendChild(see);
-    if (r.extra !== 'gift') {
-      const book = el('a', 'btn btn-primary btn-sm', 'Réserver');
-      book.href = 'reservation.html';
-      actions.appendChild(book);
-    }
-    card.appendChild(actions);
-    body.appendChild(card);
-    const again = el('button', 'quiz-link', '↺ Recommencer');
-    again.type = 'button';
-    again.addEventListener('click', () => { path = []; render('start'); });
-    body.appendChild(again);
-  }
-
-  render('start');
-})();
-</script>
+<script src="js/quiz.js"></script>
 </body>
 </html>

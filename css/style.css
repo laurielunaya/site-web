@@ -362,14 +362,27 @@ h2.title em {
 }
 
 /* ---------- floating booking pill ---------- */
-.fab-book {
+.fab-dock {
   position: fixed;
   right: 22px; bottom: 22px;
   z-index: 400;
   display: none;
+  align-items: center;
+  gap: 10px;
 }
+.fab-call {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 11px 18px;
+  border-radius: var(--r-pill);
+  background: rgba(253,249,242,.97);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 6px 20px rgba(0,0,0,.18);
+  font-size: .74rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--brown-deep); text-decoration: none;
+}
+.fab-call svg { width: 16px; height: 16px; }
 
-body:has(#productBar:not([hidden])) .fab-book {
+body:has(#productBar:not([hidden])) .fab-dock {
   display: none;
 }
 
@@ -1945,7 +1958,7 @@ footer { padding: 80px 0 30px; }
   .nav-links { display: none; }
   .nav-toggle { display: flex; }
   .nav-actions a.btn-primary { display: none; }
-  .fab-book { display: block; }
+  .fab-dock { display: flex; }
   footer { padding-bottom: 90px; }
 }
 
@@ -2286,3 +2299,13 @@ footer { padding: 80px 0 30px; }
 .gift-card-select.is-error { border-color: #c0574a; }
 .gift-card-hint { margin: 8px 0 0; font-size: .74rem; font-style: italic; color: #b0483c; line-height: 1.4; }
 .giftcard-select.is-error { border-color: #c0574a; }
+
+/* ---------- réservation : avant votre venue ---------- */
+.prep-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.prep-item { padding: 26px 24px; border-radius: var(--r-md); }
+.prep-item h3 { font-family: var(--ff-serif); font-size: 1.05rem; color: var(--brown-deep); font-weight: 600; margin-bottom: 8px; }
+.prep-item p { font-size: .85rem; color: var(--brown-soft); font-weight: 300; line-height: 1.65; }
+.prep-foot { text-align: center; margin-top: 22px; font-size: .9rem; color: var(--brown-soft); }
+.prep-foot a { color: var(--brown-deep); font-weight: 600; }
+@media (max-width: 900px) { .prep-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .prep-grid { grid-template-columns: 1fr; } }
