@@ -2326,3 +2326,15 @@ footer { padding: 80px 0 30px; }
 .prep-foot a { color: var(--brown-deep); font-weight: 600; }
 @media (max-width: 900px) { .prep-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .prep-grid { grid-template-columns: 1fr; } }
+
+/* ---------- ajustements téléphone ---------- */
+@media (max-width: 560px) {
+  .checkout-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .checkout-input { padding: 9px 14px; }
+  .quiz-opt { border-radius: 22px; justify-content: flex-start; text-align: left; padding: 13px 18px; }
+  .footer-col ul li a { display: inline-block; padding: 7px 0; }
+  .cookie-banner { font-size: .78rem; padding: 12px 14px; gap: 10px; }
+  .cookie-banner p { line-height: 1.45; }
+  .gift-card { flex: 1 1 100%; max-width: 340px; }
+  .gift-card-select { font-size: .82rem; }
+}
