@@ -2368,3 +2368,4 @@ footer { padding: 80px 0 30px; }
 .share-page-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; padding: 9px 16px; border-radius: var(--r-pill); border: 1px solid var(--glass-border); background: rgba(255,255,255,.55); font-family: var(--ff-sans); font-size: .78rem; font-weight: 500; color: var(--brown-deep); cursor: pointer; transition: background .25s var(--ease), border-color .25s var(--ease); }
 .share-page-btn svg { width: 16px; height: 16px; }
 .share-page-btn:hover { background: rgba(255,255,255,.9); border-color: var(--gold); }
+.hs-spot-text p.hs-spot-lead { margin: 10px 0 0; font-size: .9rem; line-height: 1.55; }
