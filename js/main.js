@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
     shareBtn.addEventListener('click', async () => {
       const canonical = document.querySelector('link[rel="canonical"]');
       const url = (canonical && canonical.href) || (window.location.origin + window.location.pathname);
-      const data = { title: 'Head Spa et Institut Lunaya à Apprieu', url: url };
+      const data = { title: 'Head Spa et Institut à Apprieu', url: url };
       if (navigator.share) {
         try { await navigator.share(data); } catch (e) { /* partage annulé */ }
         return;
