@@ -2369,3 +2369,22 @@ footer { padding: 80px 0 30px; }
 .share-page-btn svg { width: 16px; height: 16px; }
 .share-page-btn:hover { background: rgba(255,255,255,.9); border-color: var(--gold); }
 .hs-spot-text p.hs-spot-lead { margin: 10px 0 0; font-size: .9rem; line-height: 1.55; }
+
+/* ---------- carrousel des avis (téléphone / tablette) ---------- */
+.carousel-controls { display: none; }
+@media (max-width: 900px) {
+  .testi-grid[data-carousel] {
+    display: flex; position: relative;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    gap: 14px; padding: 6px 8% 18px;
+    margin: 0 -8%;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .testi-grid[data-carousel]::-webkit-scrollbar { display: none; }
+  .testi-grid[data-carousel] > .testi-card { flex: 0 0 84%; scroll-snap-align: center; padding: 28px 24px; }
+  .carousel-controls { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 2px; }
+  .carousel-dots { display: flex; gap: 8px; }
+  .carousel-dot { width: 9px; height: 9px; padding: 0; border-radius: 50%; border: none; background: rgba(107,69,48,.25); cursor: pointer; transition: background .3s var(--ease), transform .3s var(--ease); }
+  .carousel-dot.active { background: var(--brown-deep); transform: scale(1.25); }
+  .carousel-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--glass-border); background: rgba(255,255,255,.7); color: var(--brown-deep); font-size: 1.3rem; line-height: 1; cursor: pointer; }
+}

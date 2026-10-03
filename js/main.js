@@ -327,6 +327,78 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ---------- carrousel des avis (téléphone et tablette) : défilement tactile, flèches, points, avance douce ---------- */
+  document.querySelectorAll('[data-carousel]').forEach((track) => {
+    const cards = Array.from(track.children);
+    if (cards.length < 2) return;
+    const mq = window.matchMedia('(max-width: 900px)');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const controls = document.createElement('div');
+    controls.className = 'carousel-controls';
+    controls.innerHTML = '<button type="button" class="carousel-btn" data-dir="-1" aria-label="Avis précédent">‹</button>'
+      + '<div class="carousel-dots"></div>'
+      + '<button type="button" class="carousel-btn" data-dir="1" aria-label="Avis suivant">›</button>';
+    track.insertAdjacentElement('afterend', controls);
+    const dotsBox = controls.querySelector('.carousel-dots');
+    const dots = cards.map((_, i) => {
+      const d = document.createElement('button');
+      d.type = 'button';
+      d.className = 'carousel-dot';
+      d.setAttribute('aria-label', 'Avis ' + (i + 1));
+      d.addEventListener('click', () => { stopAuto(); goTo(i); });
+      dotsBox.appendChild(d);
+      return d;
+    });
+
+    let current = 0;
+    let timer = null;
+    let userTouched = false;
+
+    function goTo(i) {
+      current = (i + cards.length) % cards.length;
+      const card = cards[current];
+      const left = card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
+      track.scrollTo({ left: Math.max(0, left), behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+    function updateActive() {
+      const center = track.scrollLeft + track.clientWidth / 2;
+      let best = 0, bestDist = Infinity;
+      cards.forEach((c, i) => {
+        const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - center);
+        if (d < bestDist) { bestDist = d; best = i; }
+      });
+      current = best;
+      dots.forEach((d, i) => d.classList.toggle('active', i === best));
+    }
+    let ticking = false;
+    track.addEventListener('scroll', () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; updateActive(); }); }
+    }, { passive: true });
+    controls.querySelectorAll('.carousel-btn').forEach((b) => {
+      b.addEventListener('click', () => { stopAuto(); goTo(current + Number(b.dataset.dir)); });
+    });
+
+    function stopAuto() { userTouched = true; if (timer) { clearInterval(timer); timer = null; } }
+    function startAuto() {
+      if (reduceMotion || userTouched || timer || !mq.matches) return;
+      timer = setInterval(() => {
+        if (document.hidden || !mq.matches || !track.dataset.visible) return;
+        goTo(current + 1);
+      }, 6500);
+    }
+    ['touchstart', 'pointerdown', 'wheel', 'focusin', 'mouseenter'].forEach((ev) => track.addEventListener(ev, stopAuto, { passive: true }));
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) track.dataset.visible = '1'; else delete track.dataset.visible; });
+      }, { threshold: 0.4 }).observe(track);
+    } else {
+      track.dataset.visible = '1';
+    }
+    mq.addEventListener('change', () => { if (mq.matches) startAuto(); else { track.scrollLeft = 0; } });
+    updateActive();
+    startAuto();
+  });
   /* ---------- quick-nav : surligne la rubrique en cours de lecture ---------- */
   document.querySelectorAll('.quick-nav').forEach((nav) => {
     if (!('IntersectionObserver' in window)) return;
