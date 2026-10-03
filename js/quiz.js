@@ -13,14 +13,15 @@
     ['Environ 1 h', R('Head Spa Essentiel', '1h · 95 €' + HS, 'L\'essentiel du rituel Head Spa, idéal pour découvrir.', 'head-spa.html', '', 'Head Spa Essentiel')],
     ['1h30', R('Head Spa Intense', '1h30 · 125 €' + HS, 'Un rituel plus long et plus approfondi.', 'head-spa.html', '', 'Head Spa Intense')]
   ]};
-  const relax = { q: 'Quel moment souhaitez-vous vivre ?', opts: [
-    ['Un Head Spa de détente', { next: 'relaxTime' }],
+  const relax = { q: 'Quelle expérience souhaitez-vous vivre ?', opts: [
+    ['Un rituel personnalisé, avec diagnostic du cuir chevelu', { next: 'relaxTime' }],
     ['Une expérience à part entière, la plus poussée', holistique]
-  ]};  const bubble = R('Bubble Hair Spa Coréen', '1h45 · 190 €' + HS, 'Notre soin coréen le plus complet pour purifier et apaiser le cuir chevelu : diagnostic au microscope, AquaPeel, soins Histemo, Bubble Shampoo et LED thérapie, dans une vraie parenthèse de détente.', 'head-spa.html', 'Nouveauté', 'Bubble Hair Spa Coréen');
+  ]};
+  const bubble = R('Bubble Hair Spa Coréen', '1h45 · 190 €' + HS, 'Notre soin coréen le plus complet pour purifier et apaiser le cuir chevelu : diagnostic au microscope, AquaPeel, soins Histemo, Bubble Shampoo et LED thérapie, dans une vraie parenthèse de détente.', 'head-spa.html', 'Nouveauté', 'Bubble Hair Spa Coréen');
   const trees = {
     full: {
       start: { q: 'Qu\'est-ce qui vous ferait du bien ?', opts: [
-        ['Un moment de détente profonde', { next: 'relax' }],
+        ['Un Head Spa : diagnostic du cuir chevelu, soin et lâcher-prise', { next: 'relax' }],
         ['Purifier et apaiser mon cuir chevelu (pellicules, excès de sébum, irritations…)', bubble],
         ['Un soin du visage', { next: 'face' }],
         ['Un soin du corps', { next: 'body' }],
@@ -56,7 +57,7 @@
         ['Pour offrir', R('Un bon cadeau Head Spa', 'Le soin de votre choix', 'Choisissez le Head Spa à offrir, en version électronique ou imprimée.', '#bon-cadeau', 'gift')]
       ]},
       need: { q: 'Qu\'est-ce qui vous ferait du bien ?', opts: [
-        ['Me détendre en profondeur', { next: 'relax' }],
+        ['Un Head Spa : diagnostic du cuir chevelu, soin et lâcher-prise', { next: 'relax' }],
         ['Purifier et apaiser mon cuir chevelu (pellicules, excès de sébum, irritations…)', bubble],
         ['Une déconnexion totale : soin énergétique et Head Spa', R('Head Spa X Reiki', '1h45 · 155 €' + HS, 'Deux soins réunis en un seul rituel : 45 min de soin énergétique (Reiki), suivies d\'1 h de véritable Head Spa, pour une déconnexion totale du corps à l\'esprit.', 'head-spa.html', '', 'Head Spa X Reiki')],
         ['Le cuir chevelu et le corps', R('Head Spa X Massage Corps', '2h · 165 €' + HS, 'Un Head Spa associé à un massage du corps.', 'head-spa.html', '', 'Head Spa X Massage Corps')]
