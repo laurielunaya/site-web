@@ -2338,3 +2338,19 @@ footer { padding: 80px 0 30px; }
   .gift-card { flex: 1 1 100%; max-width: 340px; }
   .gift-card-select { font-size: .82rem; }
 }
+
+/* ---------- produits sur téléphone : prix, bouton et "+" toujours alignés aux mêmes endroits ---------- */
+@media (max-width: 560px) {
+  .product-row-right {
+    flex: 0 0 100%;
+    width: 100%;
+    margin-left: 0;
+    display: grid;
+    grid-template-columns: 96px 1fr 40px;
+    align-items: center;
+    gap: 10px;
+  }
+  .product-row-right .product-price { white-space: nowrap; text-align: left; }
+  .product-row-right .product-add { justify-self: start; min-width: 130px; text-align: center; }
+  .product-row-right .product-row-toggle { justify-self: end; }
+}
