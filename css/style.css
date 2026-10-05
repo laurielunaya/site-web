@@ -2405,3 +2405,11 @@ footer { padding: 80px 0 30px; }
 .gift-card-pills { display: flex; justify-content: center; gap: 8px; margin: 0 0 14px; }
 .gift-card-pills span { padding: 5px 14px; border-radius: var(--r-pill); background: rgba(184,146,90,.14); border: 1px solid rgba(184,146,90,.35); font-size: .72rem; font-weight: 500; color: var(--brown-deep); }
 @media (max-width: 560px) { .gift-card-compose { flex: 1 1 100%; max-width: 340px; } }
+
+/* ---------- bons cadeaux : icône rouge et deux cartes toujours côte à côte (dès 641 px) ---------- */
+.gift-card-icon { background: rgba(192,52,43,.12); }
+.gift-card-icon svg { color: #c0342b; width: 22px; height: 22px; }
+@media (min-width: 641px) {
+  .gift-grid { flex-wrap: nowrap; }
+  .gift-card-main, .gift-card-compose { flex: 1 1 0; min-width: 0; max-width: 340px; }
+}
