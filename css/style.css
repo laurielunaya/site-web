@@ -2388,3 +2388,12 @@ footer { padding: 80px 0 30px; }
   .carousel-dot.active { background: var(--brown-deep); transform: scale(1.25); }
   .carousel-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--glass-border); background: rgba(255,255,255,.7); color: var(--brown-deep); font-size: 1.3rem; line-height: 1; cursor: pointer; }
 }
+
+/* ---------- bon cadeau à montant libre ---------- */
+.gift-card-main { flex: 0 1 340px; }
+.gift-card-soin { width: 100%; max-width: 100%; margin-bottom: 10px; text-align: center; }
+.gift-card-help { font-size: .78rem; line-height: 1.55; color: var(--brown-soft); margin: 0 0 14px; }
+.gift-card-help strong { color: var(--brown-deep); font-weight: 600; }
+@media (max-width: 560px) { .gift-card-main { flex: 1 1 100%; max-width: 340px; } }
+.gift-card-amount-wrap .gift-card-amount { width: 100%; }
+.gift-card > .btn { margin-top: auto; }
