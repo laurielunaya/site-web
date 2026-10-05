@@ -43,7 +43,7 @@
         ['Une vraie escapade de 1h30', R('Rituel Évasion', '90 min · 99 €', 'Un long rituel pour déconnecter.', 'soins-corps.html')]
       ]},
       gift: { q: 'Que souhaitez-vous faire ?', opts: [
-        ['Offrir un bon cadeau', R('Un bon cadeau', 'Montant libre', 'Choisissez le montant de son tarif et indiquez-nous le soin : nous l\'écrirons sur le bon, en version électronique ou imprimée.', 'idees-cadeaux.html#bons-cadeaux', 'gift')],
+        ['Offrir un bon cadeau', R('Un bon cadeau', 'Montant libre', 'Choisissez le montant de son tarif et indiquez-nous le soin : nous l\'écrirons sur le bon, en version numérique ou papier.', 'idees-cadeaux.html#bons-cadeaux', 'gift')],
         ['Composer un coffret', R('Un coffret cadeau', 'Cheveux, visage ou corps', 'Des coffrets prêts à offrir, ou composez le vôtre.', 'idees-cadeaux.html#coffrets', 'gift')],
         ['Venir à deux', R('Head Spa Duo', '1h · 180 €' + HS, 'Un Head Spa à partager.', 'head-spa.html')]
       ]}
@@ -54,7 +54,7 @@
         ['Pour un homme', R('Head Spa Homme', '1h · 80 €' + HS, 'Le rituel Head Spa pensé pour les hommes.', 'head-spa.html', '', 'Head Spa Homme')],
         ['Pour un enfant (4 à 13 ans)', R('Head Spa Enfant', '30 min · 50 €' + HS, 'Une parenthèse adaptée aux enfants de 4 à 13 ans.', 'head-spa.html', '', 'Head Spa Enfant')],
         ['Pour venir à deux', { next: 'duo' }],
-        ['Pour offrir', R('Un bon cadeau Head Spa', 'Montant libre', 'Choisissez le montant du Head Spa à offrir et indiquez-nous le soin : nous l\'écrirons sur le bon, en version électronique ou imprimée.', '#bon-cadeau', 'gift')]
+        ['Pour offrir', R('Un bon cadeau Head Spa', 'Montant libre', 'Choisissez le montant du Head Spa à offrir et indiquez-nous le soin : nous l\'écrirons sur le bon, en version numérique ou papier.', '#bon-cadeau', 'gift')]
       ]},
       need: { q: 'Qu\'est-ce qui vous ferait du bien ?', opts: [
         ['Un Head Spa : lâcher-prise et soin du cuir chevelu', { next: 'relax' }],
