@@ -2397,3 +2397,5 @@ footer { padding: 80px 0 30px; }
 @media (max-width: 560px) { .gift-card-main { flex: 1 1 100%; max-width: 340px; } }
 .gift-card-amount-wrap .gift-card-amount { width: 100%; }
 .gift-card > .btn { margin-top: auto; }
+.gift-grid { align-items: center; }
+.gift-card:not(.gift-card-main) > .btn { margin-top: 4px; }
