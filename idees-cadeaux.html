@@ -100,7 +100,7 @@
           </div>
           <input type="text" class="checkout-input gift-card-soin" id="giftSoin" maxlength="80" placeholder="Soin à offrir (facultatif)" aria-label="Soin que vous souhaitez offrir, facultatif" autocomplete="off">
           <p class="gift-card-help">Vous savez quel soin offrir ? Indiquez-le ci-dessus, avec le montant de son tarif : <strong>nous l'écrirons sur le bon cadeau</strong>.</p>
-          <p class="gift-card-help">Au choix : <strong>version numérique</strong> (vous recevez le fichier à imprimer par email) ou <strong>version papier</strong> à récupérer à l'institut, sur rendez-vous.</p>
+          <p class="gift-card-help">Au choix : <strong>version numérique</strong> (achat sur Planity, fichier à imprimer reçu par email) ou <strong>version papier</strong> à récupérer à l'institut, sur rendez-vous.</p>
           <button type="button" class="btn btn-primary btn-sm gift-card-offer-btn">Offrir</button>
         </div>
 
@@ -408,7 +408,7 @@
         <span class="checkout-item-hint">Quelle version souhaitez-vous ?</span>
       </div>
       <div class="giftcard-modes">
-        <button type="button" class="btn btn-primary btn-sm" id="coffretModeDigital" data-planity-url="https://www.planity.com/lunaya-38140-apprieu"><span class="giftcard-mode-title">Version numérique</span><span class="giftcard-mode-sub">Vous recevez le fichier à imprimer par email</span></button>
+        <button type="button" class="btn btn-primary btn-sm" id="coffretModeDigital" data-planity-url="https://www.planity.com/lunaya-38140-apprieu"><span class="giftcard-mode-title">Version numérique</span><span class="giftcard-mode-sub">Achat en ligne sur Planity · fichier à imprimer reçu par email</span></button>
         <button type="button" class="btn btn-outline btn-sm" id="coffretModePrint"><span class="giftcard-mode-title">Version papier</span><span class="giftcard-mode-sub">Carte à récupérer à l'institut · vous choisissez un créneau · vous y écrivez votre mot</span></button>
       </div>
       <a href="#" id="coffretDigitalLink" target="_blank" rel="noopener" hidden></a>
@@ -450,7 +450,7 @@
 
     <!-- ÉTAPE 3 : rappel avant de terminer -->
     <div class="product-bar-step product-bar-done" id="coffretStepDigital" hidden>
-      <p class="product-bar-done-text">✅ Planity vient de s'ouvrir dans un nouvel onglet : réglez votre bon cadeau en ligne, vous recevrez ensuite par email le fichier à imprimer. Cliquez sur Terminer une fois le paiement effectué.</p>
+      <p class="product-bar-done-text" id="coffretDigitalText">✅ Planity vient de s'ouvrir dans un nouvel onglet : achetez votre bon cadeau en ligne, vous recevrez ensuite par email le fichier à imprimer. Cliquez sur Terminer une fois l'achat effectué.</p>
       <button type="button" class="btn btn-outline btn-sm" id="coffretDigitalDone">Terminer</button>
     </div>
 
@@ -647,7 +647,18 @@
     hideAllSteps();
     stepForm.hidden = false;
   }
-  modeDigital.addEventListener('click', () => goToGiftForm('digital'));
+  /* version numérique : achat direct sur la page Planity de l'institut (pas de formulaire) */
+  modeDigital.addEventListener('click', () => {
+    if (!currentCoffret) return;
+    currentCoffret.version = 'digital';
+    digitalLink.href = modeDigital.dataset.planityUrl;
+    digitalLink.click();
+    const txt = document.getElementById('coffretDigitalText');
+    txt.textContent = '✅ Planity vient de s\'ouvrir dans un nouvel onglet : achetez votre bon cadeau en ligne, vous recevrez ensuite par email le fichier à imprimer. Cliquez sur Terminer une fois l\'achat effectué.'
+      + (currentCoffret.soin ? ' Pour faire inscrire « ' + currentCoffret.soin + ' » sur votre bon, appelez-nous au 04.76.37.32.38 ou écrivez-nous sur Instagram.' : '');
+    hideAllSteps();
+    stepDigital.hidden = false;
+  });
   modePrint.addEventListener('click', () => goToGiftForm('print'));
   doneBtn.addEventListener('click', closeBar);
 
