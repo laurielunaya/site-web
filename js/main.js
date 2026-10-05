@@ -279,6 +279,10 @@ document.addEventListener('DOMContentLoaded', () => {
       + '<a class="footer-info-sub" href="contact.html#horaires">Voir les horaires détaillés</a>';
     list.insertBefore(info, list.firstChild);
 
+    const before = document.createElement('li');
+    before.innerHTML = '<a href="reservation.html#avant-la-venue">Avant votre venue</a>';
+    list.appendChild(before);
+
     const ig = document.createElement('li');
     ig.innerHTML = '<a href="https://ig.me/m/linstitutdebeauteapprieu" target="_blank" rel="noopener">Nous écrire sur Instagram</a>';
     list.appendChild(ig);

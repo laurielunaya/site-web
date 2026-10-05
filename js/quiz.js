@@ -145,7 +145,9 @@
     actions.appendChild(see);
     if (r.extra !== 'gift') {
       const book = el('a', 'btn btn-primary btn-sm', 'Réserver');
-      book.href = 'reservation.html';
+      book.href = 'https://www.planity.com/lunaya-38140-apprieu';
+      book.target = '_blank';
+      book.rel = 'noopener';
       actions.appendChild(book);
     }
     card.appendChild(actions);
