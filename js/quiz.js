@@ -17,7 +17,7 @@
     ['Un rituel personnalisé, avec diagnostic du cuir chevelu', { next: 'relaxTime' }],
     ['Une expérience à part entière, la plus poussée', holistique]
   ]};
-  const bubble = R('Bubble Hair Spa Coréen', '1h45 · 190 €' + HS, 'Notre soin coréen le plus complet pour purifier et apaiser le cuir chevelu : diagnostic au microscope, AquaPeel, soins Histemo, Bubble Shampoo et LED thérapie, dans une vraie parenthèse de détente.', 'head-spa.html', 'Nouveauté', 'Bubble Hair Spa Coréen');
+  const bubble = R('Bubble Hair Spa Coréen', '1h45 · 190 €' + HS, 'Notre soin coréen le plus complet pour purifier et apaiser le cuir chevelu : diagnostic au tricoscope, AquaPeel, soins Histemo, Bubble Shampoo et LED thérapie, dans une vraie parenthèse de détente.', 'head-spa.html', 'Nouveauté', 'Bubble Hair Spa Coréen');
   const trees = {
     full: {
       start: { q: 'Qu\'est-ce qui vous ferait du bien ?', opts: [
