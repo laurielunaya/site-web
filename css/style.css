@@ -2420,5 +2420,19 @@ footer { padding: 80px 0 30px; }
 .bhs-video figcaption { max-width: 420px; text-align: center; font-size: 0.9rem; line-height: 1.5; color: var(--brown-soft, #7a5f4a); }
 
 /* Accueil : en-tete avec le logo en transparence (en attendant les photos de l institut) */
-.hero-video-wrap.hero-logo { background-image: url(../assets/hero-logo.jpg); background-position: 74% center; }
+.hero-video-wrap.hero-logo { background-image: url(../assets/hero-logo.jpg); background-position: center; }
 @media (max-width: 640px) { .hero-video-wrap.hero-logo { background-image: url(../assets/hero-logo-mobile.jpg); background-position: center; } }
+
+/* Accueil : en-tete clair et centre (logo en transparence) */
+.hero.hero-light { justify-content: center; text-align: center; min-height: 62vh; }
+.hero.hero-light .hero-video-overlay { background: none; }
+.hero.hero-light .hero-text { margin: 0 auto; max-width: 860px; }
+.hero.hero-light .hero-eyebrow { color: var(--brown-soft); }
+.hero.hero-light h1 { color: var(--brown-deep); }
+.hero.hero-light h1 em { color: var(--gold); }
+.hero.hero-light p.lede { color: var(--brown-soft); margin-left: auto; margin-right: auto; }
+.hero.hero-light .hero-cta { justify-content: center; }
+.hero.hero-light .btn-glass { color: var(--brown-deep); background: rgba(255,255,255,.55); border: 1px solid rgba(122,95,74,.35); }
+.hero.hero-light .btn-glass:hover { background: rgba(255,255,255,.85); }
+.hero.hero-light .hero-rating { color: var(--brown-deep); background: rgba(255,255,255,.6); border-color: rgba(122,95,74,.28); }
+.hero.hero-light .hero-rating-stars { color: var(--gold); }
