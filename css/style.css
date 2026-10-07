@@ -2418,3 +2418,7 @@ footer { padding: 80px 0 30px; }
 .bhs-video { display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 4px 0 24px; }
 .bhs-video video { width: min(320px, 100%); aspect-ratio: 9 / 16; border-radius: 22px; background: #2b1d17; box-shadow: 0 14px 40px rgba(60, 38, 22, 0.28); display: block; }
 .bhs-video figcaption { max-width: 420px; text-align: center; font-size: 0.9rem; line-height: 1.5; color: var(--brown-soft, #7a5f4a); }
+
+/* Accueil : en-tete avec le logo en transparence (en attendant les photos de l institut) */
+.hero-video-wrap.hero-logo { background-image: url(../assets/hero-logo.jpg); background-position: 74% center; }
+@media (max-width: 640px) { .hero-video-wrap.hero-logo { background-image: url(../assets/hero-logo-mobile.jpg); background-position: center; } }
