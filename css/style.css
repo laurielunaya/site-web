@@ -2436,3 +2436,5 @@ footer { padding: 80px 0 30px; }
 .hero.hero-light .btn-glass:hover { background: rgba(255,255,255,.85); }
 .hero.hero-light .hero-rating { color: var(--brown-deep); background: rgba(255,255,255,.6); border-color: rgba(122,95,74,.28); }
 .hero.hero-light .hero-rating-stars { color: var(--gold); }
+.service-a .bhs-video { margin: 4px 0 16px; }
+.service-a .bhs-video video { width: min(240px, 100%); }
