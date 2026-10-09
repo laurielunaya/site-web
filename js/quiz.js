@@ -45,7 +45,7 @@
       gift: { q: 'Que souhaitez-vous faire ?', opts: [
         ['Offrir un bon cadeau', R('Un bon cadeau', 'Montant libre', 'Choisissez le montant de son tarif et indiquez-nous le soin : nous l\'écrirons sur le bon, en version numérique ou papier.', 'idees-cadeaux.html#bons-cadeaux', 'gift')],
         ['Composer un coffret', R('Un coffret cadeau', 'Cheveux, visage ou corps', 'Des coffrets prêts à offrir, ou composez le vôtre.', 'idees-cadeaux.html#coffrets', 'gift')],
-        ['Venir à deux', R('Head Spa Duo', '1h · 180 €' + HS, 'Un Head Spa à partager. Bientôt disponible à la réservation.', 'head-spa.html')]
+        ['Venir à deux', R('Head Spa Duo', '1h · 180 €' + HS, 'Un Head Spa à partager. Rendez-vous à partir du 15 décembre.', 'head-spa.html')]
       ]}
     },
     headspa: {
@@ -65,8 +65,8 @@
       relax: relax,
       relaxTime: relaxTime,
       duo: { q: 'Quelle formule à deux ?', opts: [
-        ['Head Spa à deux', R('Head Spa Duo', '1h · 180 €' + HS, 'Un Head Spa à partager. Bientôt disponible à la réservation.', 'head-spa.html', '', 'Head Spa Duo')],
-        ['Head Spa à deux avec soin du visage', R('Head Spa Duo X Soin Visage', '1h30 · 240 €' + HS, 'Le Head Spa à deux, complété d\'un soin du visage. Bientôt disponible à la réservation.', 'head-spa.html', '', 'Head Spa Duo X Soin Visage')]
+        ['Head Spa à deux', R('Head Spa Duo', '1h · 180 €' + HS, 'Un Head Spa à partager. Rendez-vous à partir du 15 décembre.', 'head-spa.html', '', 'Head Spa Duo')],
+        ['Head Spa à deux avec soin du visage', R('Head Spa Duo X Soin Visage', '1h30 · 240 €' + HS, 'Le Head Spa à deux, complété d\'un soin du visage. Rendez-vous à partir du 15 décembre.', 'head-spa.html', '', 'Head Spa Duo X Soin Visage')]
       ]}
     }
   };
