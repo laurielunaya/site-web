@@ -443,7 +443,22 @@
     <div class="product-bar-step product-bar-progress" id="coffretStepPlanity" hidden>
       <p class="product-bar-recap" id="coffretRecap"></p>
       <p class="product-bar-done-text" id="coffretPlanityText">✅ Étape 1/2 : votre message vient d'être envoyé directement à l'institut. <strong>Il reste une étape</strong> : choisir votre créneau de retrait.</p>
-      <p class="planity-hint">📍 Sur Planity, ouvrez la rubrique <strong>« Retrait Click and Collect »</strong>, puis choisissez <strong>« Retrait réservation bon cadeau ou produits »</strong> (10 min) avant de sélectionner la date et l’heure.</p>
+      <div class="planity-guide">
+        <p class="pg-title">Sur Planity, deux clics pour trouver le bon créneau</p>
+        <ol class="pg-steps">
+          <li class="pg-step">
+            <span class="pg-num" aria-hidden="true">1</span>
+            <div class="pg-mock" aria-hidden="true"><div class="pg-row pg-open"><span>Retrait Click and Collect</span><i class="pg-chev"></i></div></div>
+            <p>Ouvrez la rubrique <strong>« Retrait Click and Collect »</strong> tout en bas de la liste.</p>
+          </li>
+          <li class="pg-arrow" aria-hidden="true">›</li>
+          <li class="pg-step">
+            <span class="pg-num" aria-hidden="true">2</span>
+            <div class="pg-mock" aria-hidden="true"><div class="pg-row pg-sub"><span>Retrait réservation bon cadeau ou produits<small>10min</small></span><b class="pg-btn">Choisir</b></div></div>
+            <p>Cliquez sur <strong>« Choisir »</strong>, puis sélectionnez la date et l’heure de votre retrait.</p>
+          </li>
+        </ol>
+      </div>
       <button type="button" class="btn btn-primary btn-sm" id="coffretPlanityStepBtn" data-planity-url="https://www.planity.com/lunaya-38140-apprieu">
         <span id="coffretPlanityBtnLabel">Étape 2/2 — Choisir mon créneau sur Planity</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -458,8 +473,27 @@
     </div>
 
     <div class="product-bar-step product-bar-done" id="coffretStepDone" hidden>
-      <p class="product-bar-done-text">⚠️ Ce n'est pas encore fini ! Vérifiez que vous avez bien <strong>validé votre créneau sur Planity</strong>, puis cliquez sur Terminer.</p>
-      <button type="button" class="btn btn-outline btn-sm" id="coffretBarDone">Terminer</button>
+      <div class="pickup-check" data-pickup="cadeau" data-pickup-finish="coffretBarDone" data-pickup-url="https://www.planity.com/lunaya-38140-apprieu">
+        <div data-state="ask">
+          <p class="product-bar-done-text">Vous revenez de Planity : votre créneau de retrait est-il bien <strong>validé</strong> ?</p>
+          <div class="pickup-actions">
+            <button type="button" class="btn btn-primary btn-sm" data-pickup-yes>✅ Oui, mon créneau est réservé</button>
+            <button type="button" class="btn btn-outline btn-sm" data-pickup-no>Pas encore</button>
+          </div>
+        </div>
+        <div data-state="ok" hidden>
+          <p class="product-bar-done-text pickup-ok-text">🎉 <strong>Tout est validé !</strong> Votre demande est bien envoyée et votre créneau de retrait est réservé : votre coffret ou bon cadeau vous attend à l’institut. Vous recevrez la confirmation de Planity. À très bientôt !</p>
+          <button type="button" class="btn btn-primary btn-sm" data-pickup-finish>Terminer</button>
+        </div>
+        <div data-state="warn" hidden>
+          <p class="product-bar-done-text pickup-warn-text">⚠️ <strong>Démarche non finalisée :</strong> tant que votre créneau n’est pas validé sur Planity, votre coffret ou bon cadeau n’est pas mis de côté. Reprenez là où vous en étiez :</p>
+          <div class="pickup-actions">
+            <a class="btn btn-primary btn-sm" data-pickup-reopen href="https://www.planity.com/lunaya-38140-apprieu" target="_blank" rel="noopener">Choisir mon créneau</a>
+            <button type="button" class="btn btn-outline btn-sm" data-pickup-yes>C’est fait ✓</button>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-outline btn-sm" id="coffretBarDone" hidden>Terminer</button>
     </div>
   </div>
 </div>
@@ -523,6 +557,7 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/pickup.js"></script>
 <script>
 (function() {
   const WEB3FORMS_ACCESS_KEY = '1adfa4f5-1b9b-4f57-a04f-faaf8a5f4889';
@@ -772,7 +807,7 @@
 
     hideAllSteps();
     if (currentCoffret.kind === 'bon' && currentCoffret.version === 'digital') stepDigital.hidden = false;
-    else stepDone.hidden = false;
+    else { stepDone.hidden = false; if (window.LunayaPickup) window.LunayaPickup.start('cadeau'); }
   });
 })();
 </script>
