@@ -721,17 +721,20 @@
     const hint = makeHint(offerBtn);
     input.addEventListener('input', () => { input.classList.remove('is-error'); hint.hidden = true; });
     const soinInput = document.getElementById('giftSoin');
-    /* choisir un soin dans la liste renseigne tout seul le montant (modifiable) */
+    /* choisir un soin dans la liste met toujours le montant du bon au tarif de ce soin (modifiable ensuite) */
     let autoFilled = false;
     input.addEventListener('input', () => { autoFilled = false; });
     if (soinInput) soinInput.addEventListener('change', () => {
       const opt = soinInput.options[soinInput.selectedIndex];
       const p = opt && opt.dataset.price;
-      if (p && (!input.value || autoFilled)) {
+      if (p) {
         input.value = p;
         autoFilled = true;
         input.classList.remove('is-error');
         hint.hidden = true;
+      } else if (autoFilled && !soinInput.value) {
+        input.value = '';
+        autoFilled = false;
       }
     });
     offerBtn.addEventListener('click', () => {
