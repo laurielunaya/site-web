@@ -2483,3 +2483,8 @@ footer { padding: 80px 0 30px; }
 .pickup-banner p { margin: 0 0 10px; }
 @media (prefers-reduced-motion: reduce) { .pickup-pulse { animation: none; } }
 .product-bar-done > button[hidden] { display: none !important; }
+
+/* Bon cadeau : liste déroulante des soins */
+select.gift-card-soin { appearance: none; -webkit-appearance: none; cursor: pointer; text-align: center; text-align-last: center; padding-right: 38px; background-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%237a5f4a%27 stroke-width=%272%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 16px; }
+select.gift-card-soin:invalid, select.gift-card-soin option[value=""] { color: var(--brown-soft); }
+select.gift-card-soin optgroup { font-style: normal; font-weight: 600; color: var(--brown-deep); }

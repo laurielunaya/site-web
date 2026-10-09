@@ -98,8 +98,67 @@
             <input type="number" class="checkout-input gift-card-select gift-card-amount" min="1" step="1" inputmode="numeric" placeholder="Montant libre" aria-label="Montant du bon cadeau en euros">
             <span class="gift-card-amount-eur" aria-hidden="true">€</span>
           </div>
-          <input type="text" class="checkout-input gift-card-soin" id="giftSoin" maxlength="80" placeholder="Soin à offrir (facultatif)" aria-label="Soin que vous souhaitez offrir, facultatif" autocomplete="off">
-          <p class="gift-card-help">Vous savez quel soin offrir ? Indiquez-le ci-dessus, avec le montant de son tarif : <strong>nous l'écrirons sur le bon cadeau</strong>.</p>
+          <select class="checkout-input gift-card-soin" id="giftSoin" aria-label="Soin que vous souhaitez offrir, facultatif">
+            <option value="">Soin à offrir (facultatif)</option>
+            <optgroup label="Head Spa">
+              <option value="Bubble Hair Spa Coréen (1h45) — 190 €" data-price="190">Bubble Hair Spa Coréen · 1h45 · 190 €</option>
+              <option value="Head Spa Essentiel (1h) — 95 €" data-price="95">Head Spa Essentiel · 1h · 95 €</option>
+              <option value="Head Spa Intense (1h30) — 125 €" data-price="125">Head Spa Intense · 1h30 · 125 €</option>
+              <option value="Head Spa Holistique (2h) — 180 €" data-price="180">Head Spa Holistique · 2h · 180 €</option>
+              <option value="Head Spa Homme (1h) — 80 €" data-price="80">Head Spa Homme · 1h · 80 €</option>
+              <option value="Head Spa Enfant, 4 à 13 ans (30 min) — 50 €" data-price="50">Head Spa Enfant (4 à 13 ans) · 30 min · 50 €</option>
+              <option value="AquaPeel, soin coréen purifiant du cuir chevelu (1h) — 80 €" data-price="80">AquaPeel · 1h · 80 €</option>
+              <option value="Head Spa X Reiki (1h45) — 155 €" data-price="155">Head Spa X Reiki · 1h45 · 155 €</option>
+              <option value="Head Spa X Massage Corps (1h45) — 165 €" data-price="165">Head Spa X Massage Corps · 1h45 · 165 €</option>
+              <option value="Head Spa Duo (1h) — 180 €" data-price="180">Head Spa Duo · 1h · 180 €</option>
+              <option value="Head Spa Duo X Soin Visage (1h30) — 240 €" data-price="240">Head Spa Duo X Soin Visage · 1h30 · 240 €</option>
+              <option value="Diagnostic capillaire (30 min) — 35 €" data-price="35">Diagnostic capillaire · 30 min · 35 €</option>
+            </optgroup>
+            <optgroup label="Soin du visage">
+              <option value="Soin du visage Sublimateur (30 min) — 35 €" data-price="35">Sublimateur · 30 min · 35 €</option>
+              <option value="Soin du visage Peaux Jeunes, moins de 18 ans (50 min) — 52 €" data-price="52">Peaux Jeunes (– 18 ans) · 50 min · 52 €</option>
+              <option value="Soin du visage Un Moment Pour Soi (60 min) — 65 €" data-price="65">Un Moment Pour Soi · 60 min · 65 €</option>
+              <option value="Soin du visage Sur Mesure (75 min) — 75 €" data-price="75">Sur Mesure · 75 min · 75 €</option>
+              <option value="Soin du visage Majestueux (90 min) — 95 €" data-price="95">Majestueux · 90 min · 95 €</option>
+              <option value="Soin du visage Anti-Âge Global, appareil Dermophyt's (90 min) — 105 €" data-price="105">Anti-Âge Global · 90 min · 105 €</option>
+            </optgroup>
+            <optgroup label="Soin du corps">
+              <option value="Gommage Jambes (10 min) — 10 €" data-price="10">Gommage Jambes · 10 min · 10 €</option>
+              <option value="Gommage Corporel (30 min) — 35 €" data-price="35">Gommage Corporel · 30 min · 35 €</option>
+              <option value="Modelage Dos, Pieds, Cuir Chevelu (30 min) — 35 €" data-price="35">Modelage Dos, Pieds, Cuir Chevelu · 30 min · 35 €</option>
+              <option value="Rituel Dos (45 min) — 52 €" data-price="52">Rituel Dos · 45 min · 52 €</option>
+              <option value="Rituel Jambes Légères (45 min) — 52 €" data-price="52">Rituel Jambes Légères · 45 min · 52 €</option>
+              <option value="Rituel Relaxant (60 min) — 75 €" data-price="75">Rituel Relaxant · 60 min · 75 €</option>
+              <option value="Rituel Relaxant (1h30) — 99 €" data-price="99">Rituel Relaxant · 1h30 · 99 €</option>
+              <option value="Rituel Bien-être (60 min) — 69 €" data-price="69">Rituel Bien-être · 60 min · 69 €</option>
+              <option value="Rituel Évasion (90 min) — 99 €" data-price="99">Rituel Évasion · 90 min · 99 €</option>
+              <option value="Rituel Reiki (75 min) — 80 €" data-price="80">Rituel Reiki · 75 min · 80 €</option>
+            </optgroup>
+            <optgroup label="Mains et pieds">
+              <option value="Manucure (40 min) — 35 €" data-price="35">Manucure · 40 min · 35 €</option>
+              <option value="Soin Complet des Pieds (60 min) — 59 €" data-price="59">Soin Complet des Pieds · 60 min · 59 €</option>
+              <option value="Calluspeeling (35 min) — 30 €" data-price="30">Calluspeeling · 35 min · 30 €</option>
+              <option value="Soin Complet des Pieds + Calluspeeling (70 min) — 74 €" data-price="74">Soin Complet des Pieds + Calluspeeling · 70 min · 74 €</option>
+              <option value="Pose de vernis classique mains ou pieds (30 min) — 35 €" data-price="35">Pose de vernis classique · 30 min · 35 €</option>
+              <option value="Pose de semi-permanent mains ou pieds (75 min) — 39 €" data-price="39">Pose de semi-permanent · 75 min · 39 €</option>
+              <option value="Pose de gel sur les mains (120 min) — 60 €" data-price="60">Pose de gel (mains) · 120 min · 60 €</option>
+            </optgroup>
+            <optgroup label="Regard">
+              <option value="Teinture Sourcils (20 min) — 15 €" data-price="15">Teinture Sourcils · 20 min · 15 €</option>
+              <option value="Teinture Cils (25 min) — 23 €" data-price="23">Teinture Cils · 25 min · 23 €</option>
+              <option value="Rehaussement de Cils Lash Lift Coréen 3.0 Yumi + Teinture (1h) — 85 €" data-price="85">Lash Lift Coréen 3.0 Yumi + Teinture · 1h · 85 €</option>
+            </optgroup>
+            <optgroup label="Épilation">
+              <option value="Épilation du visage">Épilation du visage</option>
+              <option value="Épilation du corps (femme)">Épilation du corps (femme)</option>
+              <option value="Forfait d'épilation">Forfait d'épilation</option>
+              <option value="Épilation homme">Épilation homme</option>
+            </optgroup>
+            <optgroup label="Autre">
+              <option value="Autre soin, à préciser avec l'institut">Autre soin (à préciser avec l'institut)</option>
+            </optgroup>
+          </select>
+          <p class="gift-card-help">Vous savez quel soin offrir ? Choisissez-le dans la liste : le montant de son tarif s'ajoute tout seul et <strong>nous l'écrirons sur le bon cadeau</strong>.</p>
           <p class="gift-card-help">Au choix : <strong>version numérique</strong> (achat sur Planity, fichier à imprimer reçu par email) ou <strong>version papier</strong> à récupérer à l'institut, sur rendez-vous.</p>
           <button type="button" class="btn btn-primary btn-sm gift-card-offer-btn">Offrir</button>
         </div>
@@ -662,6 +721,19 @@
     const hint = makeHint(offerBtn);
     input.addEventListener('input', () => { input.classList.remove('is-error'); hint.hidden = true; });
     const soinInput = document.getElementById('giftSoin');
+    /* choisir un soin dans la liste renseigne tout seul le montant (modifiable) */
+    let autoFilled = false;
+    input.addEventListener('input', () => { autoFilled = false; });
+    if (soinInput) soinInput.addEventListener('change', () => {
+      const opt = soinInput.options[soinInput.selectedIndex];
+      const p = opt && opt.dataset.price;
+      if (p && (!input.value || autoFilled)) {
+        input.value = p;
+        autoFilled = true;
+        input.classList.remove('is-error');
+        hint.hidden = true;
+      }
+    });
     offerBtn.addEventListener('click', () => {
       if (!(amount() >= 1)) {
         input.classList.add('is-error');
