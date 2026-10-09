@@ -19,7 +19,7 @@
     const title = lastCall ? 'Il est encore temps d\'offrir' : 'Des coffrets à glisser sous le sapin';
     const text = lastCall
       ? 'Retrait possible <strong>jusqu\'au 25 décembre</strong> : les créneaux partent vite, réservez vos coffrets et bons cadeaux dès maintenant.'
-      : '12 coffrets cheveux, visage et corps, dès <strong>36,90&nbsp;€</strong>, à offrir ou à s\'offrir.';
+      : '12 coffrets cheveux, visage et corps, dès <strong>39,90&nbsp;€</strong>, à offrir ou à s\'offrir.';
     const sec = document.createElement('section');
     sec.style.cssText = 'padding-top:34px; padding-bottom:10px;';
     sec.innerHTML = '<div class="container"><a href="idees-cadeaux.html#coffrets" class="xmas-band">'
