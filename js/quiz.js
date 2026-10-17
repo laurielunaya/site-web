@@ -127,9 +127,9 @@
     if (r.extra && r.extra !== 'gift') card.appendChild(el('span', 'quiz-tag', r.extra));
     card.appendChild(el('h3', '', r.name));
     const metaEl = el('p', 'quiz-meta', r.meta);
-    // Offre d'inauguration : -20 % sur les Head Spa jusqu'au 30 novembre
+    // Offre d'inauguration : -20 % sur les Head Spa (hors Duo) jusqu'au 30 novembre
     const pm = r.meta.match(/^(.*? · )(\d+) €( · \+15 min de séchage)$/);
-    if (pm && new Date() <= new Date('2026-11-30T23:59:59')) {
+    if (pm && r.name.indexOf('Head Spa Duo') !== 0 && new Date() <= new Date('2026-11-30T23:59:59')) {
       metaEl.textContent = '';
       metaEl.appendChild(document.createTextNode(pm[1]));
       metaEl.appendChild(el('s', 'price-old', pm[2] + ' €'));
