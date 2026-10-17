@@ -18,7 +18,7 @@ RewriteCond %{THE_REQUEST} \s/index\.html[\s?]
 RewriteRule ^index\.html$ https://www.lunaya-institut.fr/ [L,R=301]
 
 # Lien court pour les SMS / réseaux : /headspa ouvre la liste des Head Spa (avec les boutons Réserver)
-RewriteRule ^headspa/?$ /head-spa.html?utm_source=sms&utm_medium=planity&utm_campaign=inauguration#nouveaute [NE,L,R=302]
+RewriteRule ^(headspa|hs)/?$ /head-spa.html?utm_source=sms&utm_medium=planity&utm_campaign=inauguration#nouveaute [NE,L,R=302]
 </IfModule>
 
 # ---------- Compression (pages plus légères, donc plus rapides) ----------
