@@ -2542,3 +2542,9 @@ select.gift-card-soin optgroup { font-style: normal; font-weight: 600; color: va
 .promo-title strong { font-weight: 600; color: var(--brown); }
 .promo-sub { font-size: .92rem; color: var(--brown-soft); margin: 0; line-height: 1.55; }
 .promo-pill { display: inline-block; margin: 0 0 14px; padding: 8px 14px; border-radius: var(--r-md); background: rgba(212,187,152,.3); border: 1px solid rgba(184,151,113,.55); color: var(--brown-deep); font-size: .86rem; line-height: 1.4; }
+
+/* Prix barré + prix remisé (offre d inauguration) */
+.is-promo { white-space: nowrap; }
+.is-promo .price-old { opacity: .55; font-size: .82em; font-weight: 400; margin-right: 4px; text-decoration-thickness: 1px; }
+.is-promo .price-new { color: var(--brown-deep); font-weight: 600; }
+.hs-spot-price .is-promo .price-new { color: var(--gold-light); }

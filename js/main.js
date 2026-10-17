@@ -471,3 +471,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isNaN(end) && new Date() > end) el.parentNode.removeChild(el);
   });
 })();
+
+/* Prix promotionnels : l'ancien prix est barré et le nouveau affiché jusqu'à la date indiquée (data-price-until) */
+(function () {
+  document.querySelectorAll('[data-price-promo]').forEach(function (el) {
+    var end = new Date((el.getAttribute('data-price-until') || '') + 'T23:59:59');
+    if (isNaN(end) || new Date() > end) return;
+    var old = el.textContent.trim();
+    el.classList.add('is-promo');
+    el.innerHTML = '<s class="price-old">' + old + '</s> <span class="price-new">' + el.getAttribute('data-price-promo') + '</span>';
+  });
+})();
