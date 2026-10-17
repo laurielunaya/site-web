@@ -2534,3 +2534,11 @@ select.gift-card-soin optgroup { font-style: normal; font-weight: 600; color: va
 
 /* Barre du haut : angles arrondis légers (et non en forme de pilule) */
 .nav-shell, .nav-shell.glass, .nav-shell.scrolled { border-radius: 14px; }
+
+/* Offre d'inauguration : -20 % sur la gamme Head Spa (disparaît seule après le 30 novembre) */
+.promo-banner { max-width: 860px; margin: 0 auto; text-align: center; padding: 22px 26px; border-radius: var(--r-md); background: linear-gradient(135deg, rgba(212,187,152,.38), rgba(255,250,242,.8)); border: 1px solid rgba(184,151,113,.6); box-shadow: 0 10px 30px -14px rgba(120,86,52,.35); }
+.promo-badge { display: inline-block; padding: 5px 14px; border-radius: var(--r-pill); background: var(--brown-deep); color: var(--cream-light); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; margin-bottom: 10px; }
+.promo-title { font-family: var(--ff-serif); font-size: clamp(1.25rem, 3vw, 1.75rem); line-height: 1.25; color: var(--brown-deep); margin: 0 0 6px; }
+.promo-title strong { font-weight: 600; color: var(--brown); }
+.promo-sub { font-size: .92rem; color: var(--brown-soft); margin: 0; line-height: 1.55; }
+.promo-pill { display: inline-block; margin: 0 0 14px; padding: 8px 14px; border-radius: var(--r-md); background: rgba(212,187,152,.3); border: 1px solid rgba(184,151,113,.55); color: var(--brown-deep); font-size: .86rem; line-height: 1.4; }

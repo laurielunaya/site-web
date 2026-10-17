@@ -463,3 +463,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+/* Offres à durée limitée : un élément avec data-promo-until="AAAA-MM-JJ" disparaît le lendemain de cette date */
+(function () {
+  document.querySelectorAll('[data-promo-until]').forEach(function (el) {
+    var end = new Date(el.getAttribute('data-promo-until') + 'T23:59:59');
+    if (!isNaN(end) && new Date() > end) el.parentNode.removeChild(el);
+  });
+})();
