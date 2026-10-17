@@ -126,7 +126,18 @@
     const card = el('div', 'quiz-result');
     if (r.extra && r.extra !== 'gift') card.appendChild(el('span', 'quiz-tag', r.extra));
     card.appendChild(el('h3', '', r.name));
-    card.appendChild(el('p', 'quiz-meta', r.meta));
+    const metaEl = el('p', 'quiz-meta', r.meta);
+    // Offre d'inauguration : -20 % sur les Head Spa (hors Bubble Hair Spa Coréen) jusqu'au 30 novembre
+    const pm = r.meta.match(/^(.*? · )(\d+) €( · \+15 min de séchage)$/);
+    if (pm && r.name !== 'Bubble Hair Spa Coréen' && new Date() <= new Date('2026-11-30T23:59:59')) {
+      metaEl.textContent = '';
+      metaEl.appendChild(document.createTextNode(pm[1]));
+      metaEl.appendChild(el('s', 'price-old', pm[2] + ' €'));
+      metaEl.appendChild(document.createTextNode(' '));
+      metaEl.appendChild(el('span', 'price-new', Math.round(pm[2] * 0.8) + ' €'));
+      metaEl.appendChild(document.createTextNode(pm[3]));
+    }
+    card.appendChild(metaEl);
     card.appendChild(el('p', 'quiz-text', r.text));
     const actions = el('div', 'quiz-actions');
     const see = el('a', 'btn btn-outline btn-sm', r.extra === 'gift' ? 'Voir les idées cadeaux' : 'Voir ce soin');

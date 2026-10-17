@@ -2548,3 +2548,6 @@ select.gift-card-soin optgroup { font-style: normal; font-weight: 600; color: va
 .is-promo .price-old { opacity: .55; font-size: .82em; font-weight: 400; margin-right: 4px; text-decoration-thickness: 1px; }
 .is-promo .price-new { color: var(--brown-deep); font-weight: 600; }
 .hs-spot-price .is-promo .price-new { color: var(--gold-light); }
+
+.quiz-meta .price-old { opacity: .55; font-size: .9em; }
+.quiz-meta .price-new { color: var(--brown-deep); font-weight: 600; }
