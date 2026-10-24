@@ -57,7 +57,7 @@
   --r-lg: 34px;
   --r-md: 22px;
   --r-sm: 14px;
-  --r-pill: 999px;
+  --r-pill: 14px;
 
   /* motion */
   --ease: cubic-bezier(.22, 1, .36, 1);
@@ -1682,7 +1682,7 @@ body:has(#productBar:not([hidden])) .fab-dock {
   font-weight: 500;
   padding: 6px 13px;
   border: 1px solid rgba(107,69,48,.18);
-  border-radius: 100px;
+  border-radius: var(--r-pill);
   white-space: nowrap;
 }
 .service-price { font-family: var(--ff-serif); font-size: 1.15rem; color: var(--brown-deep); font-weight: 600; white-space: nowrap; }
@@ -1691,7 +1691,7 @@ body:has(#productBar:not([hidden])) .fab-dock {
   display: inline-flex;
   align-items: center;
   padding: 9px 18px;
-  border-radius: 100px;
+  border-radius: var(--r-pill);
   background: linear-gradient(135deg, var(--gold-light), var(--gold));
   color: var(--brown-deep);
   font-family: var(--ff-sans);
