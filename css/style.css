@@ -2571,3 +2571,8 @@ select.gift-card-soin optgroup { font-style: normal; font-weight: 600; color: va
   .hs-spot-vertical .hs-spot-media { aspect-ratio: auto; height: 460px; }
   .hs-spot-vertical .hs-spot-text { padding: 20px 20px; }
 }
+
+/* Accueil : bloc Head Spa sans video (texte seul) */
+.hs-spot-solo { grid-template-columns: 1fr; }
+.hs-spot-solo .hs-spot-text { padding: 34px 44px; max-width: 760px; }
+@media (max-width: 900px) { .hs-spot-solo .hs-spot-text { padding: 24px 20px; } }
