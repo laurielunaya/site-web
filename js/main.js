@@ -345,6 +345,16 @@ document.addEventListener('DOMContentLoaded', () => {
       + '<button type="button" class="carousel-btn" data-dir="1" aria-label="Avis suivant">›</button>';
     track.insertAdjacentElement('afterend', controls);
     const dotsBox = controls.querySelector('.carousel-dots');
+    const many = cards.length > 8;   // trop de points : on affiche un compteur "3 / 16"
+    let counter = null;
+    if (many) {
+      controls.classList.add('is-many');
+      counter = document.createElement('span');
+      counter.className = 'carousel-count';
+      counter.setAttribute('aria-live', 'polite');
+      counter.textContent = '1 / ' + cards.length;
+      dotsBox.insertAdjacentElement('afterend', counter);
+    }
     const dots = cards.map((_, i) => {
       const d = document.createElement('button');
       d.type = 'button';
@@ -374,6 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       current = best;
       dots.forEach((d, i) => d.classList.toggle('active', i === best));
+      if (counter) counter.textContent = (best + 1) + ' / ' + cards.length;
     }
     let ticking = false;
     track.addEventListener('scroll', () => {
@@ -483,27 +494,47 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
-/* Accueil : bouton pour activer ou couper le son de la video Head Spa */
+/* Accueil : video Head Spa chargee seulement quand elle est visible, son active a la demande */
 (function () {
   var video = document.getElementById('hsSpotVideo');
   var btn = document.getElementById('hsSpotSound');
-  if (!video || !btn) return;
-  var label = btn.querySelector('.hs-sound-label');
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    video.removeAttribute('autoplay');
-    video.pause();
+  if (!video) return;
+  var src = video.getAttribute('data-src');
+  var label = btn ? btn.querySelector('.hs-sound-label') : null;
+  var saveData = !!(navigator.connection && navigator.connection.saveData);
+  var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  if (saveData || reduce || !('IntersectionObserver' in window)) {
+    // pas de lecture automatique : image fixe et commandes de lecture
     video.setAttribute('controls', '');
-    btn.hidden = true;
+    video.preload = 'none';
+    video.muted = false;
+    video.src = src;
+    if (btn) btn.hidden = true;
     return;
   }
-  btn.addEventListener('click', function () {
-    var on = video.muted;
-    video.muted = !on;
-    if (on) { var p = video.play(); if (p && p.catch) p.catch(function () {}); }
-    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-    btn.setAttribute('aria-label', on ? 'Couper le son de la vidéo' : 'Activer le son de la vidéo');
-    if (label) label.textContent = on ? 'Couper le son' : 'Activer le son';
-  });
+  var loaded = false;
+  function play() { var p = video.play(); if (p && p.catch) p.catch(function () {}); }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) {
+        if (!loaded) { loaded = true; video.src = src; video.load(); }
+        play();
+      } else if (loaded) {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.25 });
+  io.observe(video);
+  if (btn) {
+    btn.addEventListener('click', function () {
+      var on = video.muted;
+      video.muted = !on;
+      if (on) play();
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.setAttribute('aria-label', on ? 'Couper le son de la vidéo' : 'Activer le son de la vidéo');
+      if (label) label.textContent = on ? 'Couper le son' : 'Activer le son';
+    });
+  }
 })();
 
 /* Video d'en-tete : choisit la version telephone (verticale) ou ordinateur/tablette, sans charger l'autre */

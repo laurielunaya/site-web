@@ -24,7 +24,7 @@ jobs:
       - name: Versionner le CSS et le JavaScript (évite les anciennes versions en cache)
         run: |
           V=${GITHUB_SHA::8}
-          sed -i -E "s#(css/style\.css|js/main\.js|js/quiz\.js)\"#\1?v=$V\"#g" *.html
+          sed -i -E "s#(css/style\.css|js/main\.js|js/quiz.js|js/pickup.js|js/fiche-anchor.js)\"#\1?v=$V\"#g" *.html
           sed -i "s#'js/noel\.js'#'js/noel.js?v=$V'#" js/main.js
           grep -c "?v=$V" *.html | head -3
 

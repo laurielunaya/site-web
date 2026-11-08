@@ -2574,3 +2574,18 @@ select.gift-card-soin optgroup { font-style: normal; font-weight: 600; color: va
 
 /* Page Head Spa : la video d en-tete est aussi affichee sur telephone (version verticale) */
 @media (max-width: 640px) and (prefers-reduced-motion: no-preference) { .hero.hero-has-mobile-video .hero-video { display: block; } }
+
+/* Carrousel des avis : zones a toucher plus grandes, compteur quand il y a beaucoup d'avis */
+@media (max-width: 900px) {
+  .carousel-btn { flex: none; width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+  .carousel-dot { position: relative; }
+  .carousel-dot::after { content: ''; position: absolute; inset: -14px -4px; }
+  .carousel-controls.is-many .carousel-dots { display: none; }
+  .carousel-count { min-width: 70px; text-align: center; font-size: .9rem; font-weight: 500; letter-spacing: .04em; color: var(--brown-soft); font-variant-numeric: tabular-nums; }
+}
+/* Zones a toucher et lisibilite */
+.product-row-toggle { position: relative; }
+.product-row-toggle::after { content: ''; position: absolute; inset: -11px; }
+.product-fiche-link { padding: 12px 0; margin-top: 0; }
+.service-group-label { color: var(--brown-soft); }
+.nav-badge { font-size: .62rem; }
