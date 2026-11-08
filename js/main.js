@@ -482,3 +482,26 @@ document.addEventListener('DOMContentLoaded', () => {
     el.innerHTML = '<s class="price-old">' + old + '</s> <span class="price-new">' + el.getAttribute('data-price-promo') + '</span>';
   });
 })();
+
+/* Accueil : bouton pour activer ou couper le son de la video Head Spa */
+(function () {
+  var video = document.getElementById('hsSpotVideo');
+  var btn = document.getElementById('hsSpotSound');
+  if (!video || !btn) return;
+  var label = btn.querySelector('.hs-sound-label');
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    video.removeAttribute('autoplay');
+    video.pause();
+    video.setAttribute('controls', '');
+    btn.hidden = true;
+    return;
+  }
+  btn.addEventListener('click', function () {
+    var on = video.muted;
+    video.muted = !on;
+    if (on) { var p = video.play(); if (p && p.catch) p.catch(function () {}); }
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    btn.setAttribute('aria-label', on ? 'Couper le son de la vidéo' : 'Activer le son de la vidéo');
+    if (label) label.textContent = on ? 'Couper le son' : 'Activer le son';
+  });
+})();

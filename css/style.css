@@ -2554,3 +2554,20 @@ select.gift-card-soin optgroup { font-style: normal; font-weight: 600; color: va
 
 .service-a-inner ul { margin: 0 0 14px; padding-left: 20px; list-style: disc; }
 .service-a-inner li { font-size: .89rem; color: var(--brown-soft); line-height: 1.75; font-weight: 300; }
+
+/* Accueil : bloc Head Spa avec video verticale et bouton de son */
+.hs-spot-vertical { grid-template-columns: minmax(240px, 300px) 1fr; }
+.hs-spot-vertical .hs-spot-media { aspect-ratio: 9 / 16; min-height: 0; }
+.hs-spot-vertical .hs-spot-text { padding: 28px 40px; }
+.hs-spot-sound { position: absolute; left: 12px; bottom: 12px; z-index: 2; display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 14px; border: 1px solid rgba(251,246,236,.35); background: rgba(43,29,23,.72); color: var(--cream-light); font: 500 .78rem/1 var(--ff-sans); cursor: pointer; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.hs-spot-sound:hover { background: rgba(43,29,23,.9); }
+.hs-spot-sound:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+.hs-spot-sound svg { width: 18px; height: 18px; flex: none; }
+.hs-spot-sound .hs-sound-on { display: none; }
+.hs-spot-sound[aria-pressed="true"] .hs-sound-on { display: inline; }
+.hs-spot-sound[aria-pressed="true"] .hs-sound-off { display: none; }
+@media (max-width: 900px) {
+  .hs-spot-vertical { grid-template-columns: 1fr; }
+  .hs-spot-vertical .hs-spot-media { aspect-ratio: auto; height: 460px; }
+  .hs-spot-vertical .hs-spot-text { padding: 20px 20px; }
+}
