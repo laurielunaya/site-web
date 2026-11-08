@@ -505,3 +505,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (label) label.textContent = on ? 'Couper le son' : 'Activer le son';
   });
 })();
+
+/* Video d'en-tete : choisit la version telephone (verticale) ou ordinateur/tablette, sans charger l'autre */
+(function () {
+  var v = document.querySelector('video.hero-video[data-src]');
+  if (!v) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (navigator.connection && navigator.connection.saveData) return;
+  var mobile = window.matchMedia && window.matchMedia('(max-width: 640px)').matches;
+  var src = mobile && v.getAttribute('data-src-mobile') ? v.getAttribute('data-src-mobile') : v.getAttribute('data-src');
+  if (mobile && v.getAttribute('data-poster-mobile')) v.setAttribute('poster', v.getAttribute('data-poster-mobile'));
+  v.src = src;
+  v.load();
+  var p = v.play();
+  if (p && p.catch) p.catch(function () {});
+})();

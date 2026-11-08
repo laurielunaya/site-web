@@ -2571,3 +2571,6 @@ select.gift-card-soin optgroup { font-style: normal; font-weight: 600; color: va
   .hs-spot-vertical .hs-spot-media { aspect-ratio: auto; height: 460px; }
   .hs-spot-vertical .hs-spot-text { padding: 20px 20px; }
 }
+
+/* Page Head Spa : la video d en-tete est aussi affichee sur telephone (version verticale) */
+@media (max-width: 640px) and (prefers-reduced-motion: no-preference) { .hero.hero-has-mobile-video .hero-video { display: block; } }
