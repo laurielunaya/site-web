@@ -2602,3 +2602,7 @@ select.gift-card-soin optgroup { font-style: normal; font-weight: 600; color: va
 .ba-note { text-align: center; font-size: .82rem; color: var(--brown-mist); font-style: italic; margin: 18px auto 0; max-width: 620px; }
 @media (max-width: 900px) { .ba-grid { grid-template-columns: 1fr; gap: 18px; max-width: 640px; } }
 @media (max-width: 480px) { .ba-pair { grid-template-columns: 1fr; } .ba-photo { aspect-ratio: 9 / 7; } }
+
+/* Avant / apres : une carte seule sur la derniere ligne est centree */
+.ba-grid > .ba-card:last-child:nth-child(odd) { grid-column: 1 / -1; width: calc(50% - 12px); justify-self: center; }
+@media (max-width: 900px) { .ba-grid > .ba-card:last-child:nth-child(odd) { width: 100%; justify-self: stretch; } }
