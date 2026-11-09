@@ -551,3 +551,15 @@ document.addEventListener('DOMContentLoaded', () => {
   var p = v.play();
   if (p && p.catch) p.catch(function () {});
 })();
+
+/* Bons cadeaux : prix remises (offre) dans la liste des soins, jusqu'a la date indiquee (data-promo-until) */
+(function () {
+  document.querySelectorAll('option[data-promo]').forEach(function (o) {
+    var end = new Date((o.getAttribute('data-promo-end') || '') + 'T23:59:59');
+    if (isNaN(end) || new Date() > end) return;
+    var old = o.getAttribute('data-price'), promo = o.getAttribute('data-promo');
+    o.setAttribute('data-price', promo);
+    o.textContent = o.textContent.replace(/(\d+)\s*€\s*$/, promo + ' € (au lieu de ' + old + ' €)');
+    o.value = o.value.replace(/(\d+)\s*€\s*$/, promo + ' € (au lieu de ' + old + ' €, offre -20 %)');
+  });
+})();
