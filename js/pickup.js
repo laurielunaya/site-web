@@ -90,7 +90,7 @@
     var url = roots[0].dataset.pickupUrl || 'https://www.planity.com/lunaya-38140-apprieu';
     banner.innerHTML =
       '<p><strong>⚠️ Démarche non finalisée.</strong> Vous avez envoyé votre demande, mais votre créneau de retrait n’a pas été confirmé : tant qu’il n’est pas réservé sur Planity, ' +
-      (pending.k === 'cadeau' ? 'votre coffret ou bon cadeau n’est pas mis de côté' : 'vos produits ne sont pas mis de côté') + '.</p>' +
+      (pending.k === 'cadeau' ? 'votre bon cadeau n’est pas mis de côté' : 'vos produits ne sont pas mis de côté') + '.</p>' +
       '<div class="pickup-actions"><a class="btn btn-primary btn-sm" href="' + url + '" target="_blank" rel="noopener">Choisir mon créneau</a>' +
       '<button type="button" class="btn btn-outline btn-sm" data-banner-done>C’est fait ✓</button></div>';
     main.insertBefore(banner, main.firstChild);

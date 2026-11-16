@@ -16,15 +16,15 @@
   if (spot) {
     const anchor = spot.closest('section');
     const eyebrow = lastCall ? 'Dernière ligne droite avant Noël' : 'Édition Fêtes de Noël';
-    const title = lastCall ? 'Il est encore temps d\'offrir' : 'Des coffrets à glisser sous le sapin';
+    const title = lastCall ? 'Il est encore temps d\'offrir' : 'Des idées cadeaux pour Noël';
     const text = lastCall
-      ? 'Retrait possible <strong>jusqu\'au 25 décembre</strong> : les créneaux partent vite, réservez vos coffrets et bons cadeaux dès maintenant.'
-      : '12 coffrets cheveux, visage et corps, dès <strong>39,90&nbsp;€</strong>, à offrir ou à s\'offrir.';
+      ? 'Retrait possible <strong>jusqu\'au 25 décembre</strong> : les créneaux partent vite, réservez vos bons cadeaux dès maintenant.'
+      : 'Bons cadeaux à montant libre, ou composez votre coffret de produits à offrir.';
     const sec = document.createElement('section');
     sec.style.cssText = 'padding-top:34px; padding-bottom:10px;';
-    sec.innerHTML = '<div class="container"><a href="idees-cadeaux.html#coffrets" class="xmas-band">'
+    sec.innerHTML = '<div class="container"><a href="idees-cadeaux.html#bons-cadeaux" class="xmas-band">'
       + '<div class="xmas-band-text"><span class="eyebrow">' + eyebrow + '</span><h2>' + title + '</h2><p>' + text + '</p></div>'
-      + '<span class="btn btn-primary xmas-band-cta">Découvrir les coffrets <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>'
+      + '<span class="btn btn-primary xmas-band-cta">Découvrir les idées cadeaux <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>'
       + '</a></div>';
     anchor.parentNode.insertBefore(sec, anchor);
   }
@@ -49,7 +49,7 @@
       if (heroLede) {
         const p = document.createElement('p');
         p.className = 'last-call';
-        p.innerHTML = '<span aria-hidden="true">🎄</span> Noël approche : retrait possible jusqu\'au 25 décembre, les créneaux partent vite. Réservez vos coffrets et bons cadeaux dès maintenant.';
+        p.innerHTML = '<span aria-hidden="true">🎄</span> Noël approche : retrait possible jusqu\'au 25 décembre, les créneaux partent vite. Réservez vos bons cadeaux dès maintenant.';
         heroLede.insertAdjacentElement('afterend', p);
       }
     }
