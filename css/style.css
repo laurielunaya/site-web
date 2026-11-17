@@ -2644,3 +2644,7 @@ select.gift-card-soin optgroup { font-style: normal; font-weight: 600; color: va
 .coffret-visual-3 { gap: 8px; padding-left: 10px; padding-right: 10px; }
 .coffret-visual-3 img { height: 215px; }
 .coffret-visual-3 .coffret-plus { font-size: 1.2rem; }
+/* photos produit sur fond clair : fondues dans le fond du cadre */
+.coffret-visual-blend { aspect-ratio: auto; padding: 32px 16px; }
+.coffret-visual-blend img { border-radius: 12px; filter: none; box-shadow: 0 10px 22px -12px rgba(107,69,42,.45); }
+.coffret-visual-blend .coffret-plus { margin: 0 -6px; }
