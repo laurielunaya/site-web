@@ -769,8 +769,30 @@ body:has(#productBar:not([hidden])) .fab-dock {
 .coffret-save { font-family: var(--ff-sans); font-size: .66rem; font-weight: 600; letter-spacing: .03em; color: var(--brown-deep); background: rgba(199,164,109,.22); padding: 3px 9px; border-radius: 999px; }
 .coffret-card .btn { margin-top: auto; width: 100%; justify-content: center; }
 .coffret-selected-label { font-family: var(--ff-serif); font-size: .92rem; color: var(--brown-deep); }
+/* coffret avec grande photo detouree */
+.coffret-visual {
+  width: 100%; aspect-ratio: 9 / 10;
+  background-color: var(--cream-light);
+  background-size: 128%; background-position: 50% 46%; background-repeat: no-repeat;
+  border-radius: var(--r-md, 14px);
+  margin-bottom: 20px;
+}
+.coffret-body { display: flex; flex-direction: column; flex: 1; }
+.coffret-desc { font-size: .9rem; line-height: 1.6; color: var(--brown-soft); font-weight: 300; margin: 0 0 16px; }
+.coffret-card .coffret-body h3 { min-height: 0; font-size: 1.4rem; }
+.coffret-card .coffret-body .btn { margin-top: 0; width: auto; align-self: flex-start; }
+.coffret-items li strong { font-weight: 600; color: var(--brown-deep); }
+.coffret-grid-feature { grid-template-columns: 1fr; max-width: 880px; margin: 0 auto; }
+.coffret-grid-feature .coffret-card { flex-direction: row; align-items: center; gap: 36px; padding: 28px; }
+.coffret-grid-feature .coffret-visual { flex: 0 0 44%; width: 44%; margin-bottom: 0; }
+@media (max-width: 720px) {
+  .coffret-grid-feature .coffret-card { flex-direction: column; align-items: stretch; gap: 0; padding: 22px; }
+  .coffret-grid-feature .coffret-visual { flex: none; width: 100%; margin-bottom: 20px; }
+  .coffret-card .coffret-body .btn { width: 100%; }
+}
 @media (max-width: 1000px) {
   .coffret-grid { grid-template-columns: repeat(2, 1fr); }
+  .coffret-grid-feature { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   .coffret-grid { grid-template-columns: 1fr; }

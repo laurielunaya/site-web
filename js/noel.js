@@ -35,7 +35,7 @@
     const eyebrow = coffrets.querySelector('.section-head .eyebrow');
     const lede = coffrets.querySelector('.section-head .lede');
     if (eyebrow) eyebrow.textContent = 'Édition Fêtes de Noël';
-    if (lede) lede.textContent = 'Des coffrets pensés pour tous les budgets et toutes les envies — l\'idée cadeau prête à glisser sous le sapin.';
+    if (lede) lede.textContent = 'Des coffrets de produits prêts à offrir, emballés à l\'institut pour Noël.';
     const rename = { 'Cocon Douceur Vanille': 'Cocon d\'Hiver Vanille', 'Grand Coffret Corps': 'Grand Coffret Corps Féerie de Noël' };
     document.querySelectorAll('.coffret-card[data-coffret]').forEach((card) => {
       const next = rename[card.dataset.coffret];
