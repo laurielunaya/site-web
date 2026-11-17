@@ -2664,3 +2664,27 @@ select.gift-card-soin optgroup { font-style: normal; font-weight: 600; color: va
 .coffret-gift-pouch .gift-label { display: flex; flex-direction: column; text-align: left; font-family: var(--ff-serif); font-size: .98rem; letter-spacing: 0; text-transform: none; font-weight: 600; line-height: 1.2; color: var(--brown-deep); }
 .coffret-gift-pouch .gift-label small { font-family: var(--ff-sans); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 2px; }
 .coffret-visual-products:has(.coffret-gift-pouch) { padding-bottom: 98px; }
+
+/* ===== Coffrets : 3 par ligne (ordinateur), 2 (tablette), carrousel a faire glisser (telephone) ===== */
+.coffret-grid.coffret-grid-feature { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: none; margin: 0 auto; }
+.coffret-grid-feature .coffret-card { flex: 0 0 calc((100% - 40px) / 3); min-width: 0; flex-direction: column; align-items: stretch; gap: 0; padding: 20px; }
+.coffret-grid-feature .coffret-visual { flex: none; width: 100%; height: 340px; aspect-ratio: auto; margin-bottom: 18px; padding: 24px 10px 20px; }
+.coffret-grid-feature .coffret-visual-products:has(.coffret-gift-pouch) { padding-bottom: 98px; }
+.coffret-grid-feature .coffret-visual-products:has(.coffret-gift-chip:not(.coffret-gift-pouch)) { padding-bottom: 64px; }
+.coffret-grid-feature .coffret-body { flex: 1; }
+.coffret-grid-feature .coffret-card .coffret-body h3 { font-size: 1.2rem; }
+.coffret-grid-feature .coffret-desc { font-size: .84rem; }
+.coffret-grid-feature .coffret-card .coffret-body .btn { margin-top: auto; width: 100%; align-self: stretch; }
+.coffret-grid-feature .coffret-pricing { margin-bottom: 18px; }
+@media (max-width: 1000px) {
+  .coffret-grid-feature .coffret-card { flex-basis: calc((100% - 20px) / 2); }
+}
+@media (max-width: 620px) {
+  .coffret-grid.coffret-grid-feature { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin: 0 -16px; padding: 4px 16px 18px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .coffret-grid.coffret-grid-feature::-webkit-scrollbar { display: none; }
+  .coffret-grid-feature .coffret-card { flex: 0 0 84%; scroll-snap-align: center; padding: 16px; }
+  .coffret-grid-feature .coffret-visual { height: 320px; }
+}
+@media (max-width: 620px) {
+  .coffret-subhead::after { content: 'Faites glisser pour voir les coffrets \2192'; display: block; margin-top: 6px; font-family: var(--ff-sans); font-size: .66rem; letter-spacing: .06em; text-transform: none; font-weight: 400; color: var(--brown-mist); }
+}
