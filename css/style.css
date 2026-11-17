@@ -2651,3 +2651,4 @@ select.gift-card-soin optgroup { font-style: normal; font-weight: 600; color: va
 .coffret-visual-blend.coffret-visual-3 img { height: 98px; }
 .coffret-visual-blend.coffret-visual-3 .coffret-plus { margin: 0; }
 @media (max-width: 720px) { .coffret-visual-blend.coffret-visual-3 img { height: 104px; } }
+.coffret-visual-multiply img { mix-blend-mode: multiply; filter: none; }
