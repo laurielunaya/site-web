@@ -2641,3 +2641,6 @@ select.gift-card-soin optgroup { font-style: normal; font-weight: 600; color: va
 /* Avant / apres : une carte seule sur la derniere ligne est centree */
 .ba-grid > .ba-card:last-child:nth-child(odd) { grid-column: 1 / -1; width: calc(50% - 12px); justify-self: center; }
 @media (max-width: 900px) { .ba-grid > .ba-card:last-child:nth-child(odd) { width: 100%; justify-self: stretch; } }
+.coffret-visual-3 { gap: 8px; padding-left: 10px; padding-right: 10px; }
+.coffret-visual-3 img { height: 215px; }
+.coffret-visual-3 .coffret-plus { font-size: 1.2rem; }
