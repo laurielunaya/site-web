@@ -2688,3 +2688,5 @@ select.gift-card-soin optgroup { font-style: normal; font-weight: 600; color: va
 @media (max-width: 620px) {
   .coffret-subhead::after { content: 'Faites glisser pour voir les coffrets \2192'; display: block; margin-top: 6px; font-family: var(--ff-sans); font-size: .66rem; letter-spacing: .06em; text-transform: none; font-weight: 400; color: var(--brown-mist); }
 }
+.coffret-note { text-align: center; font-family: var(--ff-sans); font-size: .82rem; font-style: italic; color: var(--brown-soft); margin: -8px 0 20px; }
+.coffret-gift-pouch .gift-label small { white-space: nowrap; }
