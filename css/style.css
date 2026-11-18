@@ -2690,3 +2690,5 @@ select.gift-card-soin optgroup { font-style: normal; font-weight: 600; color: va
 }
 .coffret-note { text-align: center; font-family: var(--ff-sans); font-size: .82rem; font-style: italic; color: var(--brown-soft); margin: -8px 0 20px; }
 .coffret-gift-pouch .gift-label small { white-space: nowrap; }
+.product-bar .price-old, .checkout-total .price-old { opacity: .55; font-size: .85em; font-weight: 400; margin-right: 2px; }
+.coffret-promo-note { display: inline-block; font-size: .8em; color: var(--brown-soft); font-weight: 400; margin-left: 4px; }

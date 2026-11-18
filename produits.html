@@ -85,7 +85,7 @@
       <div class="breadcrumb"><a href="/">Accueil</a><span class="sep">/</span><span class="here">Réserver mes produits</span></div>
       <h1>Retrouvez chez vous <em>les produits de vos soins</em></h1>
       <p class="lede">Sélectionnez les produits qui vous intéressent, réservez-les en un message, et venez les récupérer à l'institut au créneau de votre choix, <strong>sous 48&nbsp;h maximum</strong>.</p>
-      <p class="gift-note"><span aria-hidden="true">🎁</span> Pour vous ou pour offrir, <strong>composez votre propre coffret</strong>&nbsp;: avec l'option «&nbsp;cadeau&nbsp;», nous préparons un emballage soigné.</p>
+      <p class="gift-note"><span aria-hidden="true">🎁</span> Pour vous ou pour offrir, <strong>composez votre propre coffret</strong>&nbsp;: avec l'option «&nbsp;coffret cadeau&nbsp;», nous préparons un emballage soigné, et vous profitez de <strong>−10&nbsp;% dès 2 produits</strong>.</p>
     </div>
   </section>
 
@@ -2586,8 +2586,8 @@
         <div class="gift-choice" id="giftChoice" role="radiogroup" aria-label="Pour qui sont ces produits ?">
           <span class="gift-choice-label">Ces produits sont :</span>
           <button type="button" class="gift-choice-btn" role="radio" aria-checked="false" data-gift="no">Pour moi</button>
-          <button type="button" class="gift-choice-btn" role="radio" aria-checked="false" data-gift="yes"><span aria-hidden="true">🎁</span> Un cadeau</button>
-          <span class="gift-choice-hint">Cadeau pour une proche ou pour vous-même : emballage soigné.</span>
+          <button type="button" class="gift-choice-btn" role="radio" aria-checked="false" data-gift="yes"><span aria-hidden="true">🎁</span> Mon coffret cadeau</button>
+          <span class="gift-choice-hint">Coffret composé par vous, pour offrir ou pour vous-même, avec emballage soigné : <strong>−10 % dès 2 produits</strong>.</span>
         </div>
         <div class="checkout-fields">
           <input type="text" id="customerLastName" class="checkout-input" placeholder="Nom" autocomplete="family-name">
@@ -2738,6 +2738,12 @@
     selected.forEach((label) => { sum += prices.get(label) || 0; });
     return sum;
   }
+  /* Coffret composé par la cliente : -10 % dès 2 produits (option « Mon coffret cadeau ») */
+  const COFFRET_MIN = 2, COFFRET_RATE = 0.10;
+  function coffretDiscount() {
+    return (isGift === true && selected.size >= COFFRET_MIN) ? Math.round(currentTotal() * COFFRET_RATE * 100) / 100 : 0;
+  }
+  function finalTotal() { return currentTotal() - coffretDiscount(); }
   const planityBtn = document.getElementById('productBarPlanityBtn');
   const stepSelect = document.getElementById('stepSelect');
   const stepCheckout = document.getElementById('stepCheckout');
@@ -2763,6 +2769,7 @@
     giftChoice.querySelectorAll('.gift-choice-btn').forEach((b) => {
       b.setAttribute('aria-checked', String((b.dataset.gift === 'yes') === value && value !== null));
     });
+    updateBar();
   }
   giftChoice.querySelectorAll('.gift-choice-btn').forEach((b) => {
     b.addEventListener('click', () => setGift(b.dataset.gift === 'yes'));
@@ -2796,10 +2803,18 @@
       return;
     }
     bar.hidden = false;
-    const countText = count === 1 ? '1 produit sélectionné' : count + ' produits sélectionnés';
+    let countText = count === 1 ? '1 produit sélectionné' : count + ' produits sélectionnés';
+    const disc = coffretDiscount();
+    if (isGift === true && count < COFFRET_MIN) countText += ' · encore 1 pour −10 % (coffret)';
+    if (disc > 0) countText += ' · coffret −10 %';
     barCount.textContent = countText;
-    barSum.textContent = formatEuro(currentTotal());
-    checkoutTotal.innerHTML = (count === 1 ? '1 produit' : count + ' produits') + ' · Total : <b>' + formatEuro(currentTotal()) + '</b>';
+    if (disc > 0) {
+      barSum.innerHTML = '<s class="price-old">' + formatEuro(currentTotal()) + '</s> ' + formatEuro(finalTotal());
+      checkoutTotal.innerHTML = (count === 1 ? '1 produit' : count + ' produits') + ' · Total : <s class="price-old">' + formatEuro(currentTotal()) + '</s> <b>' + formatEuro(finalTotal()) + '</b> <span class="coffret-promo-note">(coffret −10 % : ' + formatEuro(disc) + ' offerts)</span>';
+    } else {
+      barSum.textContent = formatEuro(currentTotal());
+      checkoutTotal.innerHTML = (count === 1 ? '1 produit' : count + ' produits') + ' · Total : <b>' + formatEuro(currentTotal()) + '</b>';
+    }
   }
 
   nextBtn.addEventListener('click', goToCheckout);
@@ -2856,7 +2871,10 @@
     const names = [...selected.values()];
     const subject = (isGift ? 'CADEAU — ' : '') + 'Réservation produits — ' + firstName + ' ' + lastName;
     const deadline = new Date(Date.now() + 48 * 3600 * 1000).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
-    const totalLine = 'Total : ' + formatEuro(currentTotal()).replace('\u00a0', ' ');
+    const discAmt = coffretDiscount();
+    const totalLine = discAmt > 0
+      ? 'Total : ' + formatEuro(currentTotal()).replace('\u00a0', ' ') + ' \u2212 remise coffret 10 % (' + formatEuro(discAmt).replace('\u00a0', ' ') + ') = ' + formatEuro(finalTotal()).replace('\u00a0', ' ')
+      : 'Total : ' + formatEuro(currentTotal()).replace('\u00a0', ' ');
     const giftLine = isGift
       ? '🎁 CADEAU : merci de prévoir un emballage soigné et sophistiqué (cadeau pour offrir, ou pour la cliente elle-même).'
       : 'Produits pour usage personnel (emballage standard).';
@@ -2883,7 +2901,7 @@
       .then((res) => res.json())
       .then((data) => {
         if (!data.success) throw new Error('web3forms');
-        recap.textContent = 'Votre demande' + (isGift ? ' (cadeau, emballage soigné)' : '') + ' : ' + names.join(' · ') + '. ' + totalLine;
+        recap.textContent = 'Votre demande' + (isGift ? (discAmt > 0 ? ' (coffret cadeau −10 %, emballage soigné)' : ' (cadeau, emballage soigné)') : '') + ' : ' + names.join(' · ') + '. ' + totalLine;
         hideAllSteps();
         stepPlanity.hidden = false;
       })

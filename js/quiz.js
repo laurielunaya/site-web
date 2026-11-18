@@ -44,7 +44,7 @@
       ]},
       gift: { q: 'Que souhaitez-vous faire ?', opts: [
         ['Offrir un bon cadeau', R('Un bon cadeau', 'Montant libre', 'Choisissez le montant de son tarif et indiquez-nous le soin : nous l\'écrirons sur le bon, en version numérique ou papier.', 'idees-cadeaux.html#bons-cadeaux', 'gift')],
-        ['Composer un coffret', R('Une idée cadeau', 'Bon cadeau ou coffret à composer', 'Offrez un bon cadeau à montant libre, ou composez votre coffret de produits.', 'idees-cadeaux.html', 'gift')],
+        ['Composer un coffret', R('Une idée cadeau', 'Bon cadeau ou coffret à composer', 'Offrez un bon cadeau à montant libre, ou composez votre coffret de produits (−10 % dès 2 produits).', 'idees-cadeaux.html', 'gift')],
         ['Venir à deux', R('Head Spa Duo', '1h · 180 €' + HS, 'Un Head Spa à partager. Rendez-vous à partir du 15 décembre.', 'head-spa.html')]
       ]}
     },

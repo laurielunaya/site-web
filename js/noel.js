@@ -19,7 +19,7 @@
     const title = lastCall ? 'Il est encore temps d\'offrir' : 'Des idées cadeaux pour Noël';
     const text = lastCall
       ? 'Retrait possible <strong>jusqu\'au 25 décembre</strong> : les créneaux partent vite, réservez vos bons cadeaux dès maintenant.'
-      : 'Bons cadeaux à montant libre, ou composez votre coffret de produits à offrir.';
+      : 'Bons cadeaux à montant libre, ou composez votre coffret de produits : −10 % dès 2 produits.';
     const sec = document.createElement('section');
     sec.style.cssText = 'padding-top:34px; padding-bottom:10px;';
     sec.innerHTML = '<div class="container"><a href="idees-cadeaux.html#bons-cadeaux" class="xmas-band">'
